@@ -13,32 +13,32 @@
     <nav class="nav">
       <ul class="nav__list">
         <li class="nav__item">
-          <a class="nav__link" href="#">Favorite coffee</a>
+          <a class="link nav__link" href="#">Favorite coffee</a>
         </li>
         <li class="nav__item">
-          <a class="nav__link" href="#">About</a>
+          <a class="link nav__link" href="#">About</a>
         </li>
         <li class="nav__item">
-          <a class="nav__link" href="#">Mobile app</a>
+          <a class="link nav__link" href="#">Mobile app</a>
         </li>
         <li class="nav__item">
-          <a class="nav__link" href="#">Contact us</a>
+          <a class="link nav__link" href="#">Contact us</a>
         </li>
       </ul>
     </nav>
-    <button class="btn menu" type="button">
+    <a class="link menu" href="#">
       <span class="menu__text">Menu</span>
       <svg class="menu__svg" aria-label="menu cup icon">
         <use href="./src/img/icons/sprite.svg#cup"></use>
       </svg>
-    </button>
+    </a>
   </header>
   <main class="main">
     <section class="enjoy">
       <div class="enjoy__content">
         <h1 class="enjoy__title"><em>Enjoy</em> premium coffee at our charming cafe</h1>
         <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
-        <a class="btn btn_primary" href="#">Menu</a>
+        <a class="btn btn_long btn_primary" href="#">Menu</a>
       </div>
     </section>
     <section class="favorite">
@@ -83,7 +83,53 @@
           </svg>
         </button>
       </div>
-      <div class="pagination"></div>
+      <div class="pagination">
+        <button class="pagination__btn pagination__btn_active" type="button"></button>
+        <button class="pagination__btn" type="button"></button>
+        <button class="pagination__btn" type="button"></button>
+      </div>
+    </section>
+    <section class="about">
+      <h2 class="about__title">Resource is <em>the perfect and cozy place</em> where you can enjoy a variety of hot beverages, relax, catch up with friends, or get some work done.</h2>
+      <div class="about__images">
+        <div class="about__column">
+          <div class="about__img-container about__img-container_x">
+            <img class="about__img" src="./src/img/about_1.jpg" width="726" height="726" alt="about image">
+          </div>
+          <div class="about__img-container about__img-container_y">
+            <img class="about__img" src="./src/img/about_2.jpg" width="726" height="726" alt="about image">
+          </div>
+        </div>
+        <div class="about__column">
+          <div class="about__img-container about__img-container_y">
+            <img class="about__img" src="./src/img/about_3.jpg" width="726" height="726" alt="about image">
+          </div>
+          <div class="about__img-container about__img-container_x">
+            <img class="about__img" src="./src/img/about_4.jpg" width="726" height="726" alt="about image">
+          </div>
+        </div>
+      <div>
+    </section>
+    <section class="mobile">
+      <div class="mobile__content">
+        <h2 class="mobile__title"><em>Download</em> our apps to start ordering</h2>
+        <p class="mobile__text">Download the Resource app today and experience the comfort of ordering your favorite coffee from wherever you are</p>
+        <div class="mobile__buttons">
+          <a class="btn btn_long btn_bordered" href="#">
+            <svg class="mobile__svg" aria-label="apple icon">
+              <use href="./src/img/icons/sprite.svg#apple"></use>
+            </svg>
+            <p class="mobile__btn-text"><span>Available on the</span>App Store</p>
+          </a>
+          <a class="btn btn_long btn_bordered" href="#">
+            <svg class="mobile__svg" aria-label="google icon">
+              <use href="./src/img/icons/sprite.svg#google"></use>
+            </svg>
+            <p class="mobile__btn-text"><span>Available on</span>Google Play</p>
+          </a>
+        </div>
+      </div>
+      <img class="mobile__img" src="./src/img/mobile.png" alt="mobile image">
     </section>
   </main>
 </body>

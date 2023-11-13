@@ -1,14 +1,24 @@
 .btn {
+  padding: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  column-gap: 8px;
   @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
   color: $color-text-dark;
   border-radius: 100px;
 
-  &_primary {
+  &_long {
     width: 200px;
-    padding: 20px 78px;
+    height: 64px;
+  }
+
+  &_primary {
     background-color: $color-background-body;
+  }
+
+  &_bordered {
+    justify-content: flex-start;
+    border: 1px solid $color-border-dark;
   }
 }

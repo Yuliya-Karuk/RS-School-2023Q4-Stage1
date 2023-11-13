@@ -1,0 +1,4 @@
+.link {
+  @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
+  color: $color-text-dark;
+}

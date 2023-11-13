@@ -4,9 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
-  color: $color-text-dark;
 }
 
 .header__logo {
@@ -25,7 +22,13 @@
 
 .menu {
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   column-gap: 8px;
+  & > span {
+    @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
+  }
 }
 
 .menu__svg {

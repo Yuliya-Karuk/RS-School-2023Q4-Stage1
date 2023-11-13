@@ -36,6 +36,11 @@ h3 {
   color: $color-text-dark;
 }
 
+span {
+  @include font("Inter-Medium-Normal", 1rem, 600, 1.4);
+  color: $color-text-dark;
+}
+
 p {
   @include font("Inter-Regular", 1.6rem, 400, 1.5);
   color: $color-text-dark;

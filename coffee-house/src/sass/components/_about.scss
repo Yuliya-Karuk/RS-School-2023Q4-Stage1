@@ -1,0 +1,42 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.about__images {
+  display: grid;
+  column-gap: 40px;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about__column {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.about__img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 20px;
+  &_x {
+    height: 590px;
+  }
+  &_y {
+    height: 430px;
+  }
+}
+
+.about__img {
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    transform: scale(0.8);
+  }
+}
