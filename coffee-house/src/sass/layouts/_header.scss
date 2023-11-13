@@ -1,0 +1,34 @@
+.header {
+  @extend %container;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
+  color: $color-text-dark;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.nav__item {
+  margin-bottom: 8px;
+}
+
+.menu {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.menu__svg {
+  align-self: flex-start;
+  display: block;
+  width: 20px;
+  height: 20px;
+}

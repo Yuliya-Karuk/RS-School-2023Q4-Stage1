@@ -1,3 +1,7 @@
+@include font-face("Inter-Medium-Italic", "Inter-SemiBoldItalic", "600", "italic");
+@include font-face("Inter-Medium-Normal", "Inter-SemiBold", "600", "normal");
+@include font-face("Inter-Regular", "Inter-Regular", "400", "normal");
+
 *,
 *::before,
 *::after {
@@ -10,9 +14,5 @@ html {
 }
 
 body {
-  background: blue;
-}
-
-h1 {
-  color: red;
+  background: $color-background-body;
 }
