@@ -16,3 +16,37 @@ html {
 body {
   background: $color-background-body;
 }
+
+section {
+  margin-bottom: 100px;
+}
+
+h1 {
+  @include font("Inter-Medium-Normal", 7.2rem, 600, 1.05);
+  color: $color-text-light;
+}
+
+h2 {
+  @include font("Inter-Medium-Normal", 6rem, 600, 1.25);
+  color: $color-text-dark;
+}
+
+h3 {
+  @include font("Inter-Medium-Normal", 2.4rem, 600, 1.25);
+  color: $color-text-dark;
+}
+
+p {
+  @include font("Inter-Regular", 1.6rem, 400, 1.5);
+  color: $color-text-dark;
+}
+
+em {
+  font-family: "Inter-Medium-Italic";
+  color: $color-text-accent;
+}
+
+strong {
+  @include font("Inter-Medium-Normal", 2.4rem, 600, 1.25);
+  color: $color-text-dark;
+}

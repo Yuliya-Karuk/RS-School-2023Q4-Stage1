@@ -26,12 +26,65 @@
         </li>
       </ul>
     </nav>
-    <button class="menu" type="button">
+    <button class="btn menu" type="button">
       <span class="menu__text">Menu</span>
       <svg class="menu__svg" aria-label="menu cup icon">
-        <use xlink:href="./src/img/icons/sprite.svg#cup"></use>
+        <use href="./src/img/icons/sprite.svg#cup"></use>
       </svg>
     </button>
   </header>
+  <main class="main">
+    <section class="enjoy">
+      <div class="enjoy__content">
+        <h1 class="enjoy__title"><em>Enjoy</em> premium coffee at our charming cafe</h1>
+        <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
+        <a class="btn btn_primary" href="#">Menu</a>
+      </div>
+    </section>
+    <section class="favorite">
+      <h2 class="favorite__title">Choose your <em>favorite</em> coffee</h2>
+      <div class="slider">
+        <button class="btn slider__btn slider__btn_left">
+          <svg class="slider__svg" aria-label="slider arrow icon">
+            <use href="./src/img/icons/sprite.svg#arrow"></use>
+          </svg>
+        </button>
+        <div class="slider_container">
+          <ul class="slider_list">
+            <li class="slider__item">
+              <img class="slider__img" src="./src/img/coffee_slider_1.png" alt="coffee image 1">
+              <div class="slider__content">
+                <h3 class="slider__title">S’mores Frappuccino</h3>
+                <p class="slider__text">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
+                <strong class="slider__price">&#x24;5.50</strong>
+              </div>
+            </li>
+            <li class="slider__item">
+              <img class="slider__img" src="./src/img/coffee_slider_2.png" alt="coffee image 2">
+              <div class="slider__content">
+                <h3 class="slider__title">Caramel Macchiato</h3>
+                <p class="slider__text">Fragrant and unique classic espresso with rich caramel-peanut syrup, with cream under whipped thick foam.</p>
+                <strong class="slider__price">&#x24;5.00</strong>
+              </div>
+            </li>
+            <li class="slider__item">
+              <img class="slider__img" src="./src/img/coffee_slider_3.png" alt="coffee image 3">
+              <div class="slider__content">
+                <h3 class="slider__title">Ice coffee</h3>
+                <p class="slider__text">A popular summer drink that tones and invigorates. Prepared from coffee, milk and ice.</p>
+                <strong class="slider__price">&#x24;4.50</strong>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <button class="btn slider__btn slider__btn_right">
+          <svg class="slider__svg" aria-label="slider arrow icon">
+            <use href="./src/img/icons/sprite.svg#arrow"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="pagination"></div>
+    </section>
+  </main>
 </body>
 </html>
