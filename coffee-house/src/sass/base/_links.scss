@@ -1,4 +1,15 @@
 .link {
   @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
   color: $color-text-dark;
+
+  &_centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_bordered {
+    border-radius: 100px;
+    border: 1px solid $color-border-light;
+  }
 }

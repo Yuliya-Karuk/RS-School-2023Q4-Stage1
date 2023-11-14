@@ -1,0 +1,64 @@
+.footer {
+  @extend %container;
+  padding: 0 40px;
+  margin-bottom: 40px;
+}
+
+.footer__content {
+  padding: 100px;
+  display: grid;
+  grid-gap: 100px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background-color: $color-background-container;
+  border-radius: 40px;
+}
+
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 12px;
+  & > .link {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.social__svg {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__contacts {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  & > * {
+    color: $color-text-light;
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  & > * {
+    display: flex;
+    justify-content: flex-start;
+    color: $color-text-light;
+    column-gap: 8px;
+  }
+}
+
+.contacts__svg {
+  align-self: flex-start;
+  width: 20px;
+  height: 20px;
+}
