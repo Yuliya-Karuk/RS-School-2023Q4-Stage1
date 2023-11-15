@@ -6,9 +6,12 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: ['./src/index.js', './src/sass/style.scss'],
+  entry: {
+    main: [path.resolve(__dirname, 'src', 'index.js'), './src/sass/index.scss'],
+    menu: [path.resolve(__dirname, 'src', 'menu.js'), './src/sass/menu.scss'],
+  },
   output: {
-    filename: 'script.js',
+    filename: '[name].js',
     path: path.join(__dirname, '/dist'),
   },
   watch: true,
@@ -45,13 +48,20 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin(
-      { template: 'index.html' },
-    ),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      filename: 'index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: 'menu.html',
+      filename: 'menu.html',
+      chunks: ['menu'],
+    }),
     new MiniCssExtractPlugin(
-      { filename: 'style.css' },
+      { filename: '[name].css' },
     ),
+    new CleanWebpackPlugin(),
     new ESLintPlugin(),
   ],
 };
