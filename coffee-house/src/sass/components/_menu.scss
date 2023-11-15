@@ -1,0 +1,42 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 40px;
+}
+
+.menu__title {
+  width: 800px;
+  text-align: center;
+}
+
+.menu__tabs {
+  display: flex;
+  column-gap: 16px;
+}
+
+.tab  {
+  padding: 8px 16px 8px 8px;
+  border: 1px solid $color-border-light;
+
+  &_checked,
+  &:hover {
+    border: 1px solid $color-background-container;
+    color: $color-text-light;
+    background-color: $color-background-container;
+  }
+}
+
+.tab__img {
+  width: 30px;
+  height: 30px;
+  @extend %flex-center;
+  border-radius: 100px;
+  background-color: $color-border-light;
+  @extend %transition;
+
+  .tab_checked &,
+  .tab:hover & {
+    background-color: $color-background-body;
+  }
+}
