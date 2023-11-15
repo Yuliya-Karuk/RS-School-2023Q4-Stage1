@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="src/img/favicon.ico" type="image/ico" sizes="32x32">
   <title>Coffee house</title>
 </head>
 <body>
@@ -13,22 +14,22 @@
     <nav class="nav">
       <ul class="nav__list">
         <li class="nav__item">
-          <a class="link nav__link" href="#">Favorite coffee</a>
+          <a class="link link_usual" href="#favorite">Favorite coffee</a>
         </li>
         <li class="nav__item">
-          <a class="link nav__link" href="#">About</a>
+          <a class="link link_usual" href="#about">About</a>
         </li>
         <li class="nav__item">
-          <a class="link nav__link" href="#">Mobile app</a>
+          <a class="link link_usual" href="#mobile">Mobile app</a>
         </li>
         <li class="nav__item">
-          <a class="link nav__link" href="#">Contact us</a>
+          <a class="link link_usual" href="#contacts">Contact us</a>
         </li>
       </ul>
     </nav>
-    <a class="link menu" href="#">
-      <span class="menu__text">Menu</span>
-      <svg class="menu__svg" aria-label="menu cup icon">
+    <a class="link link_centered link_usual menu" href="./menu.html">
+      <span class="link__text">Menu</span>
+      <svg class="menu__svg" aria-label="coffee cup icon">
         <use href="./src/img/icons/sprite.svg#cup"></use>
       </svg>
     </a>
@@ -38,14 +39,19 @@
       <div class="enjoy__content">
         <h1 class="enjoy__title"><em>Enjoy</em> premium coffee at our charming cafe</h1>
         <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
-        <a class="btn btn_long btn_primary" href="#">Menu</a>
+        <a class="link link_centered link_long link_primary" href="./menu.html">
+          <span class="link__text">Menu</span>
+          <svg class="enjoy__svg" aria-label="coffee cup icon">
+            <use href="./src/img/icons/sprite.svg#cup"></use>
+          </svg>
+        </a>
       </div>
     </section>
-    <section class="favorite">
+    <section id="favorite" class="favorite">
       <h2 class="favorite__title">Choose your <em>favorite</em> coffee</h2>
       <div class="slider">
-        <button class="btn slider__btn slider__btn_left">
-          <svg class="slider__svg" aria-label="slider arrow icon">
+        <button class="btn btn_round btn_dark slider__btn_left">
+          <svg class="arrow-svg" aria-label="slider arrow icon">
             <use href="./src/img/icons/sprite.svg#arrow"></use>
           </svg>
         </button>
@@ -77,8 +83,8 @@
             </li>
           </ul>
         </div>
-        <button class="btn slider__btn slider__btn_right">
-          <svg class="slider__svg" aria-label="slider arrow icon">
+        <button class="btn btn_round btn_dark slider__btn_right">
+          <svg class="arrow-svg" aria-label="slider arrow icon">
             <use href="./src/img/icons/sprite.svg#arrow"></use>
           </svg>
         </button>
@@ -89,7 +95,7 @@
         <button class="pagination__btn" type="button"></button>
       </div>
     </section>
-    <section class="about">
+    <section id="about" class="about">
       <h2 class="about__title">Resource is <em>the perfect and cozy place</em> where you can enjoy a variety of hot beverages, relax, catch up with friends, or get some work done.</h2>
       <div class="about__images">
         <div class="about__column">
@@ -110,45 +116,45 @@
         </div>
       <div>
     </section>
-    <section class="mobile">
+    <section id="mobile" class="mobile">
       <div class="mobile__content">
         <h2 class="mobile__title"><em>Download</em> our apps to start ordering</h2>
         <p class="mobile__text">Download the Resource app today and experience the comfort of ordering your favorite coffee from wherever you are</p>
         <div class="mobile__buttons">
-          <a class="btn btn_long btn_bordered" href="#">
-            <svg class="mobile__svg" aria-label="apple icon">
+          <a class="link link_centered link_long link_dark" href="#">
+            <svg class="mobile-svg" aria-label="apple icon">
               <use href="./src/img/icons/sprite.svg#apple"></use>
             </svg>
-            <p class="mobile__btn-text"><span>Available on the</span>App Store</p>
+            <p class="link__text"><span>Available on the</span>App Store</p>
           </a>
-          <a class="btn btn_long btn_bordered" href="#">
-            <svg class="mobile__svg" aria-label="google icon">
+          <a class="link link_centered link_long link_dark" href="#">
+            <svg class="mobile-svg" aria-label="google icon">
               <use href="./src/img/icons/sprite.svg#google"></use>
             </svg>
-            <p class="mobile__btn-text"><span>Available on</span>Google Play</p>
+            <p class="link__text"><span>Available on</span>Google Play</p>
           </a>
         </div>
       </div>
       <img class="mobile__img" src="./src/img/mobile.png" alt="mobile image">
     </section>
   </main>
-  <footer class="footer">
+  <footer id="contacts" class="footer">
     <div class="footer__content">
       <div class="footer__social">
         <h2 class="footer__title">Sip, Savor, Smile. <em>It’s coffee time!</em></h2>
         <div class="social">
           <a class="link link_centered link_bordered">
-            <svg class="social__svg" aria-label="twitter icon">
+            <svg class="social-svg" aria-label="twitter icon">
               <use href="./src/img/icons/sprite.svg#twitter"></use>
             </svg>
           </a>
           <a class="link link_centered link_bordered">
-            <svg class="social__svg" aria-label="instagram icon">
+            <svg class="social-svg" aria-label="instagram icon">
               <use href="./src/img/icons/sprite.svg#instagram"></use>
             </svg>
           </a>
           <a class="link link_centered link_bordered">
-            <svg class="social__svg" aria-label="facebook icon">
+            <svg class="social-svg" aria-label="facebook icon">
               <use href="./src/img/icons/sprite.svg#facebook"></use>
             </svg>
           </a>
@@ -157,19 +163,19 @@
       <div class="footer__contacts">
         <strong>Contact us</strong>
         <div class="contacts">
-          <a class="link link_centered" href="#">
+          <a class="link link_centered link_usual link_light" href="#">
             <svg class="contacts__svg" aria-label="location icon">
               <use href="./src/img/icons/sprite.svg#location"></use>
             </svg>
             8558 Green Rd., LA
           </a>
-          <a class="link link_centered" href="#">
+          <a class="link link_centered link_usual link_light" href="#">
             <svg class="contacts__svg" aria-label="phone icon">
               <use href="./src/img/icons/sprite.svg#phone"></use>
             </svg>
             +1 (603) 555-0123
           </a>
-          <p class="contacts__hours">
+          <p class="link link_centered link_light">
             <svg class="contacts__svg" aria-label="clock icon">
               <use href="./src/img/icons/sprite.svg#clock"></use>
             </svg>

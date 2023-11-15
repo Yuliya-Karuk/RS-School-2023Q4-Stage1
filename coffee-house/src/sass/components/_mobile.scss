@@ -15,17 +15,10 @@
   display: flex;
   justify-content: flex-start;
   column-gap: 20px;
-}
-
-.mobile__svg {
-  width: 36px;
-  height: 36px;
-}
-
-.mobile__btn-text {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2px;
+  & > * {
+    padding: 0 20px;
+    justify-content: flex-start;
+  }
 }
 
 .mobile__img {

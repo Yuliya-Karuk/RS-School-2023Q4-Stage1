@@ -15,20 +15,8 @@
   gap: 40px;
 }
 
-.slider__btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 100px;
-  border: 1px solid $color-border-dark;
-  &_right {
-    transform: rotate(180deg);
-  }
-}
-
-.slider__svg {
-  display: block;
-  width: 24px;
-  height: 24px;
+.slider__btn_right {
+  transform: rotate(180deg);
 }
 
 .slider_container {

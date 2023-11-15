@@ -1,0 +1,40 @@
+.arrow-svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: $color-border-dark;
+  @extend %transition;
+
+  @include media-hover-start {
+    .btn_dark:hover & {
+      stroke: $color-text-light;
+    }
+  }
+}
+
+.mobile-svg {
+  width: 36px;
+  height: 36px;
+  fill: $color-border-dark;
+  @extend %transition;
+
+  @include media-hover-start {
+    .link_dark:hover & {
+      fill: $color-text-light;
+    }
+  }
+}
+
+.social-svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: $color-text-light;
+  @extend %transition;
+
+  @include media-hover-start {
+    .link_bordered:hover & {
+      stroke: $color-text-dark;
+    }
+  }
+}

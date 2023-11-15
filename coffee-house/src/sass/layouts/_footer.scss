@@ -50,11 +50,14 @@
   flex-direction: column;
   row-gap: 20px;
   & > * {
-    display: flex;
-    justify-content: flex-start;
-    color: $color-text-light;
-    column-gap: 8px;
+    width: fit-content;
   }
+}
+
+.contacts__hours {
+  display: flex;
+  @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
+  color: $color-text-light;
 }
 
 .contacts__svg {

@@ -16,3 +16,9 @@
   letter-spacing: $letter-spacing;
   text-transform: $text-transform;
 }
+
+@mixin media-hover-start {
+  @media (min-width: $hover-start) {
+    @content;
+  }
+}

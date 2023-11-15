@@ -1,24 +1,32 @@
 .btn {
-  padding: 0 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center;
   column-gap: 8px;
   @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
   color: $color-text-dark;
   border-radius: 100px;
+  @extend %transition;
 
-  &_long {
-    width: 200px;
-    height: 64px;
-  }
-
-  &_primary {
-    background-color: $color-background-body;
-  }
-
-  &_bordered {
-    justify-content: flex-start;
+  &_round {
+    width: 60px;
+    height: 60px;
     border: 1px solid $color-border-dark;
   }
+
+  &_dark {
+    @include media-hover-start {
+      &:hover {
+        background: $color-background-container;
+        color: $color-text-light;
+      }
+    }
+  }
+  // &_long {
+  //   width: 200px;
+  //   height: 64px;
+  // }
+
+  // &_bordered {
+  //   justify-content: flex-start;
+  //   border: 1px solid $color-border-dark;
+  // }
 }
