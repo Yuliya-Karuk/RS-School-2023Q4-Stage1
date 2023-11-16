@@ -1,0 +1,50 @@
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.catalog__item {
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 40px;
+  border: 1px solid $color-border-light;
+}
+
+.catalog__img-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.catalog__img {
+  width: 340px;
+  height: 340px;
+  object-fit: cover;
+  @extend %transition;
+
+  @include media-hover-start {
+    .catalog__item:hover & {
+      transform: scale(0.91);
+    }
+  }
+}
+
+.catalog__content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.catalog__price {
+  display: block;
+  margin-top: auto;
+}
