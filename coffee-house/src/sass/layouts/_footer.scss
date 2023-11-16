@@ -30,11 +30,6 @@
   }
 }
 
-.social__svg {
-  width: 24px;
-  height: 24px;
-}
-
 .footer__contacts {
   align-self: center;
   display: flex;
@@ -58,10 +53,4 @@
   display: flex;
   @include font("Inter-Medium-Normal", 1.6rem, 600, 1.5);
   color: $color-text-light;
-}
-
-.contacts__svg {
-  align-self: flex-start;
-  width: 20px;
-  height: 20px;
 }

@@ -17,15 +17,3 @@
 .enjoy__text {
   color: $color-text-light;
 }
-
-.enjoy__svg {
-  visibility: hidden;
-  opacity: 0;
-  width: 20px;
-  height: 20px;
-  @extend %transition;
-  .link:hover & {
-    visibility: visible;
-    opacity: 1;
-  }
-}

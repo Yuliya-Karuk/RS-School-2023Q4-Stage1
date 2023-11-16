@@ -44,3 +44,22 @@
     }
   }
 }
+
+.enjoy__svg {
+  visibility: hidden;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  @extend %transition;
+
+  .link:hover & {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.contacts__svg {
+  align-self: flex-start;
+  width: 20px;
+  height: 20px;
+}

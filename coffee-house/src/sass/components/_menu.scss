@@ -25,6 +25,10 @@
     color: $color-text-light;
     background-color: $color-background-container;
   }
+
+  &_checked {
+    pointer-events: none;
+  }
 }
 
 .tab__img {
