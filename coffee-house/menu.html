@@ -35,19 +35,26 @@
     </a>
   </header>
   <main class="main">
+    <h1 class="visually-hidden">Menu with products</h1>
     <section class="menu">
       <h2 class="menu__title">Behind each of our cups hides an <em>amazing surprise</em></h2>
       <div class="menu__tabs">
         <button class="btn tab tab_checked tab_coffee" disabled>
-          <span class="tab__img">☕</span>
+          <span class="tab__img-wrapper">
+            <img class="tab__img" src="./src/img/coffee_cup.png" width="17" height="17" alt="coffee cup icon">
+          </span>
           Coffee
         </button>
         <button class="btn tab tab_tea">
-          <span class="tab__img">🫖</span>
+          <span class="tab__img-wrapper">
+            <img class="tab__img" src="./src/img/teapot.png" width="17" height="17" alt="teapot icon">
+          </span>
           Tea
         </button>
         <button class="btn tab tab_dessert">
-          <span class="tab__img">🍰</span>
+          <span class="tab__img-wrapper">
+            <img class="tab__img" src="./src/img/cake.png" width="17" height="17" alt="cake icon">
+          </span>
           Dessert
         </button>
       </div>
@@ -59,17 +66,17 @@
       <div class="footer__social">
         <h2 class="footer__title">Sip, Savor, Smile. <em>It’s coffee time!</em></h2>
         <div class="social">
-          <a class="link link_centered link_bordered" href="https://twitter.com/centralperk">
+          <a class="link link_centered link_bordered" href="https://twitter.com/centralperk" target="_blank">
             <svg class="social-svg" aria-label="twitter icon">
               <use href="./src/img/icons/sprite.svg#twitter"></use>
             </svg>
           </a>
-          <a class="link link_centered link_bordered" href="https://www.instagram.com/centralperk/">
+          <a class="link link_centered link_bordered" href="https://www.instagram.com/centralperk/" target="_blank">
             <svg class="social-svg" aria-label="instagram icon">
               <use href="./src/img/icons/sprite.svg#instagram"></use>
             </svg>
           </a>
-          <a class="link link_centered link_bordered" href="https://www.facebook.com/CentralPerkCoffee/">
+          <a class="link link_centered link_bordered" href="https://www.facebook.com/CentralPerkCoffee/" target="_blank">
             <svg class="social-svg" aria-label="facebook icon">
               <use href="./src/img/icons/sprite.svg#facebook"></use>
             </svg>
