@@ -1,4 +1,7 @@
 .main {
   @extend %container;
   padding: 0 40px;
+  @include media-mobile {
+    padding: 0 16px;
+  }
 }

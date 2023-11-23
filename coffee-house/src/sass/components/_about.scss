@@ -6,18 +6,23 @@
 
 .about__images {
   display: grid;
-  column-gap: 40px;
+  gap: 40px;
   grid-auto-flow: dense;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  @include media-desktop {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 
 .about__column {
   display: flex;
   flex-direction: column;
+  align-items: center;
   row-gap: 40px;
 }
 
 .about__img-container {
+  max-width: 660px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -27,15 +32,22 @@
   object-fit: cover;
   border-radius: 20px;
   &_x {
-    height: 590px;
+    max-height: 590px;
   }
   &_y {
-    height: 430px;
+    max-height: 430px;
+    @include media-desktop {
+      display: none;
+    }
+  }
+  @include media-tablet {
+    max-width: unset;
   }
 }
 
 .about__img {
   @extend %transition;
+  max-width: unset;
   &:hover {
     transform: scale(0.91);
   }
