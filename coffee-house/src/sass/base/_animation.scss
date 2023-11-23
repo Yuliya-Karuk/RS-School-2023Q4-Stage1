@@ -1,0 +1,23 @@
+@keyframes burger-close {
+  0% {
+    transform: translateX(0);
+    background-color: $color-background-body;
+  }
+
+  100% {
+    transform: translateX(100%);
+    background-color: $color-text-dark;
+  }
+}
+
+@keyframes burger-open {
+  0% {
+    transform: translateX(100%);
+    background-color: $color-text-dark;
+  }
+
+  100% {
+    transform: translateX(0);
+    background-color: $color-background-body;
+  }
+}

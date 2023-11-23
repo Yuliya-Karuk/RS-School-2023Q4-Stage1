@@ -16,25 +16,28 @@
     <nav class="nav">
       <ul class="nav__list">
         <li class="nav__item">
-          <a class="link link_usual" href="#favorite">Favorite coffee</a>
+          <a class="link link_usual nav__link" href="#favorite">Favorite coffee</a>
         </li>
         <li class="nav__item">
-          <a class="link link_usual" href="#about">About</a>
+          <a class="link link_usual nav__link" href="#about">About</a>
         </li>
         <li class="nav__item">
-          <a class="link link_usual" href="#mobile">Mobile app</a>
+          <a class="link link_usual nav__link" href="#mobile">Mobile app</a>
         </li>
         <li class="nav__item">
-          <a class="link link_usual" href="#contacts">Contact us</a>
+          <a class="link link_usual nav__link" href="#contacts">Contact us</a>
         </li>
       </ul>
+      <a class="link link_centered link_usual nav__menu" href="./menu/">
+        <span class="link__text">Menu</span>
+        <svg class="cup__svg" aria-label="coffee cup icon">
+          <use href="./src/img/icons/sprite.svg#cup"></use>
+        </svg>
+      </a>
     </nav>
-    <a class="link link_centered link_usual header__link" href="./menu/">
-      <span class="link__text">Menu</span>
-      <svg class="cup__svg" aria-label="coffee cup icon">
-        <use href="./src/img/icons/sprite.svg#cup"></use>
-      </svg>
-    </a>
+    <button class="burger" type="button">
+      <span class="burger__line"></span>
+    </button>
   </header>
   <main class="main">
     <section class="enjoy">
