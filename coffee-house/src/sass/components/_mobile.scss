@@ -1,7 +1,14 @@
 .mobile {
-  display: grid;
-  grid-gap: 100px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  @include media-desktop {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @include media-mobile {
+    gap: 40px;
+  }
 }
 
 .mobile__content {
@@ -9,24 +16,20 @@
   display: flex;
   flex-direction: column;
   row-gap: 40px;
+  @include media-desktop {
+    justify-content: center;
+  }
 }
 
 .mobile__buttons {
   display: flex;
   justify-content: flex-start;
-  column-gap: 20px;
+  gap: 20px;
   & > * {
     padding: 0 20px;
     justify-content: flex-start;
   }
-}
-
-.mobile__img {
-  width: 630px;
-  height: 630px;
-}
-
-.mobile,
-.footer {
-  display: none;
+  @include media-mobile {
+    flex-wrap: wrap;
+  }
 }
