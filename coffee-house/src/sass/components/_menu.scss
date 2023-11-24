@@ -6,13 +6,16 @@
 }
 
 .menu__title {
-  width: 800px;
+  max-width: 800px;
   text-align: center;
 }
 
 .menu__tabs {
   display: flex;
   column-gap: 16px;
+  @include media-mobile {
+    column-gap: 8px;
+  }
 }
 
 .tab  {
@@ -42,5 +45,12 @@
   .tab_checked &,
   .tab:hover & {
     background-color: $color-background-body;
+  }
+}
+
+.menu__btn {
+  display: none;
+  @include media-tablet {
+    display: flex;
   }
 }

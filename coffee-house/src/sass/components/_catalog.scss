@@ -2,10 +2,17 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+  @include media-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media-tablet-additional {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .catalog__item {
-  width: 310px;
+  max-width: 310px;
+  min-height: 506px;
   display: flex;
   flex-direction: column;
 
@@ -25,6 +32,7 @@
 
 .catalog__img {
   width: 340px;
+  max-width: unset;
   height: 340px;
   object-fit: cover;
   @extend %transition;
