@@ -55,7 +55,7 @@ h1 {
 h2 {
   @include font("Inter-Medium-Normal", 6rem, 600, 1.25);
   color: $color-text-dark;
-  @include media-mobile {
+  @include media-tablet-additional {
     font-size: 3.2rem;
   }
 }

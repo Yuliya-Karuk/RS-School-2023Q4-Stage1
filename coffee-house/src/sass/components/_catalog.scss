@@ -18,6 +18,7 @@
 
   border-radius: 40px;
   border: 1px solid $color-border-light;
+  cursor: pointer;
 }
 
 .catalog__img-container {
@@ -32,12 +33,12 @@
 
 .catalog__img {
   width: 340px;
-  max-width: unset;
+  max-width: 110%;
   height: 340px;
   object-fit: cover;
   @extend %transition;
 
-  @include media-hover-start {
+  @include media-hover {
     .catalog__item:hover & {
       transform: scale(0.91);
     }

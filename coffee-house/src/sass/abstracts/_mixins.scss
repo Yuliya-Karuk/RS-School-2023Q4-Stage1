@@ -17,8 +17,8 @@
   text-transform: $text-transform;
 }
 
-@mixin media-hover-start {
-  @media (min-width: $hover-start) {
+@mixin media-hover {
+  @media (hover: hover) {
     @content;
   }
 }

@@ -18,7 +18,7 @@
     border-radius: 100px;
     border: 1px solid $color-border-light;
 
-    @include media-hover-start {
+    @include media-hover {
       &:hover {
         border: none;
         background: $color-background-body;
@@ -40,7 +40,7 @@
       @extend %transition;
     }
 
-    @include media-hover-start {
+    @include media-hover {
       &:hover {
         &::after {
           transform: scaleX(1);
@@ -66,8 +66,14 @@
       left: 15px;
     }
 
-    @include media-hover-start {
+    @include media-hover {
       &:hover .link__text{
+        left: 0;
+      }
+    }
+
+    @include media-tablet {
+      .link__text{
         left: 0;
       }
     }
@@ -77,7 +83,7 @@
     border-radius: 100px;
     border: 1px solid $color-border-dark;
 
-    @include media-hover-start {
+    @include media-hover {
       &:hover {
         background: $color-background-container;
       }
@@ -107,7 +113,7 @@
     @extend %transition;
   }
 
-  @include media-hover-start {
+  @include media-hover {
     .link_dark:hover &,
     .link_dark:hover & > span {
       color: $color-text-light;

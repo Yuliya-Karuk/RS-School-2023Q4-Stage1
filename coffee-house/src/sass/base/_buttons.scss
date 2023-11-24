@@ -13,20 +13,11 @@
   }
 
   &_dark {
-    @include media-hover-start {
+    @include media-hover {
       &:hover {
         background: $color-background-container;
         color: $color-text-light;
       }
     }
   }
-  // &_long {
-  //   width: 200px;
-  //   height: 64px;
-  // }
-
-  // &_bordered {
-  //   justify-content: flex-start;
-  //   border: 1px solid $color-border-dark;
-  // }
 }

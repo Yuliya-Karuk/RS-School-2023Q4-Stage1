@@ -7,17 +7,18 @@
   border-radius: 20px;
   background-color: $color-text-dark;
   @extend %transition;
+
+  @include media-hover {
+    .burger:hover & {
+      background-color: $color-text-light;
+    }
+  }
 }
 
 .burger {
   display: none;
   width: 44px;
   height: 44px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100px;
-  border: 1px solid $color-border-dark;
-  @extend %transition;
 
   @include media-tablet {
     display: flex;
@@ -27,7 +28,7 @@
 .burger__line {
   @extend %burger-line;
   position: relative;
-  background-color: transparent;
+  background-color: transparent !important;
 
   &::before {
     @extend %burger-line;

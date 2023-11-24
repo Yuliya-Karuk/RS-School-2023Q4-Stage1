@@ -21,7 +21,7 @@
   stroke: $color-border-dark;
   @extend %transition;
 
-  @include media-hover-start {
+  @include media-hover {
     .btn_dark:hover & {
       stroke: $color-text-light;
     }
@@ -34,7 +34,7 @@
   fill: $color-border-dark;
   @extend %transition;
 
-  @include media-hover-start {
+  @include media-hover {
     .link_dark:hover & {
       fill: $color-text-light;
     }
@@ -48,7 +48,7 @@
   stroke: $color-text-light;
   @extend %transition;
 
-  @include media-hover-start {
+  @include media-hover {
     .link_bordered:hover & {
       stroke: $color-text-dark;
     }
@@ -62,7 +62,14 @@
   height: 20px;
   @extend %transition;
 
-  .link:hover & {
+  @include media-hover {
+    .link:hover & {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @include media-tablet {
     visibility: visible;
     opacity: 1;
   }
@@ -77,4 +84,12 @@
 .menu__svg {
   width: 24px;
   height: 24px;
+  fill: none;
+  stroke: $color-text-dark;
+
+  @include media-hover {
+    .btn_dark:hover & {
+      stroke: $color-text-light;
+    }
+  }
 }

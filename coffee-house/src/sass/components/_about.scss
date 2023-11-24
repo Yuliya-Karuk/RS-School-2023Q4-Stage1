@@ -48,7 +48,10 @@
 .about__img {
   @extend %transition;
   max-width: unset;
-  &:hover {
-    transform: scale(0.91);
+
+  @include media-hover {
+    &:hover {
+      transform: scale(0.91);
+    }
   }
 }

@@ -22,8 +22,7 @@
   padding: 8px 16px 8px 8px;
   border: 1px solid $color-border-light;
 
-  &_checked,
-  &:hover {
+  &_checked {
     border: 1px solid $color-background-container;
     color: $color-text-light;
     background-color: $color-background-container;
@@ -31,6 +30,14 @@
 
   &_checked {
     pointer-events: none;
+  }
+
+  @include media-hover {
+    &:hover {
+      border: 1px solid $color-background-container;
+      color: $color-text-light;
+      background-color: $color-background-container;
+    }
   }
 }
 
@@ -42,9 +49,14 @@
   background-color: $color-border-light;
   @extend %transition;
 
-  .tab_checked &,
-  .tab:hover & {
+  .tab_checked & {
     background-color: $color-background-body;
+  }
+
+  @include media-hover {
+    .tab:hover & {
+      background-color: $color-background-body;
+    }
   }
 }
 
