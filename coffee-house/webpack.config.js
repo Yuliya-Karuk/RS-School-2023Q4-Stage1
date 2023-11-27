@@ -13,6 +13,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.join(__dirname, '/dist'),
+    assetModuleFilename: 'img/[hash][ext][query]',
   },
   watch: true,
   mode: 'development',
@@ -28,6 +29,13 @@ module.exports = {
               ['@babel/preset-env', { targets: 'defaults' }],
             ],
           },
+        },
+      },
+      {
+        test: /\.(woff2?|ttf|eot)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext][query]',
         },
       },
       {
@@ -55,7 +63,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'menu.html',
-      filename: 'menu.html',
+      filename: './menu/index.html',
       chunks: ['menu'],
     }),
     new MiniCssExtractPlugin(
