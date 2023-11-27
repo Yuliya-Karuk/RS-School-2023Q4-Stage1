@@ -399,21 +399,21 @@ fieldset {
 
 @font-face {
   font-family: "Inter-Medium-Italic";
-  src: url(84090ea7cd28f172ba73.woff2) format("woff2");
+  src: url(fonts/Inter-SemiBoldItalic.woff2) format("woff2");
   font-weight: "600";
   font-style: "italic";
   font-display: swap;
 }
 @font-face {
   font-family: "Inter-Medium-Normal";
-  src: url(90f5c90fdecd8895f496.woff2) format("woff2");
+  src: url(fonts/Inter-SemiBold.woff2) format("woff2");
   font-weight: "600";
   font-style: "normal";
   font-display: swap;
 }
 @font-face {
   font-family: "Inter-Regular";
-  src: url(bd097ceff83f90802a12.woff2) format("woff2");
+  src: url(fonts/Inter-Regular.woff2) format("woff2");
   font-weight: "400";
   font-style: "normal";
   font-display: swap;
@@ -513,6 +513,11 @@ strong {
   letter-spacing: normal;
   text-transform: none;
   color: #403F3D;
+}
+
+.logo__svg {
+  width: 100px;
+  height: 60px;
 }
 
 .cup__svg {
@@ -787,7 +792,7 @@ strong {
 
 .enjoy {
   padding: 100px;
-  background: center no-repeat url(6911d20912b9cf05930d.jpg);
+  background: center no-repeat url(img/6911d20912b9cf05930d.jpg);
   border-radius: 40px;
   background-size: cover;
 }
