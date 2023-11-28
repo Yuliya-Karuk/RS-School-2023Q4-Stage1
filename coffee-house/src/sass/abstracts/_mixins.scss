@@ -17,8 +17,38 @@
   text-transform: $text-transform;
 }
 
-@mixin media-hover-start {
-  @media (min-width: $hover-start) {
+@mixin media-hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (max-width: $desktop2) {
+    @content;
+  }
+}
+
+@mixin media-laptop {
+  @media (max-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin media-tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin media-tablet-additional {
+  @media (max-width: $tablet2) {
+    @content;
+  }
+}
+
+@mixin media-mobile {
+  @media (max-width: $mobile) {
     @content;
   }
 }

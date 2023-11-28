@@ -5,6 +5,13 @@ class Catalog {
   constructor(category) {
     this.category = category;
     this.parentEl = document.querySelector('.catalog');
+    this.products = [];
+    this.size = Products.length;
+  }
+
+  bindListeners() {
+    const context = this;
+    window.addEventListener('resize', () => context.renderCatalog());
   }
 
   renderCard(data) {
@@ -25,11 +32,24 @@ class Catalog {
   }
 
   renderCatalog() {
-    for (let i = 0; i < Products.length; i += 1) {
+    this.findCatalogSize();
+    this.parentEl.innerHTML = '';
+    this.products = [];
+    for (let i = 0; i < Products.length && this.products.length < this.size; i += 1) {
       if (Products[i].category === this.category) {
         const productItem = this.renderCard(Products[i]);
         this.parentEl.append(productItem);
+        this.products.push(productItem);
       }
+    }
+  }
+
+  findCatalogSize() {
+    if (window.innerWidth <= 768) {
+      this.size = 4;
+    }
+    if (window.innerWidth > 768) {
+      this.size = Products.length;
     }
   }
 }

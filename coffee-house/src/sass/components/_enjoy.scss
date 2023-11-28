@@ -3,10 +3,16 @@
   background: center no-repeat url("../img/enjoy.jpg");
   border-radius: 40px;
   background-size: cover;
+  @include media-laptop {
+    padding: 100px 60px;
+  }
+  @include media-tablet-additional {
+    padding: 60px 16px;
+  }
 }
 
 .enjoy__content {
-  width: 530px;
+  max-width: 530px;
   display: flex;
   flex-direction: column;
   justify-content: center;

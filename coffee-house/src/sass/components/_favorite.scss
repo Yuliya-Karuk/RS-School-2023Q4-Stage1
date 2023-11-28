@@ -15,13 +15,22 @@
   gap: 40px;
 }
 
-.slider__btn_right {
-  transform: rotate(180deg);
+.slider__btn {
+  &_right {
+    transform: rotate(180deg);
+  }
+
+  @include media-tablet-additional {
+    display: none;
+  }
 }
 
 .slider_container {
   width: calc(100% - 200px);
   overflow: hidden;
+  @include media-tablet-additional {
+    width: 100%;
+  }
 }
 
 .slider_list {
@@ -36,10 +45,13 @@
   align-items: center;
   justify-content: center;
   gap: 22px;
+  @include media-tablet-additional {
+    gap: 20px;
+  }
 }
 
 .slider__content {
-  width: 480px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;

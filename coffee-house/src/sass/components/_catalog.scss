@@ -2,15 +2,23 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+  @include media-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media-tablet-additional {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .catalog__item {
-  width: 310px;
+  max-width: 310px;
+  min-height: 506px;
   display: flex;
   flex-direction: column;
 
   border-radius: 40px;
   border: 1px solid $color-border-light;
+  cursor: pointer;
 }
 
 .catalog__img-container {
@@ -25,11 +33,12 @@
 
 .catalog__img {
   width: 340px;
+  max-width: 110%;
   height: 340px;
   object-fit: cover;
   @extend %transition;
 
-  @include media-hover-start {
+  @include media-hover {
     .catalog__item:hover & {
       transform: scale(0.91);
     }

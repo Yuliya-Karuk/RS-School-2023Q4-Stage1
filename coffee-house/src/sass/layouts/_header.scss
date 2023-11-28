@@ -4,22 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include media-mobile {
+    padding: 20px 16px;
+  }
 }
 
 .header__logo {
   font-size: 0;
-}
-
-.nav__list {
-  display: flex;
-  align-items: center;
-  column-gap: 40px;
-}
-
-.nav__item {
-  margin-bottom: 8px;
-}
-
-.header__link {
-  margin-bottom: 8px;
 }

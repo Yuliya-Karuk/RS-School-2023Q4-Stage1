@@ -30,6 +30,15 @@ body {
   background: $color-background-body;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
 section {
   margin-bottom: 100px;
 }
@@ -37,11 +46,18 @@ section {
 h1 {
   @include font("Inter-Medium-Normal", 7.2rem, 600, 1.05);
   color: $color-text-light;
+  @include media-tablet-additional {
+    font-size: 4.2rem;
+    line-height: 1.15;
+  }
 }
 
 h2 {
   @include font("Inter-Medium-Normal", 6rem, 600, 1.25);
   color: $color-text-dark;
+  @include media-tablet-additional {
+    font-size: 3.2rem;
+  }
 }
 
 h3 {

@@ -16,25 +16,28 @@
     <nav class="nav">
       <ul class="nav__list">
         <li class="nav__item">
-          <a class="link link_usual" href="#favorite">Favorite coffee</a>
+          <a class="link link_usual nav__link" href="#favorite">Favorite coffee</a>
         </li>
         <li class="nav__item">
-          <a class="link link_usual" href="#about">About</a>
+          <a class="link link_usual nav__link" href="#about">About</a>
         </li>
         <li class="nav__item">
-          <a class="link link_usual" href="#mobile">Mobile app</a>
+          <a class="link link_usual nav__link" href="#mobile">Mobile app</a>
         </li>
         <li class="nav__item">
-          <a class="link link_usual" href="#contacts">Contact us</a>
+          <a class="link link_usual nav__link" href="#contacts">Contact us</a>
         </li>
       </ul>
+      <a class="link link_centered link_usual nav__menu" href="./menu/">
+        <span class="link__text">Menu</span>
+        <svg class="cup__svg" aria-label="coffee cup icon">
+          <use href="./src/img/icons/sprite.svg#cup"></use>
+        </svg>
+      </a>
     </nav>
-    <a class="link link_centered link_usual header__link" href="./menu/">
-      <span class="link__text">Menu</span>
-      <svg class="cup__svg" aria-label="coffee cup icon">
-        <use href="./src/img/icons/sprite.svg#cup"></use>
-      </svg>
-    </a>
+    <button class="btn btn_round btn_dark burger" type="button">
+      <span class="burger__line"></span>
+    </button>
   </header>
   <main class="main">
     <section class="enjoy">
@@ -52,7 +55,7 @@
     <section id="favorite" class="favorite">
       <h2 class="favorite__title">Choose your <em>favorite</em> coffee</h2>
       <div class="slider">
-        <button class="btn btn_round btn_dark slider__btn_left">
+        <button class="btn btn_round btn_dark slider__btn slider__btn_left">
           <svg class="arrow-svg" aria-label="slider arrow icon">
             <use href="./src/img/icons/sprite.svg#arrow"></use>
           </svg>
@@ -85,7 +88,7 @@
             </li>
           </ul>
         </div>
-        <button class="btn btn_round btn_dark slider__btn_right">
+        <button class="btn btn_round btn_dark slider__btn slider__btn_right">
           <svg class="arrow-svg" aria-label="slider arrow icon">
             <use href="./src/img/icons/sprite.svg#arrow"></use>
           </svg>
@@ -137,7 +140,7 @@
           </a>
         </div>
       </div>
-      <img class="mobile__img" src="./src/img/mobile.png" alt="mobile image">
+      <img class="mobile__img" src="./src/img/mobile.png" width="630" height="630" alt="mobile image">
     </section>
   </main>
   <footer id="contacts" class="footer">

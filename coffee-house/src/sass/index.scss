@@ -10,6 +10,8 @@
 @import "base/svg";
 @import "base/buttons";
 @import "base/links";
+@import "base/burger";
+@import "base/animation";
 
 // Layouts
 @import "layouts/header";
@@ -17,6 +19,7 @@
 @import "layouts/footer";
 
 // Components
+@import "components/navigation";
 @import "components/enjoy";
 @import "components/favorite";
 @import "components/about";
