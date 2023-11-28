@@ -93,14 +93,6 @@
   &:active {
     opacity: 0.6;
   }
-
-  &_disabled {
-    pointer-events: none;
-
-    &::after {
-      transform: scaleX(1);
-    }
-  }
 }
 
 .link__text {

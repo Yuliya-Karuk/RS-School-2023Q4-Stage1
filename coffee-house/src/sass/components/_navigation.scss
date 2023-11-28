@@ -24,7 +24,6 @@
 
     opacity: 0;
     visibility: hidden;
-    cursor: pointer;
   }
 
   &_start {
@@ -80,6 +79,13 @@
     & .link__text {
       font-size: 3.2rem;
       line-height: 1.25;
+    }
+  }
+
+  &_disabled {
+    cursor: default;
+    &::after {
+      transform: scaleX(1);
     }
   }
 }

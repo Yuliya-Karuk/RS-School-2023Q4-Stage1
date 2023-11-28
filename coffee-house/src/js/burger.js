@@ -9,6 +9,7 @@ class Burger {
     this.burgerButton = document.querySelector('.burger');
     this.navMenu = document.querySelector('.nav');
     this.navLinks = document.querySelectorAll('.nav__link');
+    this.navMenuLink = document.querySelector('.nav__menu_disabled');
     this.body = document.querySelector('body');
   }
 
@@ -31,12 +32,17 @@ class Burger {
     });
 
     document.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('navigation') && context.navMenu.classList.contains(BurgerClasses.navMenu) && !context.burgerButton.contains(e.target)) context.toggleBurgerMenu();
+      if (!e.target.classList.contains('nav') && context.navMenu.classList.contains(BurgerClasses.navMenu) && !context.burgerButton.contains(e.target)) context.toggleBurgerMenu();
     });
 
     for (let i = 0; i < this.navLinks.length; i += 1) {
       this.navLinks[i].addEventListener('click', () => context.toggleBurgerMenu());
     }
+
+    this.navMenuLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      context.toggleBurgerMenu();
+    });
   }
 }
 
