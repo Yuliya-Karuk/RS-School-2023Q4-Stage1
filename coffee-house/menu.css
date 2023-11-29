@@ -734,6 +734,10 @@ strong {
   margin-bottom: 40px;
 }
 
+.footer__title {
+  color: #E1D4C9;
+}
+
 .footer__content {
   padding: 100px;
   display: grid;
