@@ -39,10 +39,12 @@ class Burger {
       this.navLinks[i].addEventListener('click', () => context.toggleBurgerMenu());
     }
 
-    this.navMenuLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      context.toggleBurgerMenu();
-    });
+    if (this.navMenuLink) {
+      this.navMenuLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        context.toggleBurgerMenu();
+      });
+    }
   }
 }
 

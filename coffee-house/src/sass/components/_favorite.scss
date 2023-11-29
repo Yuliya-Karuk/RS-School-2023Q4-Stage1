@@ -36,6 +36,7 @@
 .slider_list {
   width: 100%;
   display: flex;
+  @extend %transition;
 }
 
 .slider__item {
