@@ -12,7 +12,10 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  @include media-tablet-additional {
+    justify-content: center;
+  }
 }
 
 .slider__btn {
@@ -26,7 +29,7 @@
 }
 
 .slider_container {
-  width: calc(100% - 200px);
+  max-width: 480px;
   overflow: hidden;
   @include media-tablet-additional {
     width: 100%;
@@ -46,6 +49,7 @@
   align-items: center;
   justify-content: center;
   gap: 22px;
+  user-select: none;
   @include media-tablet-additional {
     gap: 20px;
   }
@@ -67,13 +71,20 @@
   column-gap: 12px;
 }
 
-.pagination__btn {
+.pagination__bar {
+  position: relative;
   width: 40px;
   height: 4px;
   border-radius: 100px;
   background-color: $color-border-light;
+}
 
-  &_active {
-    background-color: $color-border-dark;
-  }
+.pagination__progress {
+  position: absolute;
+  left: 0;
+  border-radius: 100px;
+  width: 0%;
+  height: 4px;
+  background-color: $color-border-dark;
+  transition: all .6s ease;
 }
