@@ -1,10 +1,12 @@
 import createElementWithProperties from './utils';
 import Products from './productsList';
+import Modal from './modal';
 
 class Catalog {
   constructor(category) {
     this.category = category;
     this.parentEl = document.querySelector('.catalog');
+    this.body = document.querySelector('body');
     this.products = [];
     this.size = Products.length;
   }
@@ -38,6 +40,7 @@ class Catalog {
     for (let i = 0; i < Products.length && this.products.length < this.size; i += 1) {
       if (Products[i].category === this.category) {
         const productItem = this.renderCard(Products[i]);
+        productItem.addEventListener('click', () => this.createModal(Products[i]));
         this.parentEl.append(productItem);
         this.products.push(productItem);
       }
@@ -51,6 +54,12 @@ class Catalog {
     if (window.innerWidth > 768) {
       this.size = Products.length;
     }
+  }
+
+  createModal(data) {
+    console.log('bla');
+    this.modal = new Modal(data);
+    this.body.append(this.modal.renderModal());
   }
 }
 
