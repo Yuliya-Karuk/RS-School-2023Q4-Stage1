@@ -9,6 +9,7 @@ class Catalog {
     this.body = document.querySelector('body');
     this.products = [];
     this.size = Products.length;
+    this.modal = new Modal();
   }
 
   bindListeners() {
@@ -57,9 +58,9 @@ class Catalog {
   }
 
   createModal(data) {
-    console.log('bla');
-    this.modal = new Modal(data);
+    this.modal.init(data);
     this.body.append(this.modal.renderModal());
+    this.modal.bindListeners();
   }
 }
 

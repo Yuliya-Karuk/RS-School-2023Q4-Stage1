@@ -73,6 +73,7 @@
   &::before {
     content: '';
     position: absolute;
+    z-index: 20;
     left: -46px;
     top: -50%;
     height: 200%;

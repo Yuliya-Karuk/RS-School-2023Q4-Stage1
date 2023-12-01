@@ -8,15 +8,15 @@ const ModalClasses = {
 };
 
 class Modal {
-  constructor(data) {
+  init(data) {
     this.data = data;
+    this.modal = createElementWithProperties('div', 'modal modal_active');
     this.sizes = Object.keys(this.data.sizes);
+    this.startPrice = Number(this.data.price);
     this.totalPrice = this.data.price;
-    this.priceChanged = false;
   }
 
   renderModal() {
-    this.modal = createElementWithProperties('div', 'modal modal_active');
     const container = createElementWithProperties('div', 'product');
     const imgContainer = this.renderImgBlock();
     const content = this.renderContentBlock();
@@ -37,7 +37,7 @@ class Modal {
     const divTitle = this.renderTitleBlock();
     const divSizes = this.renderSizes();
     const divAdditives = this.renderAdditives();
-    const divPrice = this.renderTotal(this.priceChanged);
+    const divPrice = this.renderTotal();
     const divInfo = this.renderInfoBlock();
     this.buttonClose = createElementWithProperties('button', 'btn btn_dark product__button', { type: 'button' }, [{ innerText: 'Close' }]);
     content.append(divTitle, divSizes, divAdditives, divPrice, divInfo, this.buttonClose);
@@ -89,12 +89,11 @@ class Modal {
     return div;
   }
 
-  renderTotal(isChanged) {
+  renderTotal() {
     const div = createElementWithProperties('div', 'product__total-wrapper');
     const title = createElementWithProperties('strong', 'product__total', undefined, [{ innerText: 'Total:' }]);
-    if (isChanged) this.countPrice();
-    const price = createElementWithProperties('strong', 'product__total', undefined, [{ innerHTML: `&#36;${this.totalPrice}` }]);
-    div.append(title, price);
+    this.price = createElementWithProperties('strong', 'product__total', undefined, [{ innerHTML: `&#36;${this.totalPrice}` }]);
+    div.append(title, this.price);
     return div;
   }
 
@@ -108,13 +107,34 @@ class Modal {
     return div;
   }
 
-  countPrice() {
-    console.log(this.modal);
-    const tabs = document.querySelectorAll('.tab');
-    console.log(tabs);
-    for (let i = 0; i < tabs.length; i += 1) {
-      this.price += Number(tabs[i].firstChild.value);
+  bindListeners() {
+    this.tabs = this.modal.querySelectorAll('.tab');
+    for (let i = 0; i < this.tabs.length; i += 1) {
+      this.tabs[i].addEventListener('click', (e) => {
+        if (e.target === this.tabs[i].firstChild) this.changePrice();
+      });
     }
+    this.buttonClose.addEventListener('click', () => this.closeModal());
+  }
+
+  changePrice() {
+    this.countPrice();
+    this.price.innerHTML = `&#36;${this.totalPrice}`;
+  }
+
+  countPrice() {
+    let price = this.startPrice;
+    for (let i = 0; i < this.tabs.length; i += 1) {
+      if (this.tabs[i].firstChild.checked === true) {
+        price += Number(this.tabs[i].firstChild.value);
+      }
+    }
+    this.totalPrice = Number.parseFloat(price).toFixed(2);
+  }
+
+  closeModal() {
+    this.modal.innerHTML = '';
+    this.modal.classList.remove('modal_active');
   }
 }
 
