@@ -2,11 +2,22 @@ import createElementWithProperties from './utils';
 import Products from './productsList';
 import Modal from './modal';
 
+const CatalogConst = {
+  categories: {
+    0: 'coffee',
+    1: 'tea',
+    2: 'dessert',
+  },
+  firstCategory: 0,
+};
+
 class Catalog {
-  constructor(category) {
-    this.category = category;
+  constructor() {
+    this.category = CatalogConst.categories[CatalogConst.firstCategory];
     this.parentEl = document.querySelector('.catalog');
     this.body = document.querySelector('body');
+    this.addButton = document.querySelector('.menu__btn');
+    this.tabs = document.querySelectorAll('.menu__tabs .tab');
     this.products = [];
     this.size = Products.length;
     this.modal = new Modal();
@@ -15,6 +26,10 @@ class Catalog {
   bindListeners() {
     const context = this;
     window.addEventListener('resize', () => context.renderCatalog());
+    this.addButton.addEventListener('click', () => this.showMoreProducts());
+    for (let i = 0; i < this.tabs.length; i += 1) {
+      this.tabs[i].addEventListener('click', () => this.changeCategory(i));
+    }
   }
 
   renderCard(data) {
@@ -38,10 +53,14 @@ class Catalog {
     this.findCatalogSize();
     this.parentEl.innerHTML = '';
     this.products = [];
-    for (let i = 0; i < Products.length && this.products.length < this.size; i += 1) {
+    for (let i = 0; i < Products.length; i += 1) {
       if (Products[i].category === this.category) {
         const productItem = this.renderCard(Products[i]);
         productItem.addEventListener('click', () => this.createModal(Products[i]));
+        if (this.products.length >= this.size) {
+          productItem.classList.add('catalog__item_hidden');
+          this.addButton.classList.add('menu__btn_active');
+        }
         this.parentEl.append(productItem);
         this.products.push(productItem);
       }
@@ -57,10 +76,32 @@ class Catalog {
     }
   }
 
+  showMoreProducts() {
+    for (let i = 0; i < this.products.length; i += 1) {
+      if (this.products[i].classList.contains('catalog__item_hidden')) {
+        this.products[i].classList.remove('catalog__item_hidden');
+      }
+    }
+    this.addButton.classList.remove('menu__btn_active');
+  }
+
   createModal(data) {
     this.modal.init(data);
     this.body.append(this.modal.renderModal());
     this.modal.bindListeners();
+  }
+
+  changeTab(numberOfCategory) {
+    for (let i = 0; i < this.tabs.length; i += 1) {
+      this.tabs[i].classList.remove('tab_checked');
+    }
+    this.tabs[numberOfCategory].classList.add('tab_checked');
+  }
+
+  changeCategory(numberOfCategory) {
+    this.category = CatalogConst.categories[numberOfCategory];
+    this.changeTab(numberOfCategory);
+    this.renderCatalog();
   }
 }
 
