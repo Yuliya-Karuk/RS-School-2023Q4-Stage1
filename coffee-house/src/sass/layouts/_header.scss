@@ -1,4 +1,6 @@
 .header {
+  position: relative;
+  z-index: 20;
   @extend %container;
   padding: 20px 40px;
   display: flex;
@@ -11,4 +13,5 @@
 
 .header__logo {
   font-size: 0;
+  z-index: 30;
 }

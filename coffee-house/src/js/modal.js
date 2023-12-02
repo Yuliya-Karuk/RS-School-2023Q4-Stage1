@@ -5,15 +5,21 @@ import infoSvg from '../img/icons/info.svg';
 const ModalClasses = {
   use: '<use href="./src/img/icons/sprite.svg#info"></use>',
   infoText: 'The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.',
+  body: 'no-scroll',
 };
 
 class Modal {
+  constructor() {
+    this.modal = document.querySelector('.modal');
+    this.body = document.querySelector('body');
+  }
+
   init(data) {
     this.data = data;
-    this.modal = createElementWithProperties('div', 'modal modal_active');
     this.sizes = Object.keys(this.data.sizes);
     this.startPrice = Number(this.data.price);
     this.totalPrice = this.data.price;
+    this.modal.classList.add('modal_active');
   }
 
   renderModal() {
@@ -22,7 +28,7 @@ class Modal {
     const content = this.renderContentBlock();
     container.append(imgContainer, content);
     this.modal.append(container);
-    return this.modal;
+    this.body.append(this.modal);
   }
 
   renderImgBlock() {
@@ -108,6 +114,7 @@ class Modal {
   }
 
   bindListeners() {
+    const context = this;
     this.tabs = this.modal.querySelectorAll('.tab');
     for (let i = 0; i < this.tabs.length; i += 1) {
       this.tabs[i].addEventListener('click', (e) => {
@@ -115,6 +122,9 @@ class Modal {
       });
     }
     this.buttonClose.addEventListener('click', () => this.closeModal());
+    this.modal.addEventListener('click', (e) => {
+      if (!e.target.closest('.product') && this.modal.classList.contains('modal_active')) context.closeModal();
+    });
   }
 
   changePrice() {
@@ -135,6 +145,7 @@ class Modal {
   closeModal() {
     this.modal.innerHTML = '';
     this.modal.classList.remove('modal_active');
+    this.body.classList.remove(ModalClasses.body);
   }
 }
 

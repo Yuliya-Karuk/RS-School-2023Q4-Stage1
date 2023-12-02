@@ -6,13 +6,13 @@
 
   @include media-tablet {
     position: fixed;
-    top: 100px;
+    top: 0;
     right: 0;
     z-index: 20;
 
     width: 100%;
     height: 100vh;
-    padding: 60px 40px;
+    padding: 160px 40px 60px;
 
     display: flex;
     flex-direction: column;
@@ -24,6 +24,7 @@
 
     opacity: 0;
     visibility: hidden;
+    overflow: scroll;
   }
 
   &_start {

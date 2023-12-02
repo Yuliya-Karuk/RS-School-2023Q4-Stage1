@@ -9,6 +9,7 @@ const CatalogConst = {
     2: 'dessert',
   },
   firstCategory: 0,
+  body: 'no-scroll',
 };
 
 class Catalog {
@@ -57,12 +58,12 @@ class Catalog {
       if (Products[i].category === this.category) {
         const productItem = this.renderCard(Products[i]);
         productItem.addEventListener('click', () => this.createModal(Products[i]));
-        if (this.products.length >= this.size) {
+        this.parentEl.append(productItem);
+        this.products.push(productItem);
+        if (this.products.length > this.size) {
           productItem.classList.add('catalog__item_hidden');
           this.addButton.classList.add('menu__btn_active');
         }
-        this.parentEl.append(productItem);
-        this.products.push(productItem);
       }
     }
   }
@@ -87,8 +88,9 @@ class Catalog {
 
   createModal(data) {
     this.modal.init(data);
-    this.body.append(this.modal.renderModal());
+    this.modal.renderModal();
     this.modal.bindListeners();
+    this.body.classList.add(CatalogConst.body);
   }
 
   changeTab(numberOfCategory) {
