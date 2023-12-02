@@ -2,6 +2,54 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/burger.js":
+/*!**************************!*\
+  !*** ./src/js/burger.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const BurgerClasses = {
+  navMenu: 'nav_active',
+  burgerButton: 'burger_active',
+  body: 'no-scroll'
+};
+class Burger {
+  constructor() {
+    this.burgerButton = document.querySelector('.burger');
+    this.navMenu = document.querySelector('.nav');
+    this.navLinks = document.querySelectorAll('.nav__link');
+    this.body = document.querySelector('body');
+  }
+  toggleBurgerMenu() {
+    this.navMenu.classList.add('nav_start');
+    this.navMenu.classList.toggle(BurgerClasses.navMenu);
+    this.burgerButton.classList.toggle(BurgerClasses.burgerButton);
+    this.body.classList.toggle(BurgerClasses.body);
+  }
+  bindListeners() {
+    const context = this;
+    this.burgerButton.addEventListener('click', () => context.toggleBurgerMenu());
+    window.addEventListener('keydown', e => {
+      if (e.keyCode === 27 && context.navMenu.classList.contains(BurgerClasses.navMenu)) {
+        context.toggleBurgerMenu();
+      }
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.classList.contains('navigation') && context.navMenu.classList.contains(BurgerClasses.navMenu) && !context.burgerButton.contains(e.target)) context.toggleBurgerMenu();
+    });
+    for (let i = 0; i < this.navLinks.length; i += 1) {
+      this.navLinks[i].addEventListener('click', () => context.toggleBurgerMenu());
+    }
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Burger);
+
+/***/ }),
+
 /***/ "./src/js/catalog.js":
 /*!***************************!*\
   !*** ./src/js/catalog.js ***!
@@ -20,6 +68,12 @@ class Catalog {
   constructor(category) {
     this.category = category;
     this.parentEl = document.querySelector('.catalog');
+    this.products = [];
+    this.size = _productsList__WEBPACK_IMPORTED_MODULE_1__["default"].length;
+  }
+  bindListeners() {
+    const context = this;
+    window.addEventListener('resize', () => context.renderCatalog());
   }
   renderCard(data) {
     const li = (0,_utils__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'catalog__item');
@@ -41,11 +95,23 @@ class Catalog {
     return li;
   }
   renderCatalog() {
-    for (let i = 0; i < _productsList__WEBPACK_IMPORTED_MODULE_1__["default"].length; i += 1) {
+    this.findCatalogSize();
+    this.parentEl.innerHTML = '';
+    this.products = [];
+    for (let i = 0; i < _productsList__WEBPACK_IMPORTED_MODULE_1__["default"].length && this.products.length < this.size; i += 1) {
       if (_productsList__WEBPACK_IMPORTED_MODULE_1__["default"][i].category === this.category) {
         const productItem = this.renderCard(_productsList__WEBPACK_IMPORTED_MODULE_1__["default"][i]);
         this.parentEl.append(productItem);
+        this.products.push(productItem);
       }
+    }
+  }
+  findCatalogSize() {
+    if (window.innerWidth <= 768) {
+      this.size = 4;
+    }
+    if (window.innerWidth > 768) {
+      this.size = _productsList__WEBPACK_IMPORTED_MODULE_1__["default"].length;
     }
   }
 }
@@ -1032,10 +1098,15 @@ var __webpack_exports__ = {};
   \*********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_catalog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/catalog */ "./src/js/catalog.js");
+/* harmony import */ var _js_burger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/burger */ "./src/js/burger.js");
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const catalog = new _js_catalog__WEBPACK_IMPORTED_MODULE_0__["default"]('coffee');
+  catalog.bindListeners();
   catalog.renderCatalog();
+  const burger = new _js_burger__WEBPACK_IMPORTED_MODULE_1__["default"]();
+  burger.bindListeners();
 });
 })();
 
