@@ -558,7 +558,7 @@ strong {
   fill: none;
   stroke: #665F55;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .btn_dark:hover .arrow-svg {
     stroke: #E1D4C9;
   }
@@ -569,7 +569,7 @@ strong {
   height: 36px;
   fill: #665F55;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .link_dark:hover .mobile-svg {
     fill: #E1D4C9;
   }
@@ -581,7 +581,7 @@ strong {
   fill: none;
   stroke: #E1D4C9;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .link_bordered:hover .social-svg {
     stroke: #403F3D;
   }
@@ -593,7 +593,7 @@ strong {
   width: 20px;
   height: 20px;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .link:hover .enjoy__svg {
     visibility: visible;
     opacity: 1;
@@ -618,7 +618,7 @@ strong {
   fill: none;
   stroke: #403F3D;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .btn_dark:hover .menu__svg {
     stroke: #E1D4C9;
   }
@@ -640,7 +640,7 @@ strong {
   height: 60px;
   border: 1px solid #665F55;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .btn_dark:hover {
     background: #665F55;
     color: #E1D4C9;
@@ -668,7 +668,7 @@ strong {
   border-radius: 100px;
   border: 1px solid #C1B6AD;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .link_bordered:hover {
     border: none;
     background: #E1D4C9;
@@ -685,7 +685,7 @@ strong {
   transform-origin: center;
   transform: scaleX(0);
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .link_usual:hover::after {
     transform: scaleX(1);
   }
@@ -705,7 +705,7 @@ strong {
   position: relative;
   left: 15px;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .link_primary:hover .link__text {
     left: 0;
   }
@@ -719,7 +719,7 @@ strong {
   border-radius: 100px;
   border: 1px solid #665F55;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .link_dark:hover {
     background: #665F55;
   }
@@ -745,7 +745,7 @@ strong {
   letter-spacing: normal;
   text-transform: none;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .link_dark:hover .link__text, .link_dark:hover .link__text > span {
     color: #E1D4C9;
   }
@@ -760,7 +760,7 @@ strong {
   border-radius: 20px;
   background-color: #403F3D;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .burger:hover .burger__line::after, .burger:hover .burger__line::before, .burger:hover .burger__line {
     background-color: #E1D4C9;
   }
@@ -1044,7 +1044,7 @@ strong {
 .tab_checked {
   pointer-events: none;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .tab:hover {
     border: 1px solid #665F55;
     color: #E1D4C9;
@@ -1061,7 +1061,7 @@ strong {
 .tab_checked .tab__img-wrapper {
   background-color: #E1D4C9;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .tab:hover .tab__img-wrapper {
     background-color: #E1D4C9;
   }
@@ -1118,7 +1118,7 @@ strong {
   height: 340px;
   object-fit: cover;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .catalog__item:hover .catalog__img {
     transform: scale(0.91);
   }
