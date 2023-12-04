@@ -10,6 +10,9 @@ const CatalogConst = {
   },
   firstCategory: 0,
   body: 'no-scroll',
+  tabChecked: 'tab_checked',
+  itemHidden: 'catalog__item_hidden',
+  menuActive: 'menu__btn_active',
 };
 
 class Catalog {
@@ -54,6 +57,7 @@ class Catalog {
     this.findCatalogSize();
     this.parentEl.innerHTML = '';
     this.products = [];
+    this.addButton.classList.remove(CatalogConst.menuActive);
     for (let i = 0; i < Products.length; i += 1) {
       if (Products[i].category === this.category) {
         const productItem = this.renderCard(Products[i]);
@@ -61,8 +65,8 @@ class Catalog {
         this.parentEl.append(productItem);
         this.products.push(productItem);
         if (this.products.length > this.size) {
-          productItem.classList.add('catalog__item_hidden');
-          this.addButton.classList.add('menu__btn_active');
+          productItem.classList.add(CatalogConst.itemHidden);
+          this.addButton.classList.add(CatalogConst.menuActive);
         }
       }
     }
@@ -79,11 +83,11 @@ class Catalog {
 
   showMoreProducts() {
     for (let i = 0; i < this.products.length; i += 1) {
-      if (this.products[i].classList.contains('catalog__item_hidden')) {
-        this.products[i].classList.remove('catalog__item_hidden');
+      if (this.products[i].classList.contains(CatalogConst.itemHidden)) {
+        this.products[i].classList.remove(CatalogConst.itemHidden);
       }
     }
-    this.addButton.classList.remove('menu__btn_active');
+    this.addButton.classList.remove(CatalogConst.menuActive);
   }
 
   createModal(data) {
@@ -95,9 +99,9 @@ class Catalog {
 
   changeTab(numberOfCategory) {
     for (let i = 0; i < this.tabs.length; i += 1) {
-      this.tabs[i].classList.remove('tab_checked');
+      this.tabs[i].classList.remove(CatalogConst.tabChecked);
     }
-    this.tabs[numberOfCategory].classList.add('tab_checked');
+    this.tabs[numberOfCategory].classList.add(CatalogConst.tabChecked);
   }
 
   changeCategory(numberOfCategory) {

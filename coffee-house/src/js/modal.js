@@ -2,10 +2,11 @@
 import createElementWithProperties from './utils';
 import infoSvg from '../img/icons/info.svg';
 
-const ModalClasses = {
+const ModalConst = {
   use: '<use href="./src/img/icons/sprite.svg#info"></use>',
   infoText: 'The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.',
   body: 'no-scroll',
+  showModal: 'modal_active',
 };
 
 class Modal {
@@ -19,7 +20,7 @@ class Modal {
     this.sizes = Object.keys(this.data.sizes);
     this.startPrice = Number(this.data.price);
     this.totalPrice = this.data.price;
-    this.modal.classList.add('modal_active');
+    this.modal.classList.add(ModalConst.showModal);
   }
 
   renderModal() {
@@ -108,7 +109,7 @@ class Modal {
     const svg = createElementWithProperties('img', 'product__info-img', {
       alt: 'info icon', src: infoSvg, width: '16', height: '16',
     });
-    const text = createElementWithProperties('span', 'product__info-text', undefined, [{ innerText: ModalClasses.infoText }]);
+    const text = createElementWithProperties('span', 'product__info-text', undefined, [{ innerText: ModalConst.infoText }]);
     div.append(svg, text);
     return div;
   }
@@ -123,7 +124,7 @@ class Modal {
     }
     this.buttonClose.addEventListener('click', () => this.closeModal());
     this.modal.addEventListener('click', (e) => {
-      if (!e.target.closest('.product') && this.modal.classList.contains('modal_active')) context.closeModal();
+      if (!e.target.closest('.product') && this.modal.classList.contains(ModalConst.showModal)) context.closeModal();
     });
   }
 
@@ -144,8 +145,8 @@ class Modal {
 
   closeModal() {
     this.modal.innerHTML = '';
-    this.modal.classList.remove('modal_active');
-    this.body.classList.remove(ModalClasses.body);
+    this.modal.classList.remove(ModalConst.showModal);
+    this.body.classList.remove(ModalConst.body);
   }
 }
 

@@ -1,3 +1,8 @@
+const SliderConst = {
+  numberOfSlide: 3,
+  slideTime: 5000,
+};
+
 class Slider {
   constructor() {
     this.sliderParent = document.querySelector('.slider');
@@ -9,14 +14,13 @@ class Slider {
     this.currentSlide = 0;
     this.paginationBtnActive = this.paginationBars[this.currentSlide].firstElementChild;
     this.timeStep = 10;
-    this.time = 5000;
     this.filledSpace = 0;
     this.isSwiped = false;
   }
 
   fillPagination(start = true) {
     if (start) {
-      this.interval = setInterval(this.fillStep.bind(this), 500);
+      this.interval = setInterval(this.fillStep.bind(this), SliderConst.slideTime / this.timeStep);
     }
     if (!start) {
       clearInterval(this.interval);
@@ -34,8 +38,8 @@ class Slider {
 
   findNextSlide(offset) {
     this.currentSlide += offset;
-    if (this.currentSlide > 2) this.currentSlide = 0;
-    if (this.currentSlide < 0) this.currentSlide = 2;
+    if (this.currentSlide > SliderConst.numberOfSlide - 1) this.currentSlide = 0;
+    if (this.currentSlide < 0) this.currentSlide = SliderConst.numberOfSlide - 1;
   }
 
   changePgnBar() {
