@@ -25,14 +25,19 @@ class Burger {
 
     this.burgerButton.addEventListener('click', () => context.toggleBurgerMenu());
 
-    window.addEventListener('keydown', (e) => {
+    window.addEventListener('keydown', e => {
       if (e.keyCode === 27 && context.navMenu.classList.contains(BurgerClasses.navMenu)) {
         context.toggleBurgerMenu();
       }
     });
 
-    document.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('nav') && context.navMenu.classList.contains(BurgerClasses.navMenu) && !context.burgerButton.contains(e.target)) context.toggleBurgerMenu();
+    document.addEventListener('click', e => {
+      if (
+        !e.target.classList.contains('nav') &&
+        context.navMenu.classList.contains(BurgerClasses.navMenu) &&
+        !context.burgerButton.contains(e.target)
+      )
+        context.toggleBurgerMenu();
     });
 
     for (let i = 0; i < this.navLinks.length; i += 1) {
@@ -40,7 +45,7 @@ class Burger {
     }
 
     if (this.navMenuLink) {
-      this.navMenuLink.addEventListener('click', (e) => {
+      this.navMenuLink.addEventListener('click', e => {
         e.preventDefault();
         context.toggleBurgerMenu();
       });

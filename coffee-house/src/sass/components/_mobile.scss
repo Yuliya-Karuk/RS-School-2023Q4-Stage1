@@ -2,20 +2,23 @@
   display: flex;
   align-items: center;
   gap: 100px;
+
   @include media-desktop {
     flex-wrap: wrap;
     justify-content: center;
   }
+
   @include media-mobile {
     gap: 40px;
   }
 }
 
 .mobile__content {
-  align-self: center;
   display: flex;
   flex-direction: column;
+  align-self: center;
   row-gap: 40px;
+
   @include media-desktop {
     justify-content: center;
   }
@@ -25,10 +28,12 @@
   display: flex;
   justify-content: flex-start;
   gap: 20px;
+
   & > * {
-    padding: 0 20px;
     justify-content: flex-start;
+    padding: 0 20px;
   }
+
   @include media-mobile {
     flex-wrap: wrap;
   }

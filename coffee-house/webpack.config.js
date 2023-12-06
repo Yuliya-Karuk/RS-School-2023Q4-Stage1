@@ -25,9 +25,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: 'defaults' }],
-            ],
+            presets: [['@babel/preset-env', { targets: 'defaults' }]],
           },
         },
       },
@@ -44,9 +42,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
@@ -66,9 +62,7 @@ module.exports = {
       filename: './menu/index.html',
       chunks: ['menu'],
     }),
-    new MiniCssExtractPlugin(
-      { filename: '[name].css' },
-    ),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
     new CleanWebpackPlugin(),
     new ESLintPlugin(),
   ],

@@ -69,17 +69,17 @@ class Slider {
       this.sliderItems[i].addEventListener('mouseout', () => this.fillPagination());
     }
 
-    this.sliderParent.addEventListener('touchstart', (e) => {
+    this.sliderParent.addEventListener('touchstart', e => {
       this.touchStart = e.targetTouches[0].clientX;
       this.fillPagination(false);
     });
 
-    this.sliderParent.addEventListener('touchmove', (e) => {
+    this.sliderParent.addEventListener('touchmove', e => {
       this.touchEnd = e.changedTouches[0].clientX;
       this.isSwiped = true;
     });
 
-    this.sliderParent.addEventListener('touchend', (e) => {
+    this.sliderParent.addEventListener('touchend', e => {
       if (e.cancelable && this.isSwiped) {
         e.preventDefault();
         const side = this.touchStart - this.touchEnd > 0 ? 1 : -1;

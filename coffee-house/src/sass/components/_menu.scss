@@ -13,6 +13,7 @@
 .menu__tabs {
   display: flex;
   column-gap: 16px;
+
   @include media-mobile {
     column-gap: 8px;
   }

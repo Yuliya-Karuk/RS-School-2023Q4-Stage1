@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const burger = new Burger();
   burger.bindListeners();
   const slider = new Slider();
-  slider.bindListeners();
+  slider.bindListeners()
   slider.fillPagination();
 });

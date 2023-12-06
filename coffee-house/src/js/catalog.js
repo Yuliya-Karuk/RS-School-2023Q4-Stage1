@@ -39,7 +39,10 @@ class Catalog {
   renderCard(data) {
     const li = createElementWithProperties('li', 'catalog__item');
     const imgContainer = createElementWithProperties('div', 'catalog__img-container');
-    const img = createElementWithProperties('img', 'catalog__img', { alt: `${this.category} image`, src: `${data.img}` });
+    const img = createElementWithProperties('img', 'catalog__img', {
+      alt: `${this.category} image`,
+      src: `${data.img}`,
+    });
     imgContainer.append(img);
     const content = createElementWithProperties('div', 'catalog__content');
     const title = createElementWithProperties('h3', 'catalog__title');

@@ -1,30 +1,26 @@
 .nav {
-  flex-grow: 1;
   display: flex;
+  flex-grow: 1;
   align-items: center;
   justify-content: space-between;
 
   @include media-tablet {
     position: fixed;
+    z-index: 20;
     top: 0;
     right: 0;
-    z-index: 20;
-
+    display: flex;
+    overflow: scroll;
     width: 100%;
     height: 100vh;
-    padding: 160px 40px 60px;
-
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: unset;
-    row-gap: 100px;
-
+    padding: 160px 40px 60px;
     background: $color-background-body;
-
     opacity: 0;
+    row-gap: 100px;
     visibility: hidden;
-    overflow: scroll;
   }
 
   &_start {
@@ -33,28 +29,29 @@
   }
 
   &_active {
-    opacity: 1;
-    visibility: visible;
-    transition: 0.8s ease-in-out;
     animation: burger-open 0.8s ease-in-out;
+    opacity: 1;
+    transition: 0.8s ease-in-out;
+    visibility: visible;
   }
 }
 
 .nav__list {
-  margin-left: auto;
   display: flex;
   align-items: center;
+  margin-left: auto;
   column-gap: 40px;
 
   @include media-tablet {
-    margin-left: unset;
     flex-direction: column;
+    margin-left: unset;
     row-gap: 60px;
   }
 }
 
 .nav__item {
   margin-bottom: 8px;
+
   @include media-tablet {
     margin-bottom: 0;
   }
@@ -67,10 +64,9 @@
   }
 }
 
-
 .nav__menu {
-  margin-left: auto;
   margin-bottom: 8px;
+  margin-left: auto;
 
   @include media-tablet {
     margin-bottom: 0;
@@ -85,6 +81,7 @@
 
   &_disabled {
     cursor: default;
+
     &::after {
       transform: scaleX(1);
     }
