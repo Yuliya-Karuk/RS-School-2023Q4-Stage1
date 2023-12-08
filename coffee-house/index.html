@@ -41,15 +41,22 @@
   </header>
   <main class="main">
     <section class="enjoy">
-      <div class="enjoy__content">
-        <h1 class="enjoy__title"><em>Enjoy</em> premium coffee at our charming cafe</h1>
-        <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
-        <a class="link link_centered link_long link_primary" href="./menu/">
-          <span class="link__text">Menu</span>
-          <svg class="enjoy__svg" aria-label="coffee cup icon">
-            <use href="img/e6a3147dd32607e14362.svg#cup"></use>
-          </svg>
-        </a>
+      <video class="enjoy__video" muted autoplay loop poster="img/6911d20912b9cf05930d.jpg">
+        <source src="img/a6c55ff6c700fdfad781.webm" type="video/webm">
+      </video>
+      <div class="enjoy__container">
+        <div class="enjoy__content">
+          <h1 class="enjoy__title"><em>Enjoy</em> premium coffee at our charming cafe</h1>
+          <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a
+            popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.
+          </p>
+          <a class="link link_centered link_long link_primary" href="./menu/">
+            <span class="link__text">Menu</span>
+            <svg class="enjoy__svg" aria-label="coffee cup icon">
+              <use href="img/e6a3147dd32607e14362.svg#cup"></use>
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
     <section id="favorite" class="favorite">
@@ -95,9 +102,15 @@
         </button>
       </div>
       <div class="pagination">
-        <button class="pagination__btn pagination__btn_active" type="button"></button>
-        <button class="pagination__btn" type="button"></button>
-        <button class="pagination__btn" type="button"></button>
+        <span class="pagination__bar">
+          <span class="pagination__progress"></span>
+        </span>
+        <span class="pagination__bar">
+          <span class="pagination__progress"></span>
+        </span>
+        <span class="pagination__bar">
+          <span class="pagination__progress"></span>
+        </span>
       </div>
     </section>
     <section id="about" class="about">
