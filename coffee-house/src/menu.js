@@ -2,7 +2,7 @@ import Catalog from './js/catalog';
 import Burger from './js/burger';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const catalog = new Catalog('coffee');
+  const catalog = new Catalog();
   catalog.bindListeners();
   catalog.renderCatalog();
   const burger = new Burger();

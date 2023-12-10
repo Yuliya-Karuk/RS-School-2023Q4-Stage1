@@ -9,10 +9,14 @@
 }
 
 .slider {
-  width: 100%;
   display: flex;
+  width: 100%;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+
+  @include media-tablet-additional {
+    justify-content: center;
+  }
 }
 
 .slider__btn {
@@ -26,33 +30,38 @@
 }
 
 .slider_container {
-  width: calc(100% - 200px);
   overflow: hidden;
+  max-width: 480px;
+
   @include media-tablet-additional {
     width: 100%;
   }
 }
 
 .slider_list {
-  width: 100%;
   display: flex;
+  width: 100%;
+
+  @extend %transition;
 }
 
 .slider__item {
-  min-width: 100%;
   display: flex;
+  min-width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 22px;
+  user-select: none;
+
   @include media-tablet-additional {
     gap: 20px;
   }
 }
 
 .slider__content {
-  max-width: 480px;
   display: flex;
+  max-width: 480px;
   flex-direction: column;
   align-items: center;
   gap: 16px;
@@ -66,13 +75,20 @@
   column-gap: 12px;
 }
 
-.pagination__btn {
+.pagination__bar {
+  position: relative;
   width: 40px;
   height: 4px;
   border-radius: 100px;
   background-color: $color-border-light;
+}
 
-  &_active {
-    background-color: $color-border-dark;
-  }
+.pagination__progress {
+  position: absolute;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  border-radius: 100px;
+  background-color: $color-border-dark;
+  transition: all 0.6s ease;
 }

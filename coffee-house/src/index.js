@@ -1,9 +1,13 @@
 import Burger from './js/burger';
-import { selfEsteem2 } from './js/selfEsteem';
+import Slider from './js/slider';
+import { selfEsteem3 } from './js/selfEsteem';
 
-console.log(selfEsteem2);
+console.log(selfEsteem3);
 
 document.addEventListener('DOMContentLoaded', () => {
   const burger = new Burger();
   burger.bindListeners();
+  const slider = new Slider();
+  slider.bindListeners();
+  slider.fillPagination();
 });

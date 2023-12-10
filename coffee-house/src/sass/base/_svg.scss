@@ -4,9 +4,9 @@
 }
 
 .cup__svg {
-  align-self: flex-start;
   width: 20px;
   height: 20px;
+  align-self: flex-start;
 
   @include media-tablet {
     width: 40px;
@@ -19,6 +19,7 @@
   height: 24px;
   fill: none;
   stroke: $color-border-dark;
+
   @extend %transition;
 
   @include media-hover {
@@ -32,6 +33,7 @@
   width: 36px;
   height: 36px;
   fill: $color-border-dark;
+
   @extend %transition;
 
   @include media-hover {
@@ -46,6 +48,7 @@
   height: 24px;
   fill: none;
   stroke: $color-text-light;
+
   @extend %transition;
 
   @include media-hover {
@@ -56,29 +59,30 @@
 }
 
 .enjoy__svg {
-  visibility: hidden;
-  opacity: 0;
   width: 20px;
   height: 20px;
+  opacity: 0;
+  visibility: hidden;
+
   @extend %transition;
 
   @include media-hover {
     .link:hover & {
-      visibility: visible;
       opacity: 1;
+      visibility: visible;
     }
   }
 
   @include media-tablet {
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
   }
 }
 
 .contacts__svg {
-  align-self: flex-start;
   width: 20px;
   height: 20px;
+  align-self: flex-start;
 }
 
 .menu__svg {

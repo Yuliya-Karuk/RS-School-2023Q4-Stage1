@@ -1,14 +1,19 @@
 .header {
-  @extend %container;
-  padding: 20px 40px;
+  position: relative;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 20px 40px;
+
+  @extend %container;
+
   @include media-mobile {
     padding: 20px 16px;
   }
 }
 
 .header__logo {
+  z-index: 30;
   font-size: 0;
 }

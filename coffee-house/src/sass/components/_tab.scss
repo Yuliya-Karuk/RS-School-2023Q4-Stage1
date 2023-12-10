@@ -1,0 +1,83 @@
+.tab {
+  position: relative;
+  padding: 8px 16px 8px 8px;
+  border: 1px solid $color-border-light;
+  cursor: pointer;
+
+  &_checked,
+  &:has(input:checked) {
+    border: 1px solid $color-background-container;
+    background-color: $color-background-container;
+    color: $color-text-light;
+  }
+
+  &_checked,
+  &:has(input[type='radio']:checked) {
+    pointer-events: none;
+  }
+
+  @include media-hover {
+    &:hover {
+      border: 1px solid $color-background-container;
+      background-color: $color-background-container;
+      color: $color-text-light;
+    }
+  }
+
+  & > * {
+    cursor: pointer;
+  }
+}
+
+.tab__img-wrapper {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: $color-border-light;
+
+  @extend %flex-center;
+  @extend %transition;
+
+  .tab_checked &,
+  .tab:has(input:checked) & {
+    background-color: $color-background-body;
+  }
+
+  @include media-hover {
+    .tab:hover & {
+      background-color: $color-background-body;
+    }
+  }
+}
+
+.tab__input {
+  position: relative;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  visibility: hidden;
+}
+
+.tab__span {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+
+  @include font('Inter-Medium-Normal', 1.6rem, 600, 1.5);
+
+  color: $color-text-dark;
+}
+
+.tab__label {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    z-index: 20;
+    top: -50%;
+    left: -46px;
+    width: calc(100% + 46px + 16px);
+    height: 200%;
+    content: '';
+  }
+}

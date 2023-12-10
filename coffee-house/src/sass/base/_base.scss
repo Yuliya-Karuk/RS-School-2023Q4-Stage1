@@ -1,18 +1,18 @@
-@include font-face("Inter-Medium-Italic", "Inter-SemiBoldItalic", "600", "italic");
-@include font-face("Inter-Medium-Normal", "Inter-SemiBold", "600", "normal");
-@include font-face("Inter-Regular", "Inter-Regular", "400", "normal");
+@include font-face('Inter-Medium-Italic', 'Inter-SemiBoldItalic', '600', 'italic');
+@include font-face('Inter-Medium-Normal', 'Inter-SemiBold', '600', 'normal');
+@include font-face('Inter-Regular', 'Inter-Regular', '400', 'normal');
 
-.visually-hidden:not(:focus):not(:active),
+.visually-hidden:not(:focus, :active),
 input[type='checkbox'].visually-hidden,
 input[type='radio'].visually-hidden {
   position: absolute;
+  overflow: hidden;
   width: 1px;
   height: 1px;
-  margin: -1px;
-  border: 0;
   padding: 0;
+  border: 0;
+  margin: -1px;
   clip: rect(0 0 0 0);
-  overflow: hidden;
 }
 
 *,
@@ -37,6 +37,7 @@ img {
 
 .no-scroll {
   overflow: hidden;
+  scrollbar-gutter: stable;
 }
 
 section {
@@ -44,8 +45,10 @@ section {
 }
 
 h1 {
-  @include font("Inter-Medium-Normal", 7.2rem, 600, 1.05);
+  @include font('Inter-Medium-Normal', 7.2rem, 600, 1.05);
+
   color: $color-text-light;
+
   @include media-tablet-additional {
     font-size: 4.2rem;
     line-height: 1.15;
@@ -53,34 +56,40 @@ h1 {
 }
 
 h2 {
-  @include font("Inter-Medium-Normal", 6rem, 600, 1.25);
+  @include font('Inter-Medium-Normal', 6rem, 600, 1.25);
+
   color: $color-text-dark;
+
   @include media-tablet-additional {
     font-size: 3.2rem;
   }
 }
 
 h3 {
-  @include font("Inter-Medium-Normal", 2.4rem, 600, 1.25);
+  @include font('Inter-Medium-Normal', 2.4rem, 600, 1.25);
+
   color: $color-text-dark;
 }
 
 span {
-  @include font("Inter-Medium-Normal", 1rem, 600, 1.4);
+  @include font('Inter-Medium-Normal', 1rem, 600, 1.4);
+
   color: $color-text-dark;
 }
 
 p {
-  @include font("Inter-Regular", 1.6rem, 400, 1.5);
+  @include font('Inter-Regular', 1.6rem, 400, 1.5);
+
   color: $color-text-dark;
 }
 
 em {
-  font-family: "Inter-Medium-Italic";
   color: $color-text-accent;
+  font-family: Inter-Medium-Italic, sans-serif;
 }
 
 strong {
-  @include font("Inter-Medium-Normal", 2.4rem, 600, 1.25);
+  @include font('Inter-Medium-Normal', 2.4rem, 600, 1.25);
+
   color: $color-text-dark;
 }

@@ -310,7 +310,8 @@ const Products = [
 
   {
     name: 'Moroccan',
-    description: 'Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint',
+    description:
+      'Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint',
     price: '4.50',
     category: 'tea',
     sizes: {
@@ -526,7 +527,8 @@ const Products = [
 
   {
     name: 'Cheesecakes',
-    description: 'Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar',
+    description:
+      'Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar',
     price: '4.50',
     category: 'dessert',
     sizes: {

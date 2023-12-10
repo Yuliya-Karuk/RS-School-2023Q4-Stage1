@@ -28,7 +28,7 @@
           <a class="link link_usual nav__link" href="#contacts">Contact us</a>
         </li>
       </ul>
-      <a class="link link_centered link_usual nav__menu" href="./menu/">
+      <a class="link link_centered link_usual nav__menu nav__menu_active" href="./menu/">
         <span class="link__text">Menu</span>
         <svg class="cup__svg" aria-label="coffee cup icon">
           <use href="./src/img/icons/sprite.svg#cup"></use>
@@ -41,15 +41,22 @@
   </header>
   <main class="main">
     <section class="enjoy">
-      <div class="enjoy__content">
-        <h1 class="enjoy__title"><em>Enjoy</em> premium coffee at our charming cafe</h1>
-        <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
-        <a class="link link_centered link_long link_primary" href="./menu/">
-          <span class="link__text">Menu</span>
-          <svg class="enjoy__svg" aria-label="coffee cup icon">
-            <use href="./src/img/icons/sprite.svg#cup"></use>
-          </svg>
-        </a>
+      <video class="enjoy__video" muted autoplay loop playsinline poster="./src/img/enjoy.jpg">
+        <source src="./src/video/video.webm" type="video/webm">
+      </video>
+      <div class="enjoy__container">
+        <div class="enjoy__content">
+          <h1 class="enjoy__title"><em>Enjoy</em> premium coffee at our charming cafe</h1>
+          <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a
+            popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.
+          </p>
+          <a class="link link_centered link_long link_primary" href="./menu/">
+            <span class="link__text">Menu</span>
+            <svg class="enjoy__svg" aria-label="coffee cup icon">
+              <use href="./src/img/icons/sprite.svg#cup"></use>
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
     <section id="favorite" class="favorite">
@@ -95,9 +102,15 @@
         </button>
       </div>
       <div class="pagination">
-        <button class="pagination__btn pagination__btn_active" type="button"></button>
-        <button class="pagination__btn" type="button"></button>
-        <button class="pagination__btn" type="button"></button>
+        <span class="pagination__bar">
+          <span class="pagination__progress"></span>
+        </span>
+        <span class="pagination__bar">
+          <span class="pagination__progress"></span>
+        </span>
+        <span class="pagination__bar">
+          <span class="pagination__progress"></span>
+        </span>
       </div>
     </section>
     <section id="about" class="about">

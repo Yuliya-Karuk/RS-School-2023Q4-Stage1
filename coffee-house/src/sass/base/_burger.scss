@@ -1,11 +1,12 @@
 %burger-line {
-  content: "";
-  display: block;
   position: absolute;
+  display: block;
   width: 17px;
   height: 2px;
   border-radius: 20px;
   background-color: $color-text-dark;
+  content: '';
+
   @extend %transition;
 
   @include media-hover {
@@ -16,6 +17,7 @@
 }
 
 .burger {
+  z-index: 30;
   display: none;
   width: 44px;
   height: 44px;
@@ -27,11 +29,13 @@
 
 .burger__line {
   @extend %burger-line;
+
   position: relative;
   background-color: transparent !important;
 
   &::before {
     @extend %burger-line;
+
     top: 4px;
 
     .burger_active & {
@@ -42,6 +46,7 @@
 
   &::after {
     @extend %burger-line;
+
     bottom: 4px;
 
     .burger_active & {
@@ -49,5 +54,4 @@
       transform: rotate(-45deg);
     }
   }
-
 }

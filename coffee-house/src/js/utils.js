@@ -1,4 +1,4 @@
-export default function createElementWithProperties(el, elClassName, attr) {
+export default function createElementWithProperties(el, elClassName, attr, props) {
   const element = document.createElement(el);
   element.className = elClassName;
   if (attr) {
@@ -7,5 +7,6 @@ export default function createElementWithProperties(el, elClassName, attr) {
       element.setAttribute(key, attr[key]);
     }
   }
+  if (props) Object.assign(element, ...props);
   return element;
 }

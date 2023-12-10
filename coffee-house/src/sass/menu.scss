@@ -1,24 +1,26 @@
 // Abstract
-@import "abstracts/normalize";
-@import "abstracts/reset";
-@import "abstracts/constants";
-@import "abstracts/mixins";
-@import "abstracts/placeholders";
+@import 'abstracts/normalize';
+@import 'abstracts/reset';
+@import 'abstracts/constants';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
 
 // Base
-@import "base/base";
-@import "base/svg";
-@import "base/buttons";
-@import "base/links";
-@import "base/burger";
-@import "base/animation";
+@import 'base/base';
+@import 'base/svg';
+@import 'base/buttons';
+@import 'base/links';
+@import 'base/burger';
+@import 'base/animation';
 
 // Layouts
-@import "layouts/header";
-@import "layouts/main";
-@import "layouts/footer";
+@import 'layouts/header';
+@import 'layouts/main';
+@import 'layouts/footer';
 
 // Components
-@import "components/navigation";
-@import "components/menu";
-@import "components/catalog";
+@import 'components/navigation';
+@import 'components/menu';
+@import 'components/tab';
+@import 'components/catalog';
+@import 'components/modal';
