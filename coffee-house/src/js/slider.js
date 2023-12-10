@@ -1,6 +1,7 @@
 const SliderConst = {
   numberOfSlide: 3,
   slideTime: 5000,
+  minSwipeWidth: 50,
 };
 
 class Slider {
@@ -15,7 +16,6 @@ class Slider {
     this.paginationBtnActive = this.paginationBars[this.currentSlide].firstElementChild;
     this.timeStep = 10;
     this.filledSpace = 0;
-    this.isSwiped = false;
   }
 
   fillPagination(start = true) {
@@ -60,6 +60,23 @@ class Slider {
     this.slider.style.transform = `translateX(-${this.currentSlide * 100}%)`;
   }
 
+  handleTouch(e) {
+    e.stopPropagation();
+    if (e.type === 'touchstart') {
+      this.touchStartX = e.touches[0].clientX;
+      this.fillPagination(false);
+    }
+    if (e.type === 'touchend') {
+      this.touchEndX = e.changedTouches[0].clientX;
+      const swipeWidth = Math.abs(this.touchStartX - this.touchEndX);
+      if (e.cancelable && swipeWidth > SliderConst.minSwipeWidth) {
+        const side = this.touchStartX - this.touchEndX > 0 ? 1 : -1;
+        this.changeSlide(side);
+      }
+      this.fillPagination();
+    }
+  }
+
   bindListeners() {
     this.sliderButtonRight.addEventListener('click', () => this.changeSlide(1));
     this.sliderButtonLeft.addEventListener('click', () => this.changeSlide(-1));
@@ -67,27 +84,12 @@ class Slider {
     for (let i = 0; i < this.sliderItems.length; i += 1) {
       this.sliderItems[i].addEventListener('mouseover', () => this.fillPagination(false));
       this.sliderItems[i].addEventListener('mouseout', () => this.fillPagination());
+      this.sliderItems[i].addEventListener('touchstart', e => this.handleTouch(e));
+      this.sliderItems[i].addEventListener('touchend', e => this.handleTouch(e));
     }
 
-    this.sliderParent.addEventListener('touchstart', e => {
-      this.touchStart = e.targetTouches[0].clientX;
-      this.fillPagination(false);
-    });
-
-    this.sliderParent.addEventListener('touchmove', e => {
-      this.touchEnd = e.changedTouches[0].clientX;
-      this.isSwiped = true;
-    });
-
-    this.sliderParent.addEventListener('touchend', e => {
-      if (e.cancelable && this.isSwiped) {
-        e.preventDefault();
-        const side = this.touchStart - this.touchEnd > 0 ? 1 : -1;
-        this.changeSlide(side);
-        this.isSwiped = false;
-      }
-      this.fillPagination();
-    });
+    this.sliderParent.addEventListener('touchstart', e => this.handleTouch(e));
+    this.sliderParent.addEventListener('touchend', e => this.handleTouch(e));
   }
 }
 

@@ -7,16 +7,16 @@
   @include media-tablet {
     position: fixed;
     z-index: 20;
-    top: 0;
+    top: 100px;
     right: 0;
     display: flex;
     overflow: scroll;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 100px);
     flex-direction: column;
     align-items: center;
     justify-content: unset;
-    padding: 160px 40px 60px;
+    padding: 60px 40px;
     background: $color-background-body;
     opacity: 0;
     row-gap: 100px;
