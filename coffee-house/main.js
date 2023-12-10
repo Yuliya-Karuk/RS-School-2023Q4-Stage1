@@ -15,25 +15,44 @@ __webpack_require__.r(__webpack_exports__);
 const BurgerClasses = {
   navMenu: 'nav_active',
   burgerButton: 'burger_active',
-  body: 'no-scroll'
+  body: 'no-scroll',
+  navMenuLinkDisabled: 'nav__menu_disabled'
 };
 class Burger {
   constructor() {
     this.burgerButton = document.querySelector('.burger');
     this.navMenu = document.querySelector('.nav');
     this.navLinks = document.querySelectorAll('.nav__link');
-    this.navMenuLink = document.querySelector('.nav__menu_disabled');
+    this.navMenuLink = document.querySelector('.nav__menu');
     this.body = document.querySelector('body');
   }
   toggleBurgerMenu() {
     this.navMenu.classList.add('nav_start');
+    if (!this.navMenu.classList.contains(BurgerClasses.navMenu)) window.scrollTo({
+      top: 0,
+      left: 0
+    });
     this.navMenu.classList.toggle(BurgerClasses.navMenu);
     this.burgerButton.classList.toggle(BurgerClasses.burgerButton);
     this.body.classList.toggle(BurgerClasses.body);
   }
+  clickLink(e) {
+    if (e.animationName === 'burger-close' && this.clickedLink) {
+      if (!this.clickedLink.classList.contains(BurgerClasses.navMenuLinkDisabled)) this.clickedLink.click();
+    }
+  }
+  handleClick(e, clickedEl) {
+    if (e.isTrusted) e.preventDefault();
+    if (window.innerWidth <= 768) {
+      this.toggleBurgerMenu();
+      this.clickedLink = clickedEl;
+    } else {
+      clickedEl.click();
+    }
+  }
   bindListeners() {
     const context = this;
-    this.burgerButton.addEventListener('click', () => context.toggleBurgerMenu());
+    this.burgerButton.addEventListener('click', () => this.toggleBurgerMenu());
     window.addEventListener('keydown', e => {
       if (e.keyCode === 27 && context.navMenu.classList.contains(BurgerClasses.navMenu)) {
         context.toggleBurgerMenu();
@@ -43,14 +62,10 @@ class Burger {
       if (!e.target.classList.contains('nav') && context.navMenu.classList.contains(BurgerClasses.navMenu) && !context.burgerButton.contains(e.target)) context.toggleBurgerMenu();
     });
     for (let i = 0; i < this.navLinks.length; i += 1) {
-      this.navLinks[i].addEventListener('click', () => context.toggleBurgerMenu());
+      this.navLinks[i].addEventListener('click', e => this.handleClick(e, this.navLinks[i]));
     }
-    if (this.navMenuLink) {
-      this.navMenuLink.addEventListener('click', e => {
-        e.preventDefault();
-        context.toggleBurgerMenu();
-      });
-    }
+    this.navMenuLink.addEventListener('click', e => this.handleClick(e, this.navMenuLink));
+    this.navMenu.addEventListener('animationend', e => this.clickLink(e));
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Burger);
@@ -88,7 +103,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const SliderConst = {
   numberOfSlide: 3,
-  slideTime: 5000
+  slideTime: 5000,
+  minSwipeWidth: 50
 };
 class Slider {
   constructor() {
@@ -102,7 +118,6 @@ class Slider {
     this.paginationBtnActive = this.paginationBars[this.currentSlide].firstElementChild;
     this.timeStep = 10;
     this.filledSpace = 0;
-    this.isSwiped = false;
   }
   fillPagination() {
     let start = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
@@ -141,30 +156,33 @@ class Slider {
   move() {
     this.slider.style.transform = `translateX(-${this.currentSlide * 100}%)`;
   }
+  handleTouch(e) {
+    e.stopPropagation();
+    if (e.type === 'touchstart') {
+      this.touchStartX = e.touches[0].clientX;
+      this.fillPagination(false);
+    }
+    if (e.type === 'touchend') {
+      this.touchEndX = e.changedTouches[0].clientX;
+      const swipeWidth = Math.abs(this.touchStartX - this.touchEndX);
+      if (e.cancelable && swipeWidth > SliderConst.minSwipeWidth) {
+        const side = this.touchStartX - this.touchEndX > 0 ? 1 : -1;
+        this.changeSlide(side);
+      }
+      this.fillPagination();
+    }
+  }
   bindListeners() {
     this.sliderButtonRight.addEventListener('click', () => this.changeSlide(1));
     this.sliderButtonLeft.addEventListener('click', () => this.changeSlide(-1));
     for (let i = 0; i < this.sliderItems.length; i += 1) {
       this.sliderItems[i].addEventListener('mouseover', () => this.fillPagination(false));
       this.sliderItems[i].addEventListener('mouseout', () => this.fillPagination());
+      this.sliderItems[i].addEventListener('touchstart', e => this.handleTouch(e));
+      this.sliderItems[i].addEventListener('touchend', e => this.handleTouch(e));
     }
-    this.sliderParent.addEventListener('touchstart', e => {
-      this.touchStart = e.targetTouches[0].clientX;
-      this.fillPagination(false);
-    });
-    this.sliderParent.addEventListener('touchmove', e => {
-      this.touchEnd = e.changedTouches[0].clientX;
-      this.isSwiped = true;
-    });
-    this.sliderParent.addEventListener('touchend', e => {
-      if (e.cancelable && this.isSwiped) {
-        e.preventDefault();
-        const side = this.touchStart - this.touchEnd > 0 ? 1 : -1;
-        this.changeSlide(side);
-        this.isSwiped = false;
-      }
-      this.fillPagination();
-    });
+    this.sliderParent.addEventListener('touchstart', e => this.handleTouch(e));
+    this.sliderParent.addEventListener('touchend', e => this.handleTouch(e));
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Slider);
