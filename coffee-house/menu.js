@@ -2,6 +2,79 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/img/menu/img.js":
+/*!*****************************!*\
+  !*** ./src/img/menu/img.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   imgCoffee1: () => (/* reexport default export from named module */ _coffee1_jpg__WEBPACK_IMPORTED_MODULE_0__),
+/* harmony export */   imgCoffee2: () => (/* reexport default export from named module */ _coffee2_jpg__WEBPACK_IMPORTED_MODULE_1__),
+/* harmony export */   imgCoffee3: () => (/* reexport default export from named module */ _coffee3_jpg__WEBPACK_IMPORTED_MODULE_2__),
+/* harmony export */   imgCoffee4: () => (/* reexport default export from named module */ _coffee4_jpg__WEBPACK_IMPORTED_MODULE_3__),
+/* harmony export */   imgCoffee5: () => (/* reexport default export from named module */ _coffee5_jpg__WEBPACK_IMPORTED_MODULE_4__),
+/* harmony export */   imgCoffee6: () => (/* reexport default export from named module */ _coffee6_jpg__WEBPACK_IMPORTED_MODULE_5__),
+/* harmony export */   imgCoffee7: () => (/* reexport default export from named module */ _coffee7_jpg__WEBPACK_IMPORTED_MODULE_6__),
+/* harmony export */   imgCoffee8: () => (/* reexport default export from named module */ _coffee8_jpg__WEBPACK_IMPORTED_MODULE_7__),
+/* harmony export */   imgDessert1: () => (/* reexport default export from named module */ _dessert1_jpg__WEBPACK_IMPORTED_MODULE_12__),
+/* harmony export */   imgDessert2: () => (/* reexport default export from named module */ _dessert2_jpg__WEBPACK_IMPORTED_MODULE_13__),
+/* harmony export */   imgDessert3: () => (/* reexport default export from named module */ _dessert3_jpg__WEBPACK_IMPORTED_MODULE_14__),
+/* harmony export */   imgDessert4: () => (/* reexport default export from named module */ _dessert4_jpg__WEBPACK_IMPORTED_MODULE_15__),
+/* harmony export */   imgDessert5: () => (/* reexport default export from named module */ _dessert5_jpg__WEBPACK_IMPORTED_MODULE_16__),
+/* harmony export */   imgDessert6: () => (/* reexport default export from named module */ _dessert6_jpg__WEBPACK_IMPORTED_MODULE_17__),
+/* harmony export */   imgDessert7: () => (/* reexport default export from named module */ _dessert7_jpg__WEBPACK_IMPORTED_MODULE_18__),
+/* harmony export */   imgDessert8: () => (/* reexport default export from named module */ _dessert8_jpg__WEBPACK_IMPORTED_MODULE_19__),
+/* harmony export */   imgTea1: () => (/* reexport default export from named module */ _tea1_jpg__WEBPACK_IMPORTED_MODULE_8__),
+/* harmony export */   imgTea2: () => (/* reexport default export from named module */ _tea2_jpg__WEBPACK_IMPORTED_MODULE_9__),
+/* harmony export */   imgTea3: () => (/* reexport default export from named module */ _tea3_jpg__WEBPACK_IMPORTED_MODULE_10__),
+/* harmony export */   imgTea4: () => (/* reexport default export from named module */ _tea4_jpg__WEBPACK_IMPORTED_MODULE_11__)
+/* harmony export */ });
+/* harmony import */ var _coffee1_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coffee1.jpg */ "./src/img/menu/coffee1.jpg");
+/* harmony import */ var _coffee2_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./coffee2.jpg */ "./src/img/menu/coffee2.jpg");
+/* harmony import */ var _coffee3_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./coffee3.jpg */ "./src/img/menu/coffee3.jpg");
+/* harmony import */ var _coffee4_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coffee4.jpg */ "./src/img/menu/coffee4.jpg");
+/* harmony import */ var _coffee5_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./coffee5.jpg */ "./src/img/menu/coffee5.jpg");
+/* harmony import */ var _coffee6_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./coffee6.jpg */ "./src/img/menu/coffee6.jpg");
+/* harmony import */ var _coffee7_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coffee7.jpg */ "./src/img/menu/coffee7.jpg");
+/* harmony import */ var _coffee8_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coffee8.jpg */ "./src/img/menu/coffee8.jpg");
+/* harmony import */ var _tea1_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./tea1.jpg */ "./src/img/menu/tea1.jpg");
+/* harmony import */ var _tea2_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./tea2.jpg */ "./src/img/menu/tea2.jpg");
+/* harmony import */ var _tea3_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./tea3.jpg */ "./src/img/menu/tea3.jpg");
+/* harmony import */ var _tea4_jpg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./tea4.jpg */ "./src/img/menu/tea4.jpg");
+/* harmony import */ var _dessert1_jpg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dessert1.jpg */ "./src/img/menu/dessert1.jpg");
+/* harmony import */ var _dessert2_jpg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dessert2.jpg */ "./src/img/menu/dessert2.jpg");
+/* harmony import */ var _dessert3_jpg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dessert3.jpg */ "./src/img/menu/dessert3.jpg");
+/* harmony import */ var _dessert4_jpg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./dessert4.jpg */ "./src/img/menu/dessert4.jpg");
+/* harmony import */ var _dessert5_jpg__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./dessert5.jpg */ "./src/img/menu/dessert5.jpg");
+/* harmony import */ var _dessert6_jpg__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./dessert6.jpg */ "./src/img/menu/dessert6.jpg");
+/* harmony import */ var _dessert7_jpg__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./dessert7.jpg */ "./src/img/menu/dessert7.jpg");
+/* harmony import */ var _dessert8_jpg__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./dessert8.jpg */ "./src/img/menu/dessert8.jpg");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+
 /***/ "./src/js/burger.js":
 /*!**************************!*\
   !*** ./src/js/burger.js ***!
@@ -398,45 +471,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _img_menu_coffee1_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/menu/coffee1.jpg */ "./src/img/menu/coffee1.jpg");
-/* harmony import */ var _img_menu_coffee2_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/menu/coffee2.jpg */ "./src/img/menu/coffee2.jpg");
-/* harmony import */ var _img_menu_coffee3_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../img/menu/coffee3.jpg */ "./src/img/menu/coffee3.jpg");
-/* harmony import */ var _img_menu_coffee4_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/menu/coffee4.jpg */ "./src/img/menu/coffee4.jpg");
-/* harmony import */ var _img_menu_coffee5_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/menu/coffee5.jpg */ "./src/img/menu/coffee5.jpg");
-/* harmony import */ var _img_menu_coffee6_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/menu/coffee6.jpg */ "./src/img/menu/coffee6.jpg");
-/* harmony import */ var _img_menu_coffee7_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/menu/coffee7.jpg */ "./src/img/menu/coffee7.jpg");
-/* harmony import */ var _img_menu_coffee8_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/menu/coffee8.jpg */ "./src/img/menu/coffee8.jpg");
-/* harmony import */ var _img_menu_tea1_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/menu/tea1.jpg */ "./src/img/menu/tea1.jpg");
-/* harmony import */ var _img_menu_tea2_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/menu/tea2.jpg */ "./src/img/menu/tea2.jpg");
-/* harmony import */ var _img_menu_tea3_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/menu/tea3.jpg */ "./src/img/menu/tea3.jpg");
-/* harmony import */ var _img_menu_tea4_jpg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/menu/tea4.jpg */ "./src/img/menu/tea4.jpg");
-/* harmony import */ var _img_menu_dessert1_jpg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../img/menu/dessert1.jpg */ "./src/img/menu/dessert1.jpg");
-/* harmony import */ var _img_menu_dessert2_jpg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/menu/dessert2.jpg */ "./src/img/menu/dessert2.jpg");
-/* harmony import */ var _img_menu_dessert3_jpg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/menu/dessert3.jpg */ "./src/img/menu/dessert3.jpg");
-/* harmony import */ var _img_menu_dessert4_jpg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/menu/dessert4.jpg */ "./src/img/menu/dessert4.jpg");
-/* harmony import */ var _img_menu_dessert5_jpg__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/menu/dessert5.jpg */ "./src/img/menu/dessert5.jpg");
-/* harmony import */ var _img_menu_dessert6_jpg__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../img/menu/dessert6.jpg */ "./src/img/menu/dessert6.jpg");
-/* harmony import */ var _img_menu_dessert7_jpg__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../img/menu/dessert7.jpg */ "./src/img/menu/dessert7.jpg");
-/* harmony import */ var _img_menu_dessert8_jpg__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../img/menu/dessert8.jpg */ "./src/img/menu/dessert8.jpg");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* harmony import */ var _img_menu_img__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/menu/img */ "./src/img/menu/img.js");
 
 const Products = [{
   name: 'Irish coffee',
@@ -467,7 +502,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_coffee1_jpg__WEBPACK_IMPORTED_MODULE_0__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgCoffee1
 }, {
   name: 'Kahlua coffee',
   description: 'Classic coffee with milk and Kahlua liqueur under a cap of frothed milk',
@@ -497,7 +532,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_coffee2_jpg__WEBPACK_IMPORTED_MODULE_1__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgCoffee2
 }, {
   name: 'Honey raf',
   description: 'Espresso with frothed milk, cream and aromatic honey',
@@ -527,7 +562,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_coffee3_jpg__WEBPACK_IMPORTED_MODULE_2__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgCoffee3
 }, {
   name: 'Ice cappuccino',
   description: 'Cappuccino with soft thick foam in summer version with ice',
@@ -557,7 +592,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_coffee4_jpg__WEBPACK_IMPORTED_MODULE_3__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgCoffee4
 }, {
   name: 'Espresso',
   description: 'Classic black coffee',
@@ -587,7 +622,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_coffee5_jpg__WEBPACK_IMPORTED_MODULE_4__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgCoffee5
 }, {
   name: 'Latte',
   description: 'Espresso coffee with the addition of steamed milk and dense milk foam',
@@ -617,7 +652,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_coffee6_jpg__WEBPACK_IMPORTED_MODULE_5__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgCoffee6
 }, {
   name: 'Latte macchiato',
   description: 'Espresso with frothed milk and chocolate',
@@ -647,7 +682,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_coffee7_jpg__WEBPACK_IMPORTED_MODULE_6__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgCoffee7
 }, {
   name: 'Coffee with cognac',
   description: 'Fragrant black coffee with cognac and whipped cream',
@@ -677,7 +712,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_coffee8_jpg__WEBPACK_IMPORTED_MODULE_7__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgCoffee8
 }, {
   name: 'Moroccan',
   description: 'Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint',
@@ -707,7 +742,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_tea1_jpg__WEBPACK_IMPORTED_MODULE_8__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgTea1
 }, {
   name: 'Ginger',
   description: 'Original black tea with fresh ginger, lemon and honey',
@@ -737,7 +772,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_tea2_jpg__WEBPACK_IMPORTED_MODULE_9__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgTea2
 }, {
   name: 'Cranberry',
   description: 'Invigorating black tea with cranberry and honey',
@@ -767,7 +802,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_tea3_jpg__WEBPACK_IMPORTED_MODULE_10__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgTea3
 }, {
   name: 'Sea buckthorn',
   description: 'Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon',
@@ -797,7 +832,7 @@ const Products = [{
     name: 'Syrup',
     'add-price': '0.50'
   }],
-  img: _img_menu_tea4_jpg__WEBPACK_IMPORTED_MODULE_11__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgTea4
 }, {
   name: 'Marble cheesecake',
   description: 'Philadelphia cheese with lemon zest on a light sponge cake and red currant jam',
@@ -827,7 +862,7 @@ const Products = [{
     name: 'Jam',
     'add-price': '0.50'
   }],
-  img: _img_menu_dessert1_jpg__WEBPACK_IMPORTED_MODULE_12__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgDessert1
 }, {
   name: 'Red velvet',
   description: 'Layer cake with cream cheese frosting',
@@ -857,7 +892,7 @@ const Products = [{
     name: 'Jam',
     'add-price': '0.50'
   }],
-  img: _img_menu_dessert2_jpg__WEBPACK_IMPORTED_MODULE_13__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgDessert2
 }, {
   name: 'Cheesecakes',
   description: 'Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar',
@@ -887,7 +922,7 @@ const Products = [{
     name: 'Jam',
     'add-price': '0.50'
   }],
-  img: _img_menu_dessert3_jpg__WEBPACK_IMPORTED_MODULE_14__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgDessert3
 }, {
   name: 'Creme brulee',
   description: 'Delicate creamy dessert in a caramel basket with wild berries',
@@ -917,7 +952,7 @@ const Products = [{
     name: 'Jam',
     'add-price': '0.50'
   }],
-  img: _img_menu_dessert4_jpg__WEBPACK_IMPORTED_MODULE_15__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgDessert4
 }, {
   name: 'Pancakes',
   description: 'Tender pancakes with strawberry jam and fresh strawberries',
@@ -947,7 +982,7 @@ const Products = [{
     name: 'Jam',
     'add-price': '0.50'
   }],
-  img: _img_menu_dessert5_jpg__WEBPACK_IMPORTED_MODULE_16__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgDessert5
 }, {
   name: 'Honey cake',
   description: 'Classic honey cake with delicate custard',
@@ -977,7 +1012,7 @@ const Products = [{
     name: 'Jam',
     'add-price': '0.50'
   }],
-  img: _img_menu_dessert6_jpg__WEBPACK_IMPORTED_MODULE_17__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgDessert6
 }, {
   name: 'Chocolate cake',
   description: 'Cake with hot chocolate filling and nuts with dried apricots',
@@ -1007,7 +1042,7 @@ const Products = [{
     name: 'Jam',
     'add-price': '0.50'
   }],
-  img: _img_menu_dessert7_jpg__WEBPACK_IMPORTED_MODULE_18__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgDessert7
 }, {
   name: 'Black forest',
   description: 'A combination of thin sponge cake with cherry jam and light chocolate mousse',
@@ -1037,7 +1072,7 @@ const Products = [{
     name: 'Jam',
     'add-price': '0.50'
   }],
-  img: _img_menu_dessert8_jpg__WEBPACK_IMPORTED_MODULE_19__
+  img: _img_menu_img__WEBPACK_IMPORTED_MODULE_0__.imgDessert8
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Products);
 
