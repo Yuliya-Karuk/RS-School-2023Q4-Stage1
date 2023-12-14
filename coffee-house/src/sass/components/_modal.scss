@@ -18,6 +18,7 @@
 .product {
   display: flex;
   max-width: 800px;
+  margin: 0 40px;
   padding: 16px;
   border-radius: 40px;
   background-color: $color-background-body;
@@ -25,6 +26,10 @@
 
   @include media-laptop {
     max-width: 688px;
+  }
+
+  @include media-tablet-additional {
+    margin: 0 19px;
   }
 
   @include media-mobile {
