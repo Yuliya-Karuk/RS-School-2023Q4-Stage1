@@ -1,23 +1,4 @@
-import imgCoffee1 from '../img/menu/coffee1.jpg';
-import imgCoffee2 from '../img/menu/coffee2.jpg';
-import imgCoffee3 from '../img/menu/coffee3.jpg';
-import imgCoffee4 from '../img/menu/coffee4.jpg';
-import imgCoffee5 from '../img/menu/coffee5.jpg';
-import imgCoffee6 from '../img/menu/coffee6.jpg';
-import imgCoffee7 from '../img/menu/coffee7.jpg';
-import imgCoffee8 from '../img/menu/coffee8.jpg';
-import imgTea1 from '../img/menu/tea1.jpg';
-import imgTea2 from '../img/menu/tea2.jpg';
-import imgTea3 from '../img/menu/tea3.jpg';
-import imgTea4 from '../img/menu/tea4.jpg';
-import imgDessert1 from '../img/menu/dessert1.jpg';
-import imgDessert2 from '../img/menu/dessert2.jpg';
-import imgDessert3 from '../img/menu/dessert3.jpg';
-import imgDessert4 from '../img/menu/dessert4.jpg';
-import imgDessert5 from '../img/menu/dessert5.jpg';
-import imgDessert6 from '../img/menu/dessert6.jpg';
-import imgDessert7 from '../img/menu/dessert7.jpg';
-import imgDessert8 from '../img/menu/dessert8.jpg';
+import * as images from '../img/menu/img';
 
 const Products = [
   {
@@ -53,7 +34,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgCoffee1,
+    img: images.imgCoffee1,
   },
 
   {
@@ -89,7 +70,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgCoffee2,
+    img: images.imgCoffee2,
   },
 
   {
@@ -125,7 +106,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgCoffee3,
+    img: images.imgCoffee3,
   },
 
   {
@@ -161,7 +142,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgCoffee4,
+    img: images.imgCoffee4,
   },
 
   {
@@ -197,7 +178,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgCoffee5,
+    img: images.imgCoffee5,
   },
 
   {
@@ -233,7 +214,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgCoffee6,
+    img: images.imgCoffee6,
   },
 
   {
@@ -269,7 +250,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgCoffee7,
+    img: images.imgCoffee7,
   },
 
   {
@@ -305,7 +286,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgCoffee8,
+    img: images.imgCoffee8,
   },
 
   {
@@ -342,7 +323,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgTea1,
+    img: images.imgTea1,
   },
 
   {
@@ -378,7 +359,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgTea2,
+    img: images.imgTea2,
   },
 
   {
@@ -414,7 +395,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgTea3,
+    img: images.imgTea3,
   },
 
   {
@@ -450,7 +431,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgTea4,
+    img: images.imgTea4,
   },
 
   {
@@ -486,7 +467,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgDessert1,
+    img: images.imgDessert1,
   },
 
   {
@@ -522,7 +503,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgDessert2,
+    img: images.imgDessert2,
   },
 
   {
@@ -559,7 +540,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgDessert3,
+    img: images.imgDessert3,
   },
 
   {
@@ -595,7 +576,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgDessert4,
+    img: images.imgDessert4,
   },
 
   {
@@ -631,7 +612,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgDessert5,
+    img: images.imgDessert5,
   },
 
   {
@@ -667,7 +648,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgDessert6,
+    img: images.imgDessert6,
   },
 
   {
@@ -703,7 +684,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgDessert7,
+    img: images.imgDessert7,
   },
 
   {
@@ -739,7 +720,7 @@ const Products = [
         'add-price': '0.50',
       },
     ],
-    img: imgDessert8,
+    img: images.imgDessert8,
   },
 ];
 

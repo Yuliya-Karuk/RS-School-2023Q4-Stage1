@@ -7,6 +7,7 @@ const SliderConst = {
 class Slider {
   constructor() {
     this.sliderParent = document.querySelector('.slider');
+    this.sliderParent.contextMenu = false;
     this.sliderButtonLeft = document.querySelector('.slider__btn_left');
     this.sliderButtonRight = document.querySelector('.slider__btn_right');
     this.slider = document.querySelector('.slider_list');
@@ -61,6 +62,7 @@ class Slider {
   }
 
   handleTouch(e) {
+    e.preventDefault();
     e.stopPropagation();
     if (e.type === 'touchstart') {
       this.touchStartX = e.touches[0].clientX;
@@ -73,11 +75,13 @@ class Slider {
         const side = this.touchStartX - this.touchEndX > 0 ? 1 : -1;
         this.changeSlide(side);
       }
+      this.fillPagination(false);
       this.fillPagination();
     }
   }
 
   bindListeners() {
+    const context = this;
     this.sliderButtonRight.addEventListener('click', () => this.changeSlide(1));
     this.sliderButtonLeft.addEventListener('click', () => this.changeSlide(-1));
 
@@ -88,8 +92,10 @@ class Slider {
       this.sliderItems[i].addEventListener('touchend', e => this.handleTouch(e));
     }
 
-    this.sliderParent.addEventListener('touchstart', e => this.handleTouch(e));
-    this.sliderParent.addEventListener('touchend', e => this.handleTouch(e));
+    document.addEventListener('resize', () => {
+      context.fillPagination(false);
+      context.fillPagination();
+    });
   }
 }
 
