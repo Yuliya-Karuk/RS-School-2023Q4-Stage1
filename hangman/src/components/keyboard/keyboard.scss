@@ -1,0 +1,51 @@
+@import '../../sass/common/constants';
+@import '../../sass/common/placeholders';
+@import '../../sass/common/mixins';
+
+.keyboard {
+  @extend %flex-center;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 436px;
+  margin: 0 auto;
+
+  @include media-mobile-additional {
+    max-width: 374px;
+    gap: 2px;
+  }
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  @extend %flex-center;
+  border-radius: 5px;
+  background: conic-gradient(from 180deg at 50% 50%, #35312A 38deg, #6C6964 56deg, #6C6964 127deg, #3F3C3C 144deg, #1D2025 179deg, #3F3C3C 217deg, #6C6964 230deg, #6C6964 300deg, #35312A 321deg);
+  box-shadow: 0px 0px 1.5px 0px #000 inset, 0px 0px 0.5px 0px #000 inset, 0px 0px 1px 0px #000 inset;
+  filter: blur(0.2px);
+  &:nth-of-type(11) {
+    margin-left: 10px;
+  }
+  &:nth-of-type(19) {
+    margin-right: 10px;
+  }
+
+  @include media-mobile-additional {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.key__button {
+  border-radius: 6.154px;
+  border: 1px solid #6C6964;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(180deg, #484645 0%, #63615D 7.81%, #ABA6A0 100%);
+
+  @include media-mobile-additional {
+    width: 30px;
+    height: 30px;
+  }
+}

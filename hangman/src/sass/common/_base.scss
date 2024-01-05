@@ -1,3 +1,46 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Bluu-Next';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/BluuNext-Titling.woff2') format('woff2');
+}
+
+.visually-hidden:not(:focus, :active),
+input[type='checkbox'].visually-hidden,
+input[type='radio'].visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: $color-background-body;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 h1 {
-  color: red;
+  @include font('Bluu-Next', 7.2rem, 600, 1.05);
+  color: $color-text-dark;
 }
