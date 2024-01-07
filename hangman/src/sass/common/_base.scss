@@ -32,6 +32,10 @@ html {
 
 body {
   background: $color-background-body;
+  font-family: 'Bluu-Next', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 img {
@@ -39,8 +43,17 @@ img {
   height: auto;
 }
 
-
 h1 {
-  @include font('Bluu-Next', 7.2rem, 600, 1.05);
+  @include font(7.2rem, 600, 1.05);
+  color: $color-text-dark;
+}
+
+h2 {
+  @include font(3rem, 600, 1.05);
+  color: $color-text-dark;
+}
+
+p {
+  @include font(2rem, 600, 1.05);
   color: $color-text-dark;
 }

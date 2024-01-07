@@ -1,0 +1,31 @@
+@import '../../sass/common/constants';
+
+.question-block {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.question-block__question {
+  color: $color-text-dark;
+}
+
+.question-block__counter {
+  color: $color-text-dark;
+}
+
+.question-block__letters {
+  display: flex;
+  gap: 5px;
+}
+
+.letter {
+  display: block;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border-bottom: 2px solid black;
+}
