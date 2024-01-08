@@ -1,18 +1,23 @@
-import createElementWithProperties from '../../utils/utils';
+import { createElementWithProperties } from '../../utils/utils';
 import './question.scss';
 
 class Question {
-  constructor(data) {
+  constructor() {
+    this.maxMistakes = 6;
+  }
+
+  init(data) {
+    this.questionBlock = createElementWithProperties('div', 'question-block');
+    this.renderInnerBlocks(data);
+    return this.questionBlock;
+  }
+
+  renderInnerBlocks(data) {
+    this.questionBlock.innerHTML = '';
     this.question = data.question;
     this.answer = data.answer.toUpperCase();
     this.counter = 0;
-    this.maxMistakes = 6;
-    this.guessedLetters = [];
     this.letterArray = Array.from({ length: this.answer.length }, () => []);
-  }
-
-  renderBlocks() {
-    this.questionBlock = createElementWithProperties('div', 'question-block');
     const questionTitle = createElementWithProperties('h2', 'question-block__question', undefined, [
       { innerText: `${this.question}` },
     ]);
@@ -22,7 +27,6 @@ class Question {
     this.answerBlock = createElementWithProperties('div', 'question-block__letters');
     this.renderAnswerBlock();
     this.questionBlock.append(questionTitle, this.counterBlock, this.answerBlock);
-    return this.questionBlock;
   }
 
   renderAnswerBlock() {
@@ -34,6 +38,14 @@ class Question {
       if (this.letterArray[i].length !== 0) newLetter.classList.add('letter_guessed');
       this.answerBlock.append(newLetter);
     }
+  }
+
+  checkAnswerBlock() {
+    let check = true;
+    for (let i = 0; i < this.letterArray.length; i += 1) {
+      if (!this.letterArray[i].length) check = false;
+    }
+    return check;
   }
 
   renderCounterBlock(attempt) {

@@ -3,6 +3,8 @@ import Question from '../question/question';
 import data from '../../data/data';
 import Keys from '../keyboard/Keys';
 import Hangman from '../hangman/hangman';
+import { getRandomNumber } from '../../utils/utils';
+import Modal from '../modal/modal';
 
 class GameHandler {
   constructor(parentEl) {
@@ -10,14 +12,27 @@ class GameHandler {
   }
 
   init() {
-    this.question = new Question(data[1]);
-    this.parentEl.append(this.question.renderBlocks());
+    this.questionNumber = getRandomNumber(1, 10);
+    this.question = new Question();
     this.keyboard = new Keyboard();
-    this.parentEl.append(this.keyboard.renderKeyboard());
     this.hangman = new Hangman();
-    this.parentEl.append(this.hangman.init());
+    this.modal = new Modal(data[this.questionNumber].answer);
+    this.parentEl.append(
+      this.question.init(data[this.questionNumber]),
+      this.keyboard.init(),
+      this.hangman.init(),
+      this.modal.init(),
+    );
+  }
+
+  bindListeners() {
     this.bindVirtualKeyboardListeners();
     this.bindRealKeyboardListeners();
+    this.bindModalListeners();
+  }
+
+  bindModalListeners() {
+    this.modal.button.addEventListener('click', () => this.restartGame());
   }
 
   bindVirtualKeyboardListeners() {
@@ -40,7 +55,7 @@ class GameHandler {
 
   handleKey(e, clickedBtn) {
     const key = e.type === 'click' ? e.target.innerText : Keys[e.code];
-    clickedBtn.setAttribute('disabled', 'disabled');
+    clickedBtn.setAttribute('disabled', 'true');
     this.checkKey(key);
   }
 
@@ -50,10 +65,24 @@ class GameHandler {
       if (this.question.answer[i] === key) {
         this.question.letterArray[i] = key;
         attempt = 0;
+        this.question.renderAnswerBlock();
+        console.log(this.question.letterArray);
+        if (this.question.checkAnswerBlock()) this.modal.showModal('win');
       }
     }
-    this.question.renderAnswerBlock();
-    this.question.renderCounterBlock(attempt);
+    if (attempt === 1) {
+      this.question.renderCounterBlock(attempt);
+      this.hangman.showNextBodyPart(attempt);
+      if (this.question.counter === 6) this.modal.showModal('lose');
+    }
+  }
+
+  restartGame() {
+    this.questionNumber = getRandomNumber(1, 10);
+    this.question.renderInnerBlocks(data[this.questionNumber]);
+    this.hangman.renderImages();
+    this.modal.restartModal(data[this.questionNumber].answer);
+    this.keyboard.enableKeys();
   }
 }
 
