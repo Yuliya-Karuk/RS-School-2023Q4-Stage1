@@ -2,6 +2,7 @@ import Keyboard from '../keyboard/keyboard';
 import Question from '../question/question';
 import data from '../../data/data';
 import Keys from '../keyboard/Keys';
+import Hangman from '../hangman/hangman';
 
 class GameHandler {
   constructor(parentEl) {
@@ -13,6 +14,8 @@ class GameHandler {
     this.parentEl.append(this.question.renderBlocks());
     this.keyboard = new Keyboard();
     this.parentEl.append(this.keyboard.renderKeyboard());
+    this.hangman = new Hangman();
+    this.parentEl.append(this.hangman.init());
     this.bindVirtualKeyboardListeners();
     this.bindRealKeyboardListeners();
   }

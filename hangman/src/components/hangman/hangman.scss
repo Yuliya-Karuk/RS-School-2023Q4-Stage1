@@ -1,0 +1,21 @@
+.hangman {
+  position: relative;
+  width: 220px;
+  height: 397px;
+}
+
+.hangman__img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 220px;
+  height: 397px;
+  opacity: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.3s ease-out;
+
+  &_seen {
+    opacity: 1;
+  }
+}

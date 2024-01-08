@@ -24,17 +24,9 @@ class Keyboard {
     const button = createElementWithProperties('button', 'key__button', undefined, [
       { innerText: `${keyName}` },
     ]);
-    // button.addEventListener('click', e => this.handleVirtualKey(e, button));
     li.append(button);
     return li;
   }
-
-  // handleVirtualKey(e, clickedBtn) {
-  //   console.log(e.target.innerText);
-  //   console.log(clickedBtn);
-  //   clickedBtn.setAttribute('disabled', 'disabled');
-  //   return e.target.innerText;
-  // }
 }
 
 export default Keyboard;

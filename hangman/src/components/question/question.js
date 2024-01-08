@@ -31,6 +31,7 @@ class Question {
       const newLetter = createElementWithProperties('span', 'letter', undefined, [
         { innerText: `${this.letterArray[i]}` },
       ]);
+      if (this.letterArray[i].length !== 0) newLetter.classList.add('letter_guessed');
       this.answerBlock.append(newLetter);
     }
   }
