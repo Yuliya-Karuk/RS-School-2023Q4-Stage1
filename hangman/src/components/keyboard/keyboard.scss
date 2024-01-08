@@ -24,11 +24,16 @@
   background: conic-gradient(from 180deg at 50% 50%, #35312A 38deg, #6C6964 56deg, #6C6964 127deg, #3F3C3C 144deg, #1D2025 179deg, #3F3C3C 217deg, #6C6964 230deg, #6C6964 300deg, #35312A 321deg);
   box-shadow: 0px 0px 1.5px 0px #000 inset, 0px 0px 0.5px 0px #000 inset, 0px 0px 1px 0px #000 inset;
   filter: blur(0.2px);
+
   &:nth-of-type(11) {
     margin-left: 10px;
   }
   &:nth-of-type(19) {
     margin-right: 10px;
+  }
+
+  &:has(.key__button:disabled) {
+    opacity: 0.75;
   }
 
   @include media-mobile-additional {
@@ -48,4 +53,5 @@
     width: 30px;
     height: 30px;
   }
+
 }

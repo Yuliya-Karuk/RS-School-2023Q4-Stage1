@@ -4,10 +4,11 @@ import './question.scss';
 class Question {
   constructor(data) {
     this.question = data.question;
-    this.answer = data.answer;
+    this.answer = data.answer.toUpperCase();
     this.counter = 0;
     this.maxMistakes = 6;
     this.guessedLetters = [];
+    this.letterArray = Array.from({ length: this.answer.length }, () => []);
   }
 
   renderBlocks() {
@@ -26,14 +27,17 @@ class Question {
 
   renderAnswerBlock() {
     this.answerBlock.innerHTML = '';
-    this.letterArray = Array.from({ length: this.answer.length }, () => []);
-    console.log(this.letterArray);
     for (let i = 0; i < this.letterArray.length; i += 1) {
       const newLetter = createElementWithProperties('span', 'letter', undefined, [
         { innerText: `${this.letterArray[i]}` },
       ]);
       this.answerBlock.append(newLetter);
     }
+  }
+
+  renderCounterBlock(attempt) {
+    this.counter += attempt;
+    this.counterBlock.innerText = `Incorrect guesses: ${this.counter}/${this.maxMistakes}`;
   }
 }
 
