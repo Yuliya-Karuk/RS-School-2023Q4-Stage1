@@ -7,7 +7,6 @@
   flex-wrap: wrap;
   gap: 4px;
   max-width: 436px;
-  margin: 0 auto;
 
   @include media-mobile-additional {
     max-width: 374px;
@@ -33,7 +32,11 @@
   }
 
   &:has(.key__button:disabled) {
-    opacity: 0.75;
+    opacity: 0.65;
+  }
+
+  &:has(.key__button:hover) {
+    box-shadow: 0px 0px 4px 2px #c55a89;
   }
 
   @include media-mobile-additional {
@@ -43,10 +46,12 @@
 }
 
 .key__button {
-  border-radius: 6.154px;
+  border-radius: 5px;
   border: 1px solid #6C6964;
+  display: block;
   width: 34px;
   height: 34px;
+  color: $color-text-dark;
   background: linear-gradient(180deg, #484645 0%, #63615D 7.81%, #ABA6A0 100%);
 
   @include media-mobile-additional {
@@ -54,4 +59,7 @@
     height: 30px;
   }
 
+  &:active {
+    background: linear-gradient(180deg, #484645 0%, #63615D 7.81%, #524f4c 100%);
+  }
 }

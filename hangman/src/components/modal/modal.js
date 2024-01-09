@@ -22,7 +22,7 @@ class Modal {
     this.container = createElementWithProperties('div', 'final');
     this.title = createElementWithProperties('h2', 'final__title');
     this.secretWord = createElementWithProperties('p', 'final__answer', undefined, [
-      { innerText: `${this.answer}` },
+      { innerText: `Guessing word: ${this.answer}` },
     ]);
     this.button = createElementWithProperties('button', 'final__button', { type: 'button' }, [
       { innerText: 'Play again' },
@@ -40,7 +40,7 @@ class Modal {
   restartModal(newAnswer) {
     this.modal.classList.remove(ModalConst.showModal);
     this.answer = newAnswer.toUpperCase();
-    this.secretWord.innerText = `${this.answer}`;
+    this.secretWord.innerText = `Guessing word: ${this.answer}`;
   }
 }
 

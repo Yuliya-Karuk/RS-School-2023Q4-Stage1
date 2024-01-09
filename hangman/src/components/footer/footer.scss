@@ -1,0 +1,55 @@
+@import '../../sass/common/constants';
+@import '../../sass/common/placeholders';
+@import '../../sass/common/mixins';
+
+.footer {
+  width: 100%;
+  height: 8vh;
+  padding: 15px 40px;
+  background-color: $color-background-dark;
+  @extend %flex-center;
+  justify-content: space-between;
+  color: #333230;
+}
+
+.footer__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 3rem;
+  @extend %transition;
+
+  &_js{
+    position: relative;
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #333230;
+      content: '';
+      transform: scaleX(0);
+      transform-origin: left;
+
+      @extend %transition;
+    }
+
+    @include media-hover {
+      &:hover {
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  &_rs{
+    @include media-hover {
+      &:hover {
+        opacity: 0.7;
+        filter: drop-shadow(3px 5px 5px #000);
+      }
+    }
+  }
+}

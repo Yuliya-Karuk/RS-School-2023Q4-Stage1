@@ -31,11 +31,10 @@ html {
 }
 
 body {
-  background: $color-background-body;
+  background: $color-background-light;
   font-family: 'Bluu-Next', sans-serif;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color: $color-text-dark;
+  @include font(2rem, 600, 1.05);
 }
 
 img {
@@ -44,16 +43,21 @@ img {
 }
 
 h1 {
-  @include font(7.2rem, 600, 1.05);
-  color: $color-text-dark;
+  font-size: 7.2rem;
 }
 
 h2 {
-  @include font(3rem, 600, 1.05);
-  color: $color-text-dark;
+  font-size: 3rem;
 }
 
 p {
-  @include font(2rem, 600, 1.05);
-  color: $color-text-dark;
+  font-size: 2rem;
+}
+
+.main {
+  height: 80vh;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

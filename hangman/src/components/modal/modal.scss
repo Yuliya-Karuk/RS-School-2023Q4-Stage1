@@ -1,5 +1,6 @@
 @import '../../sass/common/constants';
 @import '../../sass/common/placeholders';
+@import '../../sass/common/mixins';
 
 .modal {
   position: fixed;
@@ -21,9 +22,27 @@
 .final {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 40px;
   max-width: 600px;
-  padding: 30px;
-  border-radius: 20px;
-  background-color: aqua;
-  column-gap: 20px;
+  padding: 40px 80px;
+  text-align: center;
+  border-radius: 40px;
+  background-color: $color-background-light;
+}
+
+.final__title {
+  font-size: 5rem;
+}
+
+.final__answer {
+  font-size: 3rem;
+}
+
+.final__button {
+  width: 200px;
+  height: 60px;
+  @extend %flex-center;
+  border: 2px solid #665f55;
+  border-radius: 100px;
 }
