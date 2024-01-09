@@ -13,9 +13,8 @@ const data = {
     answer: 'google',
   },
   4: {
-    question:
-      'The method of the Event interface prevents the current event from further spread during the capture and bubbling stages.',
-    answer: 'stopPropagation',
+    question: 'What is the most popular browser?',
+    answer: 'Chrome',
   },
   5: {
     question:

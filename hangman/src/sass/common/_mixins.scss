@@ -4,12 +4,24 @@
   $line-height,
   $letter-spacing: normal,
   $text-transform: none
-  ) {
+) {
   font-size: $font-size;
   font-weight: $font-weight;
   letter-spacing: $letter-spacing;
   line-height: $line-height;
   text-transform: $text-transform;
+}
+
+@mixin media-desktop-additional {
+  @media (max-width: $desktop-additional) {
+    @content;
+  }
+}
+
+@mixin media-tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
 }
 
 @mixin media-mobile-additional {

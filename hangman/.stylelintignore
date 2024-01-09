@@ -4,4 +4,6 @@
 *.js
 *.md
 *.svg
+*.woff2
+*.png
 /node_modules

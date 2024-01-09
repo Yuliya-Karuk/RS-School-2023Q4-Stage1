@@ -1,6 +1,6 @@
 @font-face {
   font-display: swap;
-  font-family: 'Bluu-Next';
+  font-family: Bluu-Next;
   font-style: normal;
   font-weight: 600;
   src: url('../fonts/BluuNext-Titling.woff2') format('woff2');
@@ -32,8 +32,9 @@ html {
 
 body {
   background: $color-background-light;
-  font-family: 'Bluu-Next', sans-serif;
   color: $color-text-dark;
+  font-family: Bluu-Next, sans-serif;
+
   @include font(2rem, 600, 1.05);
 }
 
@@ -43,21 +44,61 @@ img {
 }
 
 h1 {
-  font-size: 7.2rem;
+  font-size: 6rem;
+
+  @include media-tablet {
+    font-size: 4rem;
+  }
 }
 
 h2 {
   font-size: 3rem;
+
+  @include media-mobile-additional {
+    font-size: 1.8rem;
+  }
 }
 
 p {
   font-size: 2rem;
+
+  @include media-mobile-additional {
+    font-size: 1.4rem;
+  }
 }
 
 .main {
-  height: 80vh;
-  padding: 0 60px;
   display: flex;
-  justify-content: space-between;
+  overflow: auto;
+  height: 80vh;
   align-items: center;
+  padding: 0 60px;
+  column-gap: 50px;
+
+  @include media-desktop-additional {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @include media-tablet {
+    height: 84vh;
+    padding: 0 20px;
+  }
+
+  @include media-mobile-additional {
+    padding: 0 10px;
+  }
+
+  @media screen and (height <= 1000px) {
+    padding: 10px 20px;
+    row-gap: 10px;
+  }
+}
+
+.link {
+  font-size: 3rem;
+
+  @include media-tablet {
+    font-size: 2rem;
+  }
 }

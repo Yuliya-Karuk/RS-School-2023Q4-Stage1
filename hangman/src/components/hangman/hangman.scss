@@ -1,21 +1,39 @@
+@import '../../sass/common/constants';
+@import '../../sass/common/mixins';
+
 .hangman {
   position: relative;
   width: 220px;
   height: 397px;
+
+  @include media-desktop-additional {
+    order: 1;
+  }
+
+  @include media-mobile-additional {
+    width: 110px;
+    height: 199px;
+  }
 }
 
 .hangman__img {
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
   width: 220px;
   height: 397px;
-  opacity: 0;
   background-position: center;
   background-repeat: no-repeat;
-  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
 
   &_seen {
     opacity: 1;
+  }
+
+  @include media-mobile-additional {
+    width: 110px;
+    height: 199px;
+    background-size: contain;
   }
 }

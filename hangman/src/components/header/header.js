@@ -11,7 +11,7 @@ class Header {
 
   init() {
     this.header = createElementWithProperties('header', 'header');
-    this.logoLink = createElementWithProperties('a', 'header__link', {
+    this.logoLink = createElementWithProperties('a', 'link header__link', {
       href: `${this.authorGithub}`,
     });
     const img = createElementWithProperties('img', 'header__img', {

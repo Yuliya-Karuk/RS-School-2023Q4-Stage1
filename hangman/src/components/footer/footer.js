@@ -13,7 +13,7 @@ class Footer {
     this.footer = createElementWithProperties('footer', 'footer');
     const linkJS = createElementWithProperties(
       'a',
-      'footer__link footer__link_js',
+      'link footer__link footer__link_js',
       { href: `${this.learnLink}` },
       [{ innerText: 'Learn more about JavaScript' }],
     );

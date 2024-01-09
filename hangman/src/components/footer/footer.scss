@@ -5,29 +5,36 @@
 .footer {
   width: 100%;
   height: 8vh;
+  justify-content: space-between;
   padding: 15px 40px;
   background-color: $color-background-dark;
+  color: $color-text-additional;
+
   @extend %flex-center;
-  justify-content: space-between;
-  color: #333230;
+
+  @include media-tablet {
+    height: 8vh;
+    padding: 15px 20px;
+  }
 }
 
 .footer__link {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 3rem;
+
   @extend %transition;
 
-  &_js{
+  &_js {
     position: relative;
+
     &::after {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: #333230;
+      background-color: $color-text-additional;
       content: '';
       transform: scaleX(0);
       transform-origin: left;
@@ -44,12 +51,15 @@
     }
   }
 
-  &_rs{
+  &_rs {
     @include media-hover {
       &:hover {
-        opacity: 0.7;
-        filter: drop-shadow(3px 5px 5px #000);
+        filter: drop-shadow(3px 5px 5px $color-black);
       }
     }
+  }
+
+  &:active {
+    opacity: 0.7;
   }
 }

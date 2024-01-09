@@ -4,9 +4,15 @@
 
 .keyboard {
   @extend %flex-center;
-  flex-wrap: wrap;
-  gap: 4px;
+
   max-width: 436px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  gap: 4px;
+
+  @include media-desktop-additional {
+    order: 3;
+  }
 
   @include media-mobile-additional {
     max-width: 374px;
@@ -18,15 +24,32 @@
   width: 40px;
   height: 40px;
   padding: 3px;
+
   @extend %flex-center;
+
   border-radius: 5px;
-  background: conic-gradient(from 180deg at 50% 50%, #35312A 38deg, #6C6964 56deg, #6C6964 127deg, #3F3C3C 144deg, #1D2025 179deg, #3F3C3C 217deg, #6C6964 230deg, #6C6964 300deg, #35312A 321deg);
-  box-shadow: 0px 0px 1.5px 0px #000 inset, 0px 0px 0.5px 0px #000 inset, 0px 0px 1px 0px #000 inset;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #35312a 38deg,
+    #6c6964 56deg,
+    #6c6964 127deg,
+    #3f3c3c 144deg,
+    #1d2025 179deg,
+    #3f3c3c 217deg,
+    #6c6964 230deg,
+    #6c6964 300deg,
+    #35312a 321deg
+  );
+  box-shadow:
+    0 0 1.5px 0 #000 inset,
+    0 0 0.5px 0 #000 inset,
+    0 0 1px 0 #000 inset;
   filter: blur(0.2px);
 
   &:nth-of-type(11) {
     margin-left: 10px;
   }
+
   &:nth-of-type(19) {
     margin-right: 10px;
   }
@@ -35,31 +58,40 @@
     opacity: 0.65;
   }
 
-  &:has(.key__button:hover) {
-    box-shadow: 0px 0px 4px 2px #c55a89;
+  &:has(.key__button:not([disabled]):hover) {
+    box-shadow: 0 0 4px 2px #c55a89;
   }
 
   @include media-mobile-additional {
     width: 34px;
     height: 34px;
+
+    &:nth-of-type(11),
+    &:nth-of-type(19) {
+      margin: 0;
+    }
   }
 }
 
 .key__button {
-  border-radius: 5px;
-  border: 1px solid #6C6964;
   display: block;
   width: 34px;
   height: 34px;
-  color: $color-text-dark;
-  background: linear-gradient(180deg, #484645 0%, #63615D 7.81%, #ABA6A0 100%);
+  border: 1px solid #6c6964;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #484645 0%, #63615d 7.81%, #aba6a0 100%);
+  color: $color-text-additional;
 
   @include media-mobile-additional {
     width: 30px;
     height: 30px;
   }
 
+  &:disabled {
+    cursor: default;
+  }
+
   &:active {
-    background: linear-gradient(180deg, #484645 0%, #63615D 7.81%, #524f4c 100%);
+    background: linear-gradient(180deg, #484645 0%, #63615d 7.81%, #524f4c 100%);
   }
 }
