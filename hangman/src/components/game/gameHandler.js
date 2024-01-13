@@ -3,7 +3,7 @@ import Question from '../question/question';
 import data from '../../data/data';
 import Keys from '../keyboard/Keys';
 import Hangman from '../hangman/hangman';
-import { getRandomNumber } from '../../utils/utils';
+import { getRandomNumberExceptPrevious } from '../../utils/utils';
 import Modal from '../modal/modal';
 
 class GameHandler {
@@ -12,7 +12,7 @@ class GameHandler {
   }
 
   init() {
-    this.questionNumber = getRandomNumber(1, 10);
+    this.questionNumber = getRandomNumberExceptPrevious(1, 10, 0);
     this.question = new Question();
     this.keyboard = new Keyboard();
     this.hangman = new Hangman();
@@ -22,6 +22,10 @@ class GameHandler {
       this.keyboard.init(),
       this.hangman.init(),
       this.modal.init(),
+    );
+    console.log(this.question.answer);
+    alert(
+      'The language used in the game is English. Your keyboard is automatically transferred to it. I hope you enjoy the game!',
     );
   }
 
@@ -55,8 +59,10 @@ class GameHandler {
 
   handleKey(e, clickedBtn) {
     const key = e.type === 'click' ? e.target.innerText : Keys[e.code];
-    clickedBtn.setAttribute('disabled', 'true');
-    this.checkKey(key);
+    if (!clickedBtn.hasAttribute('disabled')) {
+      clickedBtn.setAttribute('disabled', 'true');
+      this.checkKey(key);
+    }
   }
 
   checkKey(key) {
@@ -66,7 +72,6 @@ class GameHandler {
         this.question.letterArray[i] = key;
         attempt = 0;
         this.question.renderAnswerBlock();
-        console.log(this.question.letterArray);
         if (this.question.checkAnswerBlock()) this.modal.showModal('win');
       }
     }
@@ -78,11 +83,12 @@ class GameHandler {
   }
 
   restartGame() {
-    this.questionNumber = getRandomNumber(1, 10);
+    this.questionNumber = getRandomNumberExceptPrevious(1, 10, this.questionNumber);
     this.question.renderInnerBlocks(data[this.questionNumber]);
     this.hangman.renderImages();
     this.modal.restartModal(data[this.questionNumber].answer);
     this.keyboard.enableKeys();
+    console.log(this.question.answer);
   }
 }
 

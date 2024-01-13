@@ -11,6 +11,10 @@ export function createElementWithProperties(el, elClassName, attr, props) {
   return element;
 }
 
-export function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+export function getRandomNumberExceptPrevious(min, max, previous) {
+  let newNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  while (newNumber === previous) {
+    newNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  return newNumber;
 }
