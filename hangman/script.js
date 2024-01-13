@@ -76,12 +76,14 @@ class GameHandler {
     this.parentEl = parentEl;
   }
   init() {
-    this.questionNumber = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getRandomNumber)(1, 10);
+    this.questionNumber = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getRandomNumberExceptPrevious)(1, 10, 0);
     this.question = new _question_question__WEBPACK_IMPORTED_MODULE_1__["default"]();
     this.keyboard = new _keyboard_keyboard__WEBPACK_IMPORTED_MODULE_0__["default"]();
     this.hangman = new _hangman_hangman__WEBPACK_IMPORTED_MODULE_4__["default"]();
     this.modal = new _modal_modal__WEBPACK_IMPORTED_MODULE_6__["default"](_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber].answer);
     this.parentEl.append(this.question.init(_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber]), this.keyboard.init(), this.hangman.init(), this.modal.init());
+    console.log(this.question.answer);
+    alert('The language used in the game is English. Your keyboard is automatically transferred to it. I hope you enjoy the game!');
   }
   bindListeners() {
     this.bindVirtualKeyboardListeners();
@@ -108,8 +110,10 @@ class GameHandler {
   }
   handleKey(e, clickedBtn) {
     const key = e.type === 'click' ? e.target.innerText : _keyboard_Keys__WEBPACK_IMPORTED_MODULE_3__["default"][e.code];
-    clickedBtn.setAttribute('disabled', 'true');
-    this.checkKey(key);
+    if (!clickedBtn.hasAttribute('disabled')) {
+      clickedBtn.setAttribute('disabled', 'true');
+      this.checkKey(key);
+    }
   }
   checkKey(key) {
     let attempt = 1;
@@ -118,7 +122,6 @@ class GameHandler {
         this.question.letterArray[i] = key;
         attempt = 0;
         this.question.renderAnswerBlock();
-        console.log(this.question.letterArray);
         if (this.question.checkAnswerBlock()) this.modal.showModal('win');
       }
     }
@@ -129,11 +132,12 @@ class GameHandler {
     }
   }
   restartGame() {
-    this.questionNumber = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getRandomNumber)(1, 10);
+    this.questionNumber = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getRandomNumberExceptPrevious)(1, 10, this.questionNumber);
     this.question.renderInnerBlocks(_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber]);
     this.hangman.renderImages();
     this.modal.restartModal(_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber].answer);
     this.keyboard.enableKeys();
+    console.log(this.question.answer);
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GameHandler);
@@ -692,7 +696,7 @@ game.bindListeners();
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   createElementWithProperties: () => (/* binding */ createElementWithProperties),
-/* harmony export */   getRandomNumber: () => (/* binding */ getRandomNumber)
+/* harmony export */   getRandomNumberExceptPrevious: () => (/* binding */ getRandomNumberExceptPrevious)
 /* harmony export */ });
 function createElementWithProperties(el, elClassName, attr, props) {
   const element = document.createElement(el);
@@ -706,8 +710,12 @@ function createElementWithProperties(el, elClassName, attr, props) {
   if (props) Object.assign(element, ...props);
   return element;
 }
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function getRandomNumberExceptPrevious(min, max, previous) {
+  let newNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  while (newNumber === previous) {
+    newNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  return newNumber;
 }
 
 /***/ }),
