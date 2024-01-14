@@ -82,7 +82,7 @@ class GameHandler {
     this.hangman = new _hangman_hangman__WEBPACK_IMPORTED_MODULE_4__["default"]();
     this.modal = new _modal_modal__WEBPACK_IMPORTED_MODULE_6__["default"](_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber].answer);
     this.parentEl.append(this.question.init(_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber]), this.keyboard.init(), this.hangman.init(), this.modal.init());
-    console.log(this.question.answer);
+    console.log(`Guessing word - ${this.question.answer}`);
     alert('The language used in the game is English. Your keyboard is automatically transferred to it. I hope you enjoy the game!');
   }
   bindListeners() {
@@ -137,7 +137,7 @@ class GameHandler {
     this.hangman.renderImages();
     this.modal.restartModal(_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber].answer);
     this.keyboard.enableKeys();
-    console.log(this.question.answer);
+    console.log(`Guessing word - ${this.question.answer}`);
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GameHandler);
