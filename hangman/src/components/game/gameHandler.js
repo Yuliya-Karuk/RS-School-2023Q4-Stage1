@@ -23,7 +23,7 @@ class GameHandler {
       this.hangman.init(),
       this.modal.init(),
     );
-    console.log(this.question.answer);
+    console.log(`Guessing word - ${this.question.answer}`);
     alert(
       'The language used in the game is English. Your keyboard is automatically transferred to it. I hope you enjoy the game!',
     );
@@ -88,7 +88,7 @@ class GameHandler {
     this.hangman.renderImages();
     this.modal.restartModal(data[this.questionNumber].answer);
     this.keyboard.enableKeys();
-    console.log(this.question.answer);
+    console.log(`Guessing word - ${this.question.answer}`);
   }
 }
 
