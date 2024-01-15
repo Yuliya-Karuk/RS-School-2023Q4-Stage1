@@ -71,6 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const languageMessage = 'The language used in the game is English. Your keyboard is automatically transferred to it. I hope you enjoy the game!';
 class GameHandler {
   constructor(parentEl) {
     this.parentEl = parentEl;
@@ -82,8 +83,8 @@ class GameHandler {
     this.hangman = new _hangman_hangman__WEBPACK_IMPORTED_MODULE_4__["default"]();
     this.modal = new _modal_modal__WEBPACK_IMPORTED_MODULE_6__["default"](_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber].answer);
     this.parentEl.append(this.question.init(_data_data__WEBPACK_IMPORTED_MODULE_2__["default"][this.questionNumber]), this.keyboard.init(), this.hangman.init(), this.modal.init());
+    console.log(languageMessage);
     console.log(`Guessing word - ${this.question.answer}`);
-    alert('The language used in the game is English. Your keyboard is automatically transferred to it. I hope you enjoy the game!');
   }
   bindListeners() {
     this.bindVirtualKeyboardListeners();
@@ -122,14 +123,18 @@ class GameHandler {
         this.question.letterArray[i] = key;
         attempt = 0;
         this.question.renderAnswerBlock();
-        if (this.question.checkAnswerBlock()) this.modal.showModal('win');
+        if (this.question.checkAnswerBlock()) this.finishGame('win');
       }
     }
     if (attempt === 1) {
       this.question.renderCounterBlock(attempt);
       this.hangman.showNextBodyPart(attempt);
-      if (this.question.counter === 6) this.modal.showModal('lose');
+      if (this.question.counter === 6) this.finishGame('lose');
     }
+  }
+  finishGame(message) {
+    this.modal.showModal(message);
+    this.keyboard.disableKeys();
   }
   restartGame() {
     this.questionNumber = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getRandomNumberExceptPrevious)(1, 10, this.questionNumber);
@@ -472,6 +477,13 @@ class Keyboard {
   enableKeys() {
     for (let i = 0; i < this.keyboardList.length; i += 1) {
       this.keyboardList[i].firstChild.removeAttribute('disabled');
+    }
+  }
+  disableKeys() {
+    for (let i = 0; i < this.keyboardList.length; i += 1) {
+      if (!this.keyboardList[i].firstChild.hasAttribute('disabled')) {
+        this.keyboardList[i].firstChild.setAttribute('disabled', 'true');
+      }
     }
   }
 }
