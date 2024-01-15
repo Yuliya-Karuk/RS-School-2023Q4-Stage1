@@ -6,6 +6,9 @@ import Hangman from '../hangman/hangman';
 import { getRandomNumberExceptPrevious } from '../../utils/utils';
 import Modal from '../modal/modal';
 
+const languageMessage =
+  'The language used in the game is English. Your keyboard is automatically transferred to it. I hope you enjoy the game!';
+
 class GameHandler {
   constructor(parentEl) {
     this.parentEl = parentEl;
@@ -23,10 +26,8 @@ class GameHandler {
       this.hangman.init(),
       this.modal.init(),
     );
+    console.log(languageMessage);
     console.log(`Guessing word - ${this.question.answer}`);
-    alert(
-      'The language used in the game is English. Your keyboard is automatically transferred to it. I hope you enjoy the game!',
-    );
   }
 
   bindListeners() {
@@ -72,14 +73,19 @@ class GameHandler {
         this.question.letterArray[i] = key;
         attempt = 0;
         this.question.renderAnswerBlock();
-        if (this.question.checkAnswerBlock()) this.modal.showModal('win');
+        if (this.question.checkAnswerBlock()) this.finishGame('win');
       }
     }
     if (attempt === 1) {
       this.question.renderCounterBlock(attempt);
       this.hangman.showNextBodyPart(attempt);
-      if (this.question.counter === 6) this.modal.showModal('lose');
+      if (this.question.counter === 6) this.finishGame('lose');
     }
+  }
+
+  finishGame(message) {
+    this.modal.showModal(message);
+    this.keyboard.disableKeys();
   }
 
   restartGame() {

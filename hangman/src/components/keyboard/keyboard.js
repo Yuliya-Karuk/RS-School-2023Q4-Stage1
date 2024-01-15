@@ -36,6 +36,14 @@ class Keyboard {
       this.keyboardList[i].firstChild.removeAttribute('disabled');
     }
   }
+
+  disableKeys() {
+    for (let i = 0; i < this.keyboardList.length; i += 1) {
+      if (!this.keyboardList[i].firstChild.hasAttribute('disabled')) {
+        this.keyboardList[i].firstChild.setAttribute('disabled', 'true');
+      }
+    }
+  }
 }
 
 export default Keyboard;
