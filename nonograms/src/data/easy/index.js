@@ -1,4 +1,4 @@
-const templates = {
+const easyTemplates = {
   camel: [
     [0, 0, 0, 1, 1],
     [1, 1, 0, 1, 0],
@@ -43,4 +43,4 @@ const templates = {
   ],
 };
 
-export default templates;
+export default easyTemplates;

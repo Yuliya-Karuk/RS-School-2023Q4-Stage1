@@ -40,3 +40,13 @@ export function countClues(arr) {
   }
   return [left, top];
 }
+
+export function createArrayOneSize(arr) {
+  const max = Math.max(...arr.map(el => el.length));
+  for (let i = 0; i < arr.length; i += 1) {
+    while (arr[i].length < max) {
+      arr[i].unshift('');
+    }
+  }
+  return arr;
+}

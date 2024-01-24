@@ -16,7 +16,7 @@ $width-cell: 40px;
 
 .top-clues__column {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .game-block {
@@ -64,7 +64,6 @@ $width-cell: 40px;
 
 .left-clues__row {
   display: flex;
-  flex-direction: row-reverse;
 }
 
 .clue {

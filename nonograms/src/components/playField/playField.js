@@ -1,19 +1,14 @@
-import { createElementWithProperties, countClues } from '../../utils/utils';
-import templates from '../../data/easy';
+import { createElementWithProperties, countClues, createArrayOneSize } from '../../utils/utils';
+import mediumTemplates from '../../data/medium';
 import './playField.scss';
 
 class PlayField {
   constructor() {
-    this.mode = 'easy';
-    this.image = 'buggy';
-    this.startField = [
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-    ];
-    this.winField = templates[this.image];
+    this.mode = 'medium';
+    this.size = 10;
+    this.image = 'duck';
+    this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
+    this.winField = mediumTemplates[this.image];
   }
 
   init() {
@@ -32,8 +27,8 @@ class PlayField {
   }
 
   renderPlayField() {
-    for (let i = 0; i < templates[this.image].length; i += 1) {
-      templates.camel[i].forEach((el, index) => {
+    for (let i = 0; i < mediumTemplates[this.image].length; i += 1) {
+      mediumTemplates[this.image][i].forEach((el, index) => {
         const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}` });
         this.playField.append(newCell);
       });
@@ -41,19 +36,17 @@ class PlayField {
   }
 
   renderClues() {
-    this.clues = countClues(templates[this.image]);
+    this.clues = countClues(mediumTemplates[this.image]);
     this.renderLeftClue();
     this.renderTopClue();
   }
 
   renderLeftClue() {
-    const leftMax = Math.max(...this.clues[0].map(el => el.length));
-    for (let i = 0; i < this.clues[0].length; i += 1) {
+    const leftClues = createArrayOneSize(this.clues[0]);
+    for (let i = 0; i < leftClues.length; i += 1) {
       const newRow = createElementWithProperties('div', 'left-clues__row');
-      for (let j = 0; j < leftMax; j += 1) {
-        const newCell = createElementWithProperties('span', 'clue', undefined, [
-          { innerText: `${this.clues[0][i][j] ? this.clues[0][i][j] : ''}` },
-        ]);
+      for (let j = 0; j < leftClues[i].length; j += 1) {
+        const newCell = createElementWithProperties('span', 'clue', undefined, [{ innerText: `${leftClues[i][j]}` }]);
         newRow.append(newCell);
       }
       this.leftClues.append(newRow);
@@ -61,13 +54,11 @@ class PlayField {
   }
 
   renderTopClue() {
-    const topMax = Math.max(...this.clues[1].map(el => el.length));
-    for (let i = 0; i < this.clues[1].length; i += 1) {
+    const topClues = createArrayOneSize(this.clues[1]);
+    for (let i = 0; i < topClues.length; i += 1) {
       const newRow = createElementWithProperties('div', 'top-clues__column');
-      for (let j = 0; j < topMax; j += 1) {
-        const newCell = createElementWithProperties('span', 'clue', undefined, [
-          { innerText: `${this.clues[0][i][j] ? this.clues[0][i][j] : ''}` },
-        ]);
+      for (let j = 0; j < topClues[i].length; j += 1) {
+        const newCell = createElementWithProperties('span', 'clue', undefined, [{ innerText: `${topClues[i][j]}` }]);
         newRow.append(newCell);
       }
       this.topClues.append(newRow);
