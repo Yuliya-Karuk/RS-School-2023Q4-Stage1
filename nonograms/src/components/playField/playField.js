@@ -6,6 +6,14 @@ class PlayField {
   constructor() {
     this.mode = 'easy';
     this.image = 'buggy';
+    this.startField = [
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+    ];
+    this.winField = templates[this.image];
   }
 
   init() {
@@ -18,13 +26,15 @@ class PlayField {
     this.renderClues();
     gameRow.append(this.leftClues, this.playField);
     this.gameField.append(this.topClues, gameRow);
+    this.playField.addEventListener('contextmenu', e => e.preventDefault());
+    this.gameField.addEventListener('mouseup', e => this.handleClick(e));
     return this.gameField;
   }
 
   renderPlayField() {
     for (let i = 0; i < templates[this.image].length; i += 1) {
-      templates.camel[i].forEach(el => {
-        const newCell = createElementWithProperties('li', 'cell', { id: `${el}` });
+      templates.camel[i].forEach((el, index) => {
+        const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}` });
         this.playField.append(newCell);
       });
     }
@@ -62,6 +72,31 @@ class PlayField {
       }
       this.topClues.append(newRow);
     }
+  }
+
+  handleClick(e) {
+    if (e.target.classList.contains('cell') && e.button === 2) {
+      e.target.classList.remove('cell_dark');
+      e.target.classList.toggle('cell_crossed');
+    }
+    if (e.target.classList.contains('cell') && e.button === 0) {
+      e.target.classList.remove('cell_crossed');
+      e.target.classList.toggle('cell_dark');
+    }
+    this.fillStartField(e);
+    this.checkEndGame();
+  }
+
+  fillStartField(e) {
+    const indexesArray = e.target.id.split('.').map(el => Number(el));
+    if (e.button === 0) {
+      const num = e.target.classList.contains('cell_dark') ? 1 : 0;
+      this.startField[indexesArray[0]][indexesArray[1]] = num;
+    }
+  }
+
+  checkEndGame() {
+    if (this.startField.toString() === this.winField.toString()) console.log('win');
   }
 }
 

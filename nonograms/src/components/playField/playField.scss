@@ -25,24 +25,35 @@ $width-cell: 40px;
 
 .play-field {
   display: grid;
-  grid-template-columns: repeat($size, 1fr);
+  background-color: $color-cell;
 
   &_easy {
     width: calc(5 * $width-cell);
+    grid-template-columns: repeat(5, 1fr);
   }
   &_medium {
     width: calc(10 * $width-cell);
+    grid-template-columns: repeat(10, 1fr);
   }
   &_hard {
     width: calc(15 * $width-cell);
+    grid-template-columns: repeat(15, 1fr);
   }
 }
 
 .cell  {
-  background-color: $color-cell;
+  background: transparent;
   border: 1px solid $color-clue;
   width: $width-cell;
   height: $width-cell;
+
+  &_dark {
+    background: $color-dark-cell;
+  }
+
+  &_crossed {
+    background: center no-repeat url("../../images/cross.svg");
+  }
 }
 
 .left-clues {
