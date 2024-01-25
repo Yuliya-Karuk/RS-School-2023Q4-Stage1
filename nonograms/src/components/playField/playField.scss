@@ -1,8 +1,37 @@
 @import '../../sass/common/constants';
 
-$width-cell: 40px;
-
 .game-field {
+  height: calc(100vh - 170px);
+  min-height: 520px;
+  width: 100%;
+  max-width: 600px;
+  background: center no-repeat url('../../images/main9.png');
+  background-size: contain;
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_easy .cell,
+  &_easy .clue {
+    width: 40px;
+    height: 40px;
+  }
+
+  &_medium .cell,
+  &_medium .clue {
+    width: 30px;
+    height: 30px;
+  }
+
+  &_hard .cell,
+  &_hard .clue {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.frame {
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -17,6 +46,14 @@ $width-cell: 40px;
 .top-clues__column {
   display: flex;
   flex-direction: column;
+
+  &:nth-of-type(5n + 1):not(:first-of-type) .clue {
+    border-left: 1px solid $color-clue-separator;
+  }
+
+  &:nth-of-type(5n):not(:last-of-type) .clue {
+    border-right: 1px solid $color-clue-separator;
+  }
 }
 
 .game-block {
@@ -25,34 +62,63 @@ $width-cell: 40px;
 
 .play-field {
   display: grid;
-  background-color: $color-cell;
+  background-color: $color-cell-white;
 
   &_easy {
-    width: calc(5 * $width-cell);
+    width: calc(5 * 40px);
     grid-template-columns: repeat(5, 1fr);
   }
   &_medium {
-    width: calc(10 * $width-cell);
+    width: calc(10 * 30px);
     grid-template-columns: repeat(10, 1fr);
   }
   &_hard {
-    width: calc(15 * $width-cell);
+    width: calc(15 * 20px);
     grid-template-columns: repeat(15, 1fr);
   }
 }
 
 .cell  {
-  background: transparent;
-  border: 1px solid $color-clue;
-  width: $width-cell;
-  height: $width-cell;
+  background: $color-cell-white;
+  border: 1px solid $color-main-border;
 
   &_dark {
-    background: $color-dark-cell;
+    background: $color-cell-black;
   }
 
   &_crossed {
     background: center no-repeat url("../../images/cross.svg");
+  }
+
+  .play-field_medium &:nth-of-type(10n + 5) {
+    border-right: 1px solid $color-cell-separator;
+  }
+  .play-field_medium &:nth-of-type(10n + 6) {
+    border-left: 1px solid $color-cell-separator;
+  }
+
+  .play-field_medium &:nth-of-type(n + 51):nth-of-type(-n + 60) {
+    border-top: 1px solid $color-cell-separator;
+  }
+  .play-field_medium &:nth-of-type(n + 41):nth-of-type(-n + 50) {
+    border-bottom: 1px solid $color-cell-separator;
+  }
+
+  .play-field_hard &:nth-of-type(5n + 5):not(:nth-of-type(15n)) {
+    border-right: 1px solid $color-cell-separator;
+  }
+  .play-field_hard &:nth-of-type(5n + 6):not(:nth-of-type(15n + 1)) {
+    border-left: 1px solid $color-cell-separator;
+  }
+
+  .play-field_hard &:nth-of-type(n + 76):nth-of-type(-n + 90),
+  .play-field_hard &:nth-of-type(n + 151):nth-of-type(-n + 165) {
+    border-top: 1px solid $color-cell-separator;
+  }
+
+  .play-field_hard &:nth-of-type(n + 61):nth-of-type(-n + 75),
+  .play-field_hard &:nth-of-type(n + 135):nth-of-type(-n + 150) {
+    border-bottom: 1px solid $color-cell-separator;
   }
 }
 
@@ -64,14 +130,19 @@ $width-cell: 40px;
 
 .left-clues__row {
   display: flex;
+
+  &:nth-of-type(5n + 1):not(:first-of-type) .clue {
+    border-top: 1px solid $color-clue-separator;
+  }
+  &:nth-of-type(5n):not(:last-of-type) .clue {
+    border-bottom: 1px solid $color-clue-separator;
+  }
 }
 
 .clue {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $color-clue;
-  border: 1px solid $color-cell;
-  width: $width-cell;
-  height: $width-cell;
+  background-color: $color-bg-clue;
+  border: 1px solid $color-main-border;
 }

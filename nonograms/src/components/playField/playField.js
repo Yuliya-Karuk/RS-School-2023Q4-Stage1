@@ -1,34 +1,36 @@
 import { createElementWithProperties, countClues, createArrayOneSize } from '../../utils/utils';
-import mediumTemplates from '../../data/medium';
+import hardTemplates from '../../data/hard';
 import './playField.scss';
 
 class PlayField {
   constructor() {
-    this.mode = 'medium';
-    this.size = 10;
-    this.image = 'duck';
+    this.mode = 'hard';
+    this.size = 15;
+    this.image = 'squirrel';
     this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
-    this.winField = mediumTemplates[this.image];
+    this.winField = hardTemplates[this.image];
   }
 
   init() {
-    this.gameField = createElementWithProperties('div', 'game-field');
+    this.gameField = createElementWithProperties('div', `game-field game-field_${this.mode}`);
     const gameRow = createElementWithProperties('div', 'game-block');
     this.playField = createElementWithProperties('ul', `play-field play-field_${this.mode}`);
     this.leftClues = createElementWithProperties('div', 'left-clues');
     this.topClues = createElementWithProperties('div', 'top-clues');
+    const frame = createElementWithProperties('div', 'frame');
     this.renderPlayField();
     this.renderClues();
     gameRow.append(this.leftClues, this.playField);
-    this.gameField.append(this.topClues, gameRow);
+    frame.append(this.topClues, gameRow);
+    this.gameField.append(frame);
     this.playField.addEventListener('contextmenu', e => e.preventDefault());
     this.gameField.addEventListener('mouseup', e => this.handleClick(e));
     return this.gameField;
   }
 
   renderPlayField() {
-    for (let i = 0; i < mediumTemplates[this.image].length; i += 1) {
-      mediumTemplates[this.image][i].forEach((el, index) => {
+    for (let i = 0; i < hardTemplates[this.image].length; i += 1) {
+      hardTemplates[this.image][i].forEach((el, index) => {
         const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}` });
         this.playField.append(newCell);
       });
@@ -36,7 +38,7 @@ class PlayField {
   }
 
   renderClues() {
-    this.clues = countClues(mediumTemplates[this.image]);
+    this.clues = countClues(hardTemplates[this.image]);
     this.renderLeftClue();
     this.renderTopClue();
   }

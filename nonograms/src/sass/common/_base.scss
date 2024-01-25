@@ -3,3 +3,19 @@
 *::after {
   box-sizing: border-box;
 }
+
+html {
+  font-size: 10px;
+  font-family: 'Overlock', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: center no-repeat url('../images/31499.jpg');
+  background-size: cover;
+}
+
+h1 {
+  @include font(5rem, 900, 1.05);
+  color: $color-primary-dark;
+}

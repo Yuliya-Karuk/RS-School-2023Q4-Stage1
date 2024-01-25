@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.timer {
+  width: 400px;
+  height: 60px;
+  background: center no-repeat url('../../images/timer3.png');
+}

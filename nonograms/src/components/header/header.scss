@@ -1,0 +1,23 @@
+@import '../../sass/common/placeholders';
+
+.header {
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12.5px);
+}
+
+
+.header__wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  @extend %container;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
