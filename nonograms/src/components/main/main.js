@@ -4,13 +4,13 @@ import './main.scss';
 class Main {
   constructor() {
     this.githubLink = 'https://github.com/Yuliya-Karuk';
-    this.main = createElementWithProperties('main', 'main');
+    this.element = createElementWithProperties('main', 'main');
     this.init();
   }
 
   init() {
-    this.timer = createElementWithProperties('div', 'timer');
-    this.main.append(this.timer);
+    this.timerElement = createElementWithProperties('div', 'timer', undefined, [{ innerText: `00:00` }]);
+    this.element.append(this.timerElement);
   }
 }
 

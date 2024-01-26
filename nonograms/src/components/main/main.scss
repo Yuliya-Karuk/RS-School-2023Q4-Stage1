@@ -1,3 +1,6 @@
+@import '../../sass/common/constants';
+@import '../../sass/common/mixins';
+
 .main {
   display: flex;
   flex-direction: column;
@@ -8,5 +11,10 @@
 .timer {
   width: 400px;
   height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: center no-repeat url('../../images/timer3.png');
+  @include font(3rem, 900, 1.05);
+  color: $color-primary-dark;
 }

@@ -7,10 +7,11 @@ class Footer {
   constructor() {
     this.githubLink = 'https://github.com/Yuliya-Karuk';
     this.RSLink = 'https://github.com/rolling-scopes-school/tasks/tree/master/stage1';
+    this.element = createElementWithProperties('footer', 'footer');
+    this.init();
   }
 
   init() {
-    this.footer = createElementWithProperties('footer', 'footer');
     const footerWrapper = createElementWithProperties('div', 'footer__wrapper');
     const linkGithub = createElementWithProperties('a', 'link footer__link', { href: `${this.githubLink}` }, [
       { innerText: 'Yuliya' },
@@ -30,8 +31,7 @@ class Footer {
     linkGithub.append(githubImg);
     linkRS.append(rsImg);
     footerWrapper.append(linkGithub, linkRS);
-    this.footer.append(footerWrapper);
-    return this.footer;
+    this.element.append(footerWrapper);
   }
 }
 

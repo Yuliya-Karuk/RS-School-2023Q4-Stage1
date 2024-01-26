@@ -2,17 +2,16 @@ import { createElementWithProperties, countClues, createArrayOneSize } from '../
 import hardTemplates from '../../data/hard';
 import './playField.scss';
 
-class PlayField {
+class GameFields {
   constructor() {
     this.mode = 'hard';
-    this.size = 15;
     this.image = 'squirrel';
-    this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
     this.winField = hardTemplates[this.image];
+    this.init();
   }
 
   init() {
-    this.gameField = createElementWithProperties('div', `game-field game-field_${this.mode}`);
+    this.element = createElementWithProperties('div', `game-field game-field_${this.mode}`);
     const gameRow = createElementWithProperties('div', 'game-block');
     this.playField = createElementWithProperties('ul', `play-field play-field_${this.mode}`);
     this.leftClues = createElementWithProperties('div', 'left-clues');
@@ -22,16 +21,14 @@ class PlayField {
     this.renderClues();
     gameRow.append(this.leftClues, this.playField);
     frame.append(this.topClues, gameRow);
-    this.gameField.append(frame);
-    this.playField.addEventListener('contextmenu', e => e.preventDefault());
-    this.gameField.addEventListener('mouseup', e => this.handleClick(e));
-    return this.gameField;
+    this.element.append(frame);
   }
 
   renderPlayField() {
+    this.playField.innerHTML = '';
     for (let i = 0; i < hardTemplates[this.image].length; i += 1) {
       hardTemplates[this.image][i].forEach((el, index) => {
-        const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}` });
+        const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}`, realValue: `${el}` });
         this.playField.append(newCell);
       });
     }
@@ -67,30 +64,14 @@ class PlayField {
     }
   }
 
-  handleClick(e) {
-    if (e.target.classList.contains('cell') && e.button === 2) {
-      e.target.classList.remove('cell_dark');
-      e.target.classList.toggle('cell_crossed');
+  renderSolution() {
+    for (let i = 0; i < this.playField.children.length; i += 1) {
+      if (this.playField.children[i].getAttribute('realValue') === '1') {
+        this.playField.children[i].classList.add('cell_dark');
+      }
+      this.playField.children[i].classList.add('cell_solved');
     }
-    if (e.target.classList.contains('cell') && e.button === 0) {
-      e.target.classList.remove('cell_crossed');
-      e.target.classList.toggle('cell_dark');
-    }
-    this.fillStartField(e);
-    this.checkEndGame();
-  }
-
-  fillStartField(e) {
-    const indexesArray = e.target.id.split('.').map(el => Number(el));
-    if (e.button === 0) {
-      const num = e.target.classList.contains('cell_dark') ? 1 : 0;
-      this.startField[indexesArray[0]][indexesArray[1]] = num;
-    }
-  }
-
-  checkEndGame() {
-    if (this.startField.toString() === this.winField.toString()) console.log('win');
   }
 }
 
-export default PlayField;
+export default GameFields;

@@ -90,6 +90,10 @@
     background: center no-repeat url("../../images/cross.svg");
   }
 
+  &_solved {
+    pointer-events: none;
+  }
+
   .play-field_medium &:nth-of-type(10n + 5) {
     border-right: 1px solid $color-cell-separator;
   }

@@ -1,4 +1,6 @@
 @import '../../sass/common/placeholders';
+@import '../../sass/common/constants';
+@import '../../sass/common/mixins';
 
 .header {
   width: 100%;
@@ -11,6 +13,7 @@
 .header__wrapper {
   height: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   @extend %container;
@@ -20,4 +23,29 @@
   display: flex;
   align-items: center;
   column-gap: 10px;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav__button {
+  padding: 5px 10px;
+  background-color: #2e2448;
+  @include font(2rem, 900, 1.05);
+  color: #d26efb;
+  border-radius: 5px;
+  @extend %transition;
+
+  @include media-hover {
+    &:hover {
+      filter: drop-shadow(2px 3px 3px rgba(256, 256, 256, 0.4));
+    }
+  }
+
+  &:active {
+    opacity: 0.7;
+    filter: drop-shadow(2px 3px 3px rgba(0, 0, 0, 0.4));
+  }
 }

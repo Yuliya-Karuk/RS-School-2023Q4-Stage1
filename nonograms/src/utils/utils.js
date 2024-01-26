@@ -50,3 +50,22 @@ export function createArrayOneSize(arr) {
   }
   return arr;
 }
+
+export function launchTimer(timerEl) {
+  const timerElement = timerEl;
+  let timerSeconds = 0;
+  let timerMinutes = 0;
+
+  return setInterval(() => {
+    timerSeconds += 1;
+
+    if (timerSeconds === 60) {
+      timerMinutes += 1;
+      timerSeconds = 0;
+    }
+
+    const formattedSec = String(timerSeconds).padStart(2, '0');
+    const formattedMin = String(timerMinutes).padStart(2, '0');
+    timerElement.innerText = `${formattedMin}:${formattedSec}`;
+  }, 1000);
+}
