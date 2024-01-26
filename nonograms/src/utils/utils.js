@@ -69,3 +69,8 @@ export function launchTimer(timerEl) {
     timerElement.innerText = `${formattedMin}:${formattedSec}`;
   }, 1000);
 }
+
+export function getRandomNumber(min, max) {
+  const newNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  return newNumber;
+}

@@ -1,17 +1,21 @@
 import { createElementWithProperties, countClues, createArrayOneSize } from '../../utils/utils';
-import hardTemplates from '../../data/hard';
 import './playField.scss';
 
+const GameMood = {
+  5: 'easy',
+  10: 'medium',
+  15: 'hard',
+};
 class GameFields {
-  constructor() {
-    this.mode = 'hard';
-    this.image = 'squirrel';
-    this.winField = hardTemplates[this.image];
+  constructor(winImage, mood) {
+    this.mode = GameMood[mood];
+    this.winField = winImage;
+    this.element = createElementWithProperties('div', `game-field game-field_${this.mode}`);
     this.init();
   }
 
   init() {
-    this.element = createElementWithProperties('div', `game-field game-field_${this.mode}`);
+    this.element.innerHTML = '';
     const gameRow = createElementWithProperties('div', 'game-block');
     this.playField = createElementWithProperties('ul', `play-field play-field_${this.mode}`);
     this.leftClues = createElementWithProperties('div', 'left-clues');
@@ -26,8 +30,8 @@ class GameFields {
 
   renderPlayField() {
     this.playField.innerHTML = '';
-    for (let i = 0; i < hardTemplates[this.image].length; i += 1) {
-      hardTemplates[this.image][i].forEach((el, index) => {
+    for (let i = 0; i < this.winField.length; i += 1) {
+      this.winField[i].forEach((el, index) => {
         const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}`, realValue: `${el}` });
         this.playField.append(newCell);
       });
@@ -35,7 +39,7 @@ class GameFields {
   }
 
   renderClues() {
-    this.clues = countClues(hardTemplates[this.image]);
+    this.clues = countClues(this.winField);
     this.renderLeftClue();
     this.renderTopClue();
   }
@@ -68,9 +72,18 @@ class GameFields {
     for (let i = 0; i < this.playField.children.length; i += 1) {
       if (this.playField.children[i].getAttribute('realValue') === '1') {
         this.playField.children[i].classList.add('cell_dark');
+      } else {
+        this.playField.children[i].classList = 'cell';
       }
       this.playField.children[i].classList.add('cell_solved');
     }
+  }
+
+  changeGame(winImage, mood) {
+    this.mode = GameMood[mood];
+    this.winField = winImage;
+    this.element.classList = `game-field game-field_${this.mode}`;
+    this.init();
   }
 }
 

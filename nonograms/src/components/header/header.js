@@ -29,9 +29,12 @@ class Header {
       { innerText: 'Reset' },
     ]);
     this.solutionButton = createElementWithProperties('button', 'nav__button nav__button_reset', { type: 'button' }, [
-      { innerText: `Solution` },
+      { innerText: 'Solution' },
     ]);
-    this.nav.append(this.resetButton, this.solutionButton);
+    this.randomButton = createElementWithProperties('button', 'nav__button nav__button_random', { type: 'button' }, [
+      { innerText: 'Random game' },
+    ]);
+    this.nav.append(this.resetButton, this.solutionButton, this.randomButton);
   }
 }
 

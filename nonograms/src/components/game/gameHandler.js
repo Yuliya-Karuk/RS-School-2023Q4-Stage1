@@ -3,7 +3,8 @@ import GameFields from '../gameFields/gameFields';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Main from '../main/main';
-import { launchTimer } from '../../utils/utils';
+import { getRandomNumber, launchTimer } from '../../utils/utils';
+import { templatesByNumber } from '../../data';
 
 class GameHandler {
   constructor(parentEl) {
@@ -11,21 +12,25 @@ class GameHandler {
     this.header = new Header();
     this.footer = new Footer();
     this.main = new Main();
-    this.gameFields = new GameFields(0);
-    this.size = 15;
-    this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
     this.timerIsStarted = false;
+    this.chooseRandomGame();
   }
 
   init() {
-    this.main.element.append(this.gameFields.element);
     this.parentEl.append(this.header.element, this.main.element, this.footer.element);
-    this.bindListeners();
+    this.gameFields = new GameFields(this.gameImage, this.size);
+    this.main.element.append(this.gameFields.element);
+    this.bindButtonListeners();
+    this.bindGameFieldListeners();
   }
 
-  bindListeners() {
+  bindButtonListeners() {
     this.header.resetButton.addEventListener('click', () => this.resetGame());
     this.header.solutionButton.addEventListener('click', () => this.showSolution());
+    this.header.randomButton.addEventListener('click', () => this.renderRandomGame());
+  }
+
+  bindGameFieldListeners() {
     this.gameFields.playField.addEventListener('contextmenu', e => e.preventDefault());
     this.gameFields.playField.addEventListener('mouseup', e => this.handleClick(e));
   }
@@ -78,6 +83,20 @@ class GameHandler {
   showSolution() {
     this.resetTimer();
     this.gameFields.renderSolution();
+  }
+
+  chooseRandomGame() {
+    const randomId = getRandomNumber(0, templatesByNumber.length);
+    this.gameImage = templatesByNumber[randomId];
+    this.size = this.gameImage.length;
+    this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
+  }
+
+  renderRandomGame() {
+    this.chooseRandomGame();
+    this.gameFields.changeGame(this.gameImage, this.size);
+    this.resetTimer();
+    this.bindGameFieldListeners();
   }
 }
 

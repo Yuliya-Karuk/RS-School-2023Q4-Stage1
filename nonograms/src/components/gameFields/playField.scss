@@ -82,12 +82,12 @@
   background: $color-cell-white;
   border: 1px solid $color-main-border;
 
-  &_dark {
-    background: $color-cell-black;
-  }
-
   &_crossed {
     background: center no-repeat url("../../images/cross.svg");
+  }
+
+  &_dark {
+    background: $color-cell-black;
   }
 
   &_solved {
