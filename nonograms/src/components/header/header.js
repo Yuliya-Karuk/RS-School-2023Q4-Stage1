@@ -25,13 +25,13 @@ class Header {
   }
 
   renderNav() {
-    this.resetButton = createElementWithProperties('button', 'nav__button nav__button_reset', { type: 'button' }, [
+    this.resetButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
       { innerText: 'Reset' },
     ]);
-    this.solutionButton = createElementWithProperties('button', 'nav__button nav__button_reset', { type: 'button' }, [
+    this.solutionButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
       { innerText: 'Solution' },
     ]);
-    this.randomButton = createElementWithProperties('button', 'nav__button nav__button_random', { type: 'button' }, [
+    this.randomButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
       { innerText: 'Random game' },
     ]);
     this.nav.append(this.resetButton, this.solutionButton, this.randomButton);

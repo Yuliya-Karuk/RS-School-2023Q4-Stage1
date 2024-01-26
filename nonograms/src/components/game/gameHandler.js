@@ -5,6 +5,8 @@ import Footer from '../footer/footer';
 import Main from '../main/main';
 import { getRandomNumber, launchTimer } from '../../utils/utils';
 import { templatesByNumber } from '../../data';
+import ModalWin from '../modalWin/modalWin';
+import ModalLevel from '../modalLevel/modalLevel';
 
 class GameHandler {
   constructor(parentEl) {
@@ -12,12 +14,20 @@ class GameHandler {
     this.header = new Header();
     this.footer = new Footer();
     this.main = new Main();
+    this.modalWin = new ModalWin();
+    this.modalLevel = new ModalLevel();
     this.timerIsStarted = false;
     this.chooseRandomGame();
   }
 
   init() {
-    this.parentEl.append(this.header.element, this.main.element, this.footer.element);
+    this.parentEl.append(
+      this.header.element,
+      this.main.element,
+      this.footer.element,
+      this.modalWin.element,
+      this.modalLevel.element,
+    );
     this.gameFields = new GameFields(this.gameImage, this.size);
     this.main.element.append(this.gameFields.element);
     this.bindButtonListeners();
@@ -26,8 +36,11 @@ class GameHandler {
 
   bindButtonListeners() {
     this.header.resetButton.addEventListener('click', () => this.resetGame());
-    this.header.solutionButton.addEventListener('click', () => this.showSolution());
+    // this.header.solutionButton.addEventListener('click', () => this.showSolution());
+    this.header.solutionButton.addEventListener('click', () => this.winGame());
     this.header.randomButton.addEventListener('click', () => this.renderRandomGame());
+    this.modalWin.randomButton.addEventListener('click', () => this.renderRandomGame());
+    this.modalWin.chooseGameButton.addEventListener('click', () => this.chooseGame());
   }
 
   bindGameFieldListeners() {
@@ -93,10 +106,22 @@ class GameHandler {
   }
 
   renderRandomGame() {
+    this.modalWin.closeModal();
     this.chooseRandomGame();
     this.gameFields.changeGame(this.gameImage, this.size);
     this.resetTimer();
     this.bindGameFieldListeners();
+  }
+
+  winGame() {
+    const time = this.main.timerElement.innerText;
+    this.modalWin.showModal(time);
+    this.resetTimer();
+  }
+
+  chooseGame() {
+    this.modalWin.closeModal();
+    this.modalLevel.showModal();
   }
 }
 
