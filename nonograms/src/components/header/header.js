@@ -1,6 +1,8 @@
 import { createElementWithProperties } from '../../utils/utils';
 import './header.scss';
 import logo from '../../images/logo.png';
+import save from '../../images/save2.svg';
+import load from '../../images/load2.svg';
 
 class Header {
   constructor() {
@@ -35,9 +37,22 @@ class Header {
       { innerText: 'Random game' },
     ]);
     this.newGameButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
-      { innerText: 'New Game' },
+      { innerText: 'New game' },
     ]);
-    this.nav.append(this.resetButton, this.solutionButton, this.randomButton, this.newGameButton);
+    const imgSave = createElementWithProperties('img', 'nav__img', { alt: 'Save icon', src: `${save}` });
+    const imgLoad = createElementWithProperties('img', 'nav__img', { alt: 'Save icon', src: `${load}` });
+    this.saveGameButton = createElementWithProperties('button', 'btn nav__button nav__button_save', { type: 'button' });
+    this.loadGameButton = createElementWithProperties('button', 'btn nav__button nav__button_load', { type: 'button' });
+    this.saveGameButton.append(imgSave);
+    this.loadGameButton.append(imgLoad);
+    this.nav.append(
+      this.resetButton,
+      this.solutionButton,
+      this.randomButton,
+      this.newGameButton,
+      this.saveGameButton,
+      this.loadGameButton,
+    );
   }
 }
 

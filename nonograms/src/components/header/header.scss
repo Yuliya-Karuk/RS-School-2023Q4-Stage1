@@ -32,10 +32,19 @@
 
 .nav__button {
   padding: 5px 10px;
+  background: #2e2448;
 
   @include media-hover {
     &:hover {
       filter: drop-shadow(2px 3px 3px rgba(256, 256, 256, 0.4));
     }
+  }
+
+  &_save {
+    padding: 5px;
+  }
+
+  &_load {
+   padding: 5px;
   }
 }

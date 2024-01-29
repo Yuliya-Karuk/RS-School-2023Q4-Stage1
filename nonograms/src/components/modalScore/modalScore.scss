@@ -1,0 +1,25 @@
+@import '../../sass/common/constants';
+@import '../../sass/common/placeholders';
+@import '../../sass/common/mixins';
+
+.modal_score {
+  .modal__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .modal__score-item {
+    @include font(3rem, 900, 1.05);
+  }
+
+  .modal__button {
+    padding: 10px 15px;
+
+    @include media-hover {
+      &:hover {
+        filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.6));
+      }
+    }
+  }
+}

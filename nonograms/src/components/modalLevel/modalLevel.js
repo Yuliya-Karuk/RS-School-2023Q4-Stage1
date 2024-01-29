@@ -36,10 +36,10 @@ class ModalLevel {
     this.level = level;
     this.changeActiveLevelButton(this.level);
     this.buttonsImgContainer.innerHTML = '';
-    const allImagesNames = Object.keys(templatesByLevel[this.level]);
+    const allImagesNames = templatesByLevel[this.level];
     for (let i = 0; i < allImagesNames.length; i += 1) {
       const btn = createElementWithProperties('button', 'btn modal__button', { type: 'button' }, [
-        { innerText: `${allImagesNames[i]}` },
+        { innerText: `${allImagesNames[i].name}` },
       ]);
       this.buttonsImgContainer.append(btn);
     }

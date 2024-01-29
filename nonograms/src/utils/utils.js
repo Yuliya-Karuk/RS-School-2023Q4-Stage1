@@ -70,7 +70,22 @@ export function launchTimer(timerEl) {
   }, 1000);
 }
 
+export function prepareTimeFormat(timeInSec) {
+  const timeSec = timeInSec % 60;
+  const timeMin = Math.floor(timeInSec / 60);
+  const formattedSec = String(timeSec).padStart(2, '0');
+  const formattedMin = String(timeMin).padStart(2, '0');
+  return `${formattedMin}:${formattedSec}`;
+}
+
 export function getRandomNumber(min, max) {
   const newNumber = Math.floor(Math.random() * (max - min + 1) + min);
   return newNumber;
+}
+
+export function convertTimeToSec(timeStr) {
+  const timeArr = timeStr.replaceAll('0', '').split(':');
+  const min = timeArr[0] !== '' ? +timeArr[0] : 0;
+  const sec = timeArr[1] !== '' ? +timeArr[1] + min * 60 : 0;
+  return sec;
 }

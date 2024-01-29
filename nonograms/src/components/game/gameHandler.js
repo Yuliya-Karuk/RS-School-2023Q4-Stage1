@@ -1,12 +1,13 @@
-// import { createElementWithProperties } from '../../utils/utils';
 import GameFields from '../gameFields/gameFields';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Main from '../main/main';
-import { getRandomNumber, launchTimer } from '../../utils/utils';
-import { templatesByLevel, templatesByNumber } from '../../data';
+import { getRandomNumber, launchTimer, convertTimeToSec } from '../../utils/utils';
+import { templatesById } from '../../data';
 import ModalWin from '../modalWin/modalWin';
 import ModalLevel from '../modalLevel/modalLevel';
+import Storage from '../../utils/storage';
+import ModalScore from '../modalScore/modalScore';
 
 class GameHandler {
   constructor(parentEl) {
@@ -16,6 +17,8 @@ class GameHandler {
     this.main = new Main();
     this.modalWin = new ModalWin();
     this.modalLevel = new ModalLevel();
+    this.storage = new Storage();
+    this.modalScore = new ModalScore();
     this.timerIsStarted = false;
     this.chooseRandomGame();
   }
@@ -27,6 +30,7 @@ class GameHandler {
       this.footer.element,
       this.modalWin.element,
       this.modalLevel.element,
+      this.modalScore.element,
     );
     this.gameFields = new GameFields(this.gameImage, this.size);
     this.main.element.append(this.gameFields.element);
@@ -39,13 +43,16 @@ class GameHandler {
     this.header.resetButton.addEventListener('click', () => this.resetGame());
     this.header.solutionButton.addEventListener('click', () => this.showSolution());
     this.header.newGameButton.addEventListener('click', () => this.chooseLevelGame());
-    this.header.randomButton.addEventListener('click', () => this.renderGame());
+    // this.header.randomButton.addEventListener('click', () => this.renderGame());
+    this.header.randomButton.addEventListener('click', () => this.showScoreModal());
     this.modalWin.randomButton.addEventListener('click', () => this.renderGame());
     this.modalWin.chooseGameButton.addEventListener('click', () => this.chooseLevelGame());
     for (let i = 0; i < this.modalLevel.buttonsLevelContainer.children.length; i += 1) {
       const btn = this.modalLevel.buttonsLevelContainer.children[i];
       btn.addEventListener('click', () => this.handleChooseLevel(btn.innerText));
     }
+    this.modalWin.scoreButton.addEventListener('click', () => this.showScoreModal());
+    this.modalScore.closeButton.addEventListener('click', () => this.modalScore.closeModal());
   }
 
   bindGameFieldListeners() {
@@ -86,7 +93,7 @@ class GameHandler {
   }
 
   checkEndGame() {
-    if (this.startField.toString() === this.gameFields.winField.toString()) console.log('win');
+    if (this.startField.toString() === this.gameFields.winField.toString()) this.winGame();
   }
 
   startTimer() {
@@ -111,14 +118,16 @@ class GameHandler {
   }
 
   chooseRandomGame() {
-    const randomId = getRandomNumber(0, templatesByNumber.length);
-    this.gameImage = templatesByNumber[randomId];
+    const randomId = getRandomNumber(0, templatesById.length);
+    this.gameImage = templatesById[randomId].matrix;
+    this.gameName = templatesById[randomId].name;
     this.size = this.gameImage.length;
     this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
   }
 
   chooseGame(gameName) {
-    this.gameImage = templatesByLevel[this.modalLevel.level][gameName];
+    this.gameImage = templatesById.filter(el => el.name === gameName)[0].matrix;
+    this.gameName = gameName;
     this.size = this.gameImage.length;
     this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
   }
@@ -135,6 +144,8 @@ class GameHandler {
 
   winGame() {
     const time = this.main.timerElement.innerText;
+    this.storage.saveResult(this.gameName, this.modalLevel.level, convertTimeToSec(time));
+    this.gameFields.toggleBlockCells();
     this.modalWin.showModal(time);
     this.resetTimer();
   }
@@ -147,6 +158,13 @@ class GameHandler {
   handleChooseLevel(level) {
     this.modalLevel.renderImages(level);
     this.bindChooseGameListeners();
+  }
+
+  showScoreModal() {
+    this.modalWin.closeModal();
+    const results = this.storage.getResults();
+    this.modalScore.renderScoreList(results);
+    this.modalScore.showModal();
   }
 }
 

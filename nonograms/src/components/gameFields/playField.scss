@@ -76,6 +76,10 @@
     width: calc(15 * 20px);
     grid-template-columns: repeat(15, 1fr);
   }
+
+  &_blocked {
+    pointer-events: none;
+  }
 }
 
 .cell  {

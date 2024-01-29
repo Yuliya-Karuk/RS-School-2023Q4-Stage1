@@ -30,6 +30,7 @@ class GameFields {
 
   renderPlayField() {
     this.playField.innerHTML = '';
+    this.playField.classList.remove('play-field_blocked');
     for (let i = 0; i < this.winField.length; i += 1) {
       this.winField[i].forEach((el, index) => {
         const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}`, realValue: `${el}` });
@@ -75,8 +76,12 @@ class GameFields {
       } else {
         this.playField.children[i].classList = 'cell';
       }
-      this.playField.children[i].classList.add('cell_solved');
     }
+    this.toggleBlockCells();
+  }
+
+  toggleBlockCells() {
+    this.playField.classList.add('play-field_blocked');
   }
 
   changeGame(winImage, mood) {
