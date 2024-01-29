@@ -4,7 +4,7 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import Main from '../main/main';
 import { getRandomNumber, launchTimer } from '../../utils/utils';
-import { templatesByNumber } from '../../data';
+import { templatesByLevel, templatesByNumber } from '../../data';
 import ModalWin from '../modalWin/modalWin';
 import ModalLevel from '../modalLevel/modalLevel';
 
@@ -32,20 +32,32 @@ class GameHandler {
     this.main.element.append(this.gameFields.element);
     this.bindButtonListeners();
     this.bindGameFieldListeners();
+    this.bindChooseGameListeners();
   }
 
   bindButtonListeners() {
     this.header.resetButton.addEventListener('click', () => this.resetGame());
-    // this.header.solutionButton.addEventListener('click', () => this.showSolution());
-    this.header.solutionButton.addEventListener('click', () => this.winGame());
-    this.header.randomButton.addEventListener('click', () => this.renderRandomGame());
-    this.modalWin.randomButton.addEventListener('click', () => this.renderRandomGame());
-    this.modalWin.chooseGameButton.addEventListener('click', () => this.chooseGame());
+    this.header.solutionButton.addEventListener('click', () => this.showSolution());
+    this.header.newGameButton.addEventListener('click', () => this.chooseLevelGame());
+    this.header.randomButton.addEventListener('click', () => this.renderGame());
+    this.modalWin.randomButton.addEventListener('click', () => this.renderGame());
+    this.modalWin.chooseGameButton.addEventListener('click', () => this.chooseLevelGame());
+    for (let i = 0; i < this.modalLevel.buttonsLevelContainer.children.length; i += 1) {
+      const btn = this.modalLevel.buttonsLevelContainer.children[i];
+      btn.addEventListener('click', () => this.handleChooseLevel(btn.innerText));
+    }
   }
 
   bindGameFieldListeners() {
     this.gameFields.playField.addEventListener('contextmenu', e => e.preventDefault());
     this.gameFields.playField.addEventListener('mouseup', e => this.handleClick(e));
+  }
+
+  bindChooseGameListeners() {
+    for (let i = 0; i < this.modalLevel.buttonsImgContainer.children.length; i += 1) {
+      const btn = this.modalLevel.buttonsImgContainer.children[i];
+      btn.addEventListener('click', () => this.renderGame(btn.innerText));
+    }
   }
 
   handleClick(e) {
@@ -105,9 +117,17 @@ class GameHandler {
     this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
   }
 
-  renderRandomGame() {
+  chooseGame(gameName) {
+    this.gameImage = templatesByLevel[this.modalLevel.level][gameName];
+    this.size = this.gameImage.length;
+    this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
+  }
+
+  renderGame(gameName) {
     this.modalWin.closeModal();
-    this.chooseRandomGame();
+    this.modalLevel.closeModal();
+    if (!gameName) this.chooseRandomGame();
+    if (gameName) this.chooseGame(gameName);
     this.gameFields.changeGame(this.gameImage, this.size);
     this.resetTimer();
     this.bindGameFieldListeners();
@@ -119,9 +139,14 @@ class GameHandler {
     this.resetTimer();
   }
 
-  chooseGame() {
+  chooseLevelGame() {
     this.modalWin.closeModal();
     this.modalLevel.showModal();
+  }
+
+  handleChooseLevel(level) {
+    this.modalLevel.renderImages(level);
+    this.bindChooseGameListeners();
   }
 }
 

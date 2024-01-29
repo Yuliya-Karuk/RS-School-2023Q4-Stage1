@@ -16,6 +16,8 @@
     &_active {
       background-color: $color-button-active;
       color: $color-primary-dark;
+      filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.6));
+      pointer-events: none;
     }
 
     @include media-hover {

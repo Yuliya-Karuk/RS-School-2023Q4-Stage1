@@ -9,8 +9,7 @@ const ModalConst = {
 
 class ModalLevel {
   constructor(parentEl) {
-    this.levelId = 0;
-    this.level = Object.keys(templatesByLevel)[this.levelId];
+    this.level = 'easy';
     this.parentEl = parentEl;
     this.element = createElementWithProperties('div', 'modal modal_level');
     this.renderModalContent();
@@ -19,29 +18,39 @@ class ModalLevel {
   renderModalContent() {
     this.container = createElementWithProperties('div', 'modal__content');
     this.title = createElementWithProperties('h2', 'modal__title', undefined, [{ innerText: ModalConst.message }]);
-    const buttonsContainer = createElementWithProperties('div', 'modal__buttons');
+    this.buttonsLevelContainer = createElementWithProperties('div', 'modal__buttons');
     for (let i = 0; i < Object.keys(templatesByLevel).length; i += 1) {
       const btn = createElementWithProperties('button', 'btn modal__button', { type: 'button' }, [
         { innerText: `${Object.keys(templatesByLevel)[i]}` },
       ]);
-      if (i === this.levelId) btn.classList.add('modal__button_active');
-      buttonsContainer.append(btn);
+      if (btn.innerText === this.level) btn.classList.add('modal__button_active');
+      this.buttonsLevelContainer.append(btn);
     }
-    const imagesNamesButtons = this.renderImages();
-    this.container.append(this.title, buttonsContainer, imagesNamesButtons);
+    this.buttonsImgContainer = createElementWithProperties('div', 'modal__level-buttons');
+    this.renderImages(this.level);
+    this.container.append(this.title, this.buttonsLevelContainer, this.buttonsImgContainer);
     this.element.append(this.container);
   }
 
-  renderImages() {
+  renderImages(level) {
+    this.level = level;
+    this.changeActiveLevelButton(this.level);
+    this.buttonsImgContainer.innerHTML = '';
     const allImagesNames = Object.keys(templatesByLevel[this.level]);
-    const buttonsContainer = createElementWithProperties('div', 'modal__level-buttons');
     for (let i = 0; i < allImagesNames.length; i += 1) {
       const btn = createElementWithProperties('button', 'btn modal__button', { type: 'button' }, [
         { innerText: `${allImagesNames[i]}` },
       ]);
-      buttonsContainer.append(btn);
+      this.buttonsImgContainer.append(btn);
     }
-    return buttonsContainer;
+  }
+
+  changeActiveLevelButton(newLevel) {
+    for (let i = 0; i < this.buttonsLevelContainer.children.length; i += 1) {
+      const btn = this.buttonsLevelContainer.children[i];
+      btn.classList.remove('modal__button_active');
+      if (btn.innerText === newLevel) btn.classList.add('modal__button_active');
+    }
   }
 
   showModal() {
