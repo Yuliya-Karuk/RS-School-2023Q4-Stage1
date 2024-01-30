@@ -39,6 +39,9 @@ class Header {
     this.newGameButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
       { innerText: 'New game' },
     ]);
+    this.scoreButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
+      { innerText: 'Score' },
+    ]);
     const imgSave = createElementWithProperties('img', 'nav__img', { alt: 'Save icon', src: `${save}` });
     const imgLoad = createElementWithProperties('img', 'nav__img', { alt: 'Save icon', src: `${load}` });
     this.saveGameButton = createElementWithProperties('button', 'btn nav__button nav__button_save', { type: 'button' });
@@ -52,6 +55,7 @@ class Header {
       this.newGameButton,
       this.saveGameButton,
       this.loadGameButton,
+      this.scoreButton,
     );
   }
 }

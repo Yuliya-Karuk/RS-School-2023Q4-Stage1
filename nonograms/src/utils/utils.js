@@ -51,10 +51,14 @@ export function createArrayOneSize(arr) {
   return arr;
 }
 
-export function launchTimer(timerEl) {
+export function launchTimer(timerEl, startTime) {
   const timerElement = timerEl;
-  let timerSeconds = 0;
-  let timerMinutes = 0;
+  let timerMinutes = +startTime.split(':')[0];
+  let timerSeconds = +startTime.split(':')[1] + timerMinutes * 60;
+  // if (startTime) {
+  //   timerMinutes = +startTime.split(':')[0];
+  //   timerSeconds = +startTime.split(':')[1] + timerMinutes * 60;
+  // }
 
   return setInterval(() => {
     timerSeconds += 1;
@@ -84,8 +88,8 @@ export function getRandomNumber(min, max) {
 }
 
 export function convertTimeToSec(timeStr) {
-  const timeArr = timeStr.replaceAll('0', '').split(':');
-  const min = timeArr[0] !== '' ? +timeArr[0] : 0;
-  const sec = timeArr[1] !== '' ? +timeArr[1] + min * 60 : 0;
+  const timeArr = timeStr.split(':');
+  const min = +timeArr[0];
+  const sec = +timeArr[1] + min * 60;
   return sec;
 }

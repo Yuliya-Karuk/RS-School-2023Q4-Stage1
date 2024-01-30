@@ -43,8 +43,8 @@ class GameHandler {
     this.header.resetButton.addEventListener('click', () => this.resetGame());
     this.header.solutionButton.addEventListener('click', () => this.showSolution());
     this.header.newGameButton.addEventListener('click', () => this.chooseLevelGame());
-    // this.header.randomButton.addEventListener('click', () => this.renderGame());
-    this.header.randomButton.addEventListener('click', () => this.showScoreModal());
+    this.header.randomButton.addEventListener('click', () => this.renderGame());
+    this.header.scoreButton.addEventListener('click', () => this.showScoreModal());
     this.modalWin.randomButton.addEventListener('click', () => this.renderGame());
     this.modalWin.chooseGameButton.addEventListener('click', () => this.chooseLevelGame());
     for (let i = 0; i < this.modalLevel.buttonsLevelContainer.children.length; i += 1) {
@@ -53,6 +53,8 @@ class GameHandler {
     }
     this.modalWin.scoreButton.addEventListener('click', () => this.showScoreModal());
     this.modalScore.closeButton.addEventListener('click', () => this.modalScore.closeModal());
+    this.header.saveGameButton.addEventListener('click', () => this.saveGame());
+    this.header.loadGameButton.addEventListener('click', () => this.loadGame());
   }
 
   bindGameFieldListeners() {
@@ -69,7 +71,7 @@ class GameHandler {
 
   handleClick(e) {
     if (!this.timerIsStarted) {
-      this.startTimer();
+      this.timerId = launchTimer(this.main.timerElement, this.main.timerElement.innerText);
       this.timerIsStarted = true;
     }
     if (e.target.classList.contains('cell') && e.button === 2) {
@@ -96,12 +98,8 @@ class GameHandler {
     if (this.startField.toString() === this.gameFields.winField.toString()) this.winGame();
   }
 
-  startTimer() {
-    this.timerId = launchTimer(this.main.timerElement);
-  }
-
-  resetTimer() {
-    this.main.timerElement.innerText = '00:00';
+  resetTimer(savedTime) {
+    this.main.timerElement.innerText = savedTime || '00:00';
     this.timerIsStarted = false;
     clearInterval(this.timerId);
   }
@@ -165,6 +163,23 @@ class GameHandler {
     const results = this.storage.getResults();
     this.modalScore.renderScoreList(results);
     this.modalScore.showModal();
+  }
+
+  saveGame() {
+    this.storage.saveGame(this.startField, this.main.timerElement.innerText, this.gameName);
+    this.resetTimer(this.main.timerElement.innerText);
+  }
+
+  loadGame() {
+    const savedGameParams = this.storage.getSavedGame();
+    const { matrix, timer, nameWinImage } = savedGameParams;
+    this.size = matrix.length;
+    this.gameName = nameWinImage;
+    this.gameImage = templatesById.filter(el => el.name === this.gameName)[0].matrix;
+    this.startField = matrix;
+    this.gameFields.changeGame(this.gameImage, this.size, matrix);
+    this.resetTimer(timer);
+    this.bindGameFieldListeners();
   }
 }
 

@@ -13,6 +13,10 @@
     @include font(3rem, 900, 1.05);
   }
 
+  .modal__score-span {
+    @include font(3rem, 900, 1.05);
+  }
+
   .modal__button {
     padding: 10px 15px;
 

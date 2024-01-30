@@ -14,14 +14,15 @@ class GameFields {
     this.init();
   }
 
-  init() {
+  init(savedGame) {
     this.element.innerHTML = '';
     const gameRow = createElementWithProperties('div', 'game-block');
     this.playField = createElementWithProperties('ul', `play-field play-field_${this.mode}`);
     this.leftClues = createElementWithProperties('div', 'left-clues');
     this.topClues = createElementWithProperties('div', 'top-clues');
     const frame = createElementWithProperties('div', 'frame');
-    this.renderPlayField();
+    if (!savedGame) this.renderPlayField();
+    if (savedGame) this.renderSavedField(savedGame);
     this.renderClues();
     gameRow.append(this.leftClues, this.playField);
     frame.append(this.topClues, gameRow);
@@ -70,8 +71,9 @@ class GameFields {
   }
 
   renderSolution() {
+    const winArray = this.winField.flat();
     for (let i = 0; i < this.playField.children.length; i += 1) {
-      if (this.playField.children[i].getAttribute('realValue') === '1') {
+      if (this.playField.children[i].getAttribute('realValue') === '1' || winArray[i] === 1) {
         this.playField.children[i].classList.add('cell_dark');
       } else {
         this.playField.children[i].classList = 'cell';
@@ -84,11 +86,23 @@ class GameFields {
     this.playField.classList.add('play-field_blocked');
   }
 
-  changeGame(winImage, mood) {
+  changeGame(winImage, mood, savedGame) {
     this.mode = GameMood[mood];
     this.winField = winImage;
     this.element.classList = `game-field game-field_${this.mode}`;
-    this.init();
+    this.init(savedGame);
+  }
+
+  renderSavedField(savedGame) {
+    this.playField.innerHTML = '';
+    this.playField.classList.remove('play-field_blocked');
+    for (let i = 0; i < savedGame.length; i += 1) {
+      savedGame[i].forEach((el, index) => {
+        const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}` });
+        if (el === 1) newCell.classList.add('cell_dark');
+        this.playField.append(newCell);
+      });
+    }
   }
 }
 
