@@ -11,11 +11,17 @@ html {
 }
 
 body {
-  background: center no-repeat url('../images/31499.jpg');
-  background-size: cover;
+  :root[theme='dark'] & {
+    background: center no-repeat url('../images/bg_dark.jpg');
+    background-size: cover;
+  }
+  :root[theme='light'] & {
+    background: center no-repeat url('../images/bg_light.jpg');
+    background-size: cover;
+  }
 }
 
 h1 {
   @include font(5rem, 900, 1.05);
-  color: $color-primary-dark;
+  color: var(--color-primary);
 }

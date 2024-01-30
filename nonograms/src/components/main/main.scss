@@ -14,7 +14,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: center no-repeat url('../../images/timer3.png');
+
+  :root[theme='dark'] & {
+    background: center no-repeat url('../../images/timer_dark.png');
+    background-size: contain;
+  }
+
+  :root[theme='light'] & {
+    background: center no-repeat url('../../images/timer_light.png');
+    background-size: contain;
+  }
+
   @include font(3rem, 900, 1.05);
-  color: $color-primary-dark;
+  color: var(--color-bg-button);
 }

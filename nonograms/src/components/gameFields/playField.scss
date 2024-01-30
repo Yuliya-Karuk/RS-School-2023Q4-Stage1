@@ -1,16 +1,25 @@
 @import '../../sass/common/constants';
+@import '../../sass/common/mixins';
 
 .game-field {
   height: calc(100vh - 170px);
   min-height: 520px;
   width: 100%;
   max-width: 600px;
-  background: center no-repeat url('../../images/main9.png');
-  background-size: contain;
   flex-grow: 2;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  :root[theme='dark'] & {
+    background: center no-repeat url('../../images/main_dark.png');
+    background-size: contain;
+  }
+
+  :root[theme='light'] & {
+    background: center no-repeat url('../../images/main_light.png');
+    background-size: contain;
+  }
 
   &_easy .cell,
   &_easy .clue {
@@ -48,11 +57,11 @@
   flex-direction: column;
 
   &:nth-of-type(5n + 1):not(:first-of-type) .clue {
-    border-left: 1px solid $color-clue-separator;
+    border-left: 1px solid var(--color-cell-initial);
   }
 
   &:nth-of-type(5n):not(:last-of-type) .clue {
-    border-right: 1px solid $color-clue-separator;
+    border-right: 2px solid var(--color-cell-initial);
   }
 }
 
@@ -62,7 +71,6 @@
 
 .play-field {
   display: grid;
-  background-color: $color-cell-white;
 
   &_easy {
     width: calc(5 * 40px);
@@ -83,15 +91,15 @@
 }
 
 .cell  {
-  background: $color-cell-white;
-  border: 1px solid $color-main-border;
+  background: var(--color-cell-initial);
+  border: 1px solid var(--color-bg-clue);
 
   &_crossed {
     background: center no-repeat url("../../images/cross.svg");
   }
 
   &_dark {
-    background: $color-cell-black;
+    background: var(--color-cell-guessed);
   }
 
   &_solved {
@@ -99,34 +107,34 @@
   }
 
   .play-field_medium &:nth-of-type(10n + 5) {
-    border-right: 1px solid $color-cell-separator;
+    border-right: 2px solid var(--color-main-border);
   }
   .play-field_medium &:nth-of-type(10n + 6) {
-    border-left: 1px solid $color-cell-separator;
+    border-left: 1px solid var(--color-main-border);
   }
 
   .play-field_medium &:nth-of-type(n + 51):nth-of-type(-n + 60) {
-    border-top: 1px solid $color-cell-separator;
+    border-top: 1px solid var(--color-main-border);
   }
   .play-field_medium &:nth-of-type(n + 41):nth-of-type(-n + 50) {
-    border-bottom: 1px solid $color-cell-separator;
+    border-bottom: 2px solid var(--color-main-border);
   }
 
   .play-field_hard &:nth-of-type(5n + 5):not(:nth-of-type(15n)) {
-    border-right: 1px solid $color-cell-separator;
+    border-right: 2px solid var(--color-main-border);
   }
   .play-field_hard &:nth-of-type(5n + 6):not(:nth-of-type(15n + 1)) {
-    border-left: 1px solid $color-cell-separator;
+    border-left: 1px solid var(--color-main-border);
   }
 
   .play-field_hard &:nth-of-type(n + 76):nth-of-type(-n + 90),
   .play-field_hard &:nth-of-type(n + 151):nth-of-type(-n + 165) {
-    border-top: 1px solid $color-cell-separator;
+    border-top: 1px solid var(--color-main-border);
   }
 
   .play-field_hard &:nth-of-type(n + 61):nth-of-type(-n + 75),
-  .play-field_hard &:nth-of-type(n + 135):nth-of-type(-n + 150) {
-    border-bottom: 1px solid $color-cell-separator;
+  .play-field_hard &:nth-of-type(n + 136):nth-of-type(-n + 150) {
+    border-bottom: 2px solid var(--color-main-border);
   }
 }
 
@@ -140,10 +148,10 @@
   display: flex;
 
   &:nth-of-type(5n + 1):not(:first-of-type) .clue {
-    border-top: 1px solid $color-clue-separator;
+    border-top: 1px solid var(--color-cell-initial);
   }
   &:nth-of-type(5n):not(:last-of-type) .clue {
-    border-bottom: 1px solid $color-clue-separator;
+    border-bottom: 2px solid var(--color-cell-initial);
   }
 }
 
@@ -151,6 +159,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $color-bg-clue;
-  border: 1px solid $color-main-border;
+  @include font(1.8rem, 900, 1.05);
+  color: var(--color-bg-button);
+  background-color: var(--color-bg-clue);
+  border: 1px solid var(--color-main-border);
+
+  .game-field_hard & {
+    @include font(1.3rem, 900, 1.05);
+  }
 }

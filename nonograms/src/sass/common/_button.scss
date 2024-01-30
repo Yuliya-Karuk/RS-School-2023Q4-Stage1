@@ -1,13 +1,13 @@
 .btn {
-  background-color: #2e2448;
+  background-color: var(--color-bg-button);
   @include font(2rem, 900, 1.05);
-  color: #d26efb;
+  color: var(--color-bg-clue);
   border-radius: 5px;
   @extend %transition;
 
   &:active {
     opacity: 0.7;
-    filter: drop-shadow(2px 3px 3px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(2px 3px 3px var(--color-shadow-second));
   }
 
   &:has(img) {

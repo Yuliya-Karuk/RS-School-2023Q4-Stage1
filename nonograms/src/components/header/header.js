@@ -1,8 +1,6 @@
 import { createElementWithProperties } from '../../utils/utils';
 import './header.scss';
 import logo from '../../images/logo.png';
-import save from '../../images/save2.svg';
-import load from '../../images/load2.svg';
 
 class Header {
   constructor() {
@@ -42,12 +40,13 @@ class Header {
     this.scoreButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
       { innerText: 'Score' },
     ]);
-    const imgSave = createElementWithProperties('img', 'nav__img', { alt: 'Save icon', src: `${save}` });
-    const imgLoad = createElementWithProperties('img', 'nav__img', { alt: 'Save icon', src: `${load}` });
+    const imgSave = createElementWithProperties('span', 'nav__img nav__img_save', { 'aria-label': 'Save icon' });
+    const imgLoad = createElementWithProperties('span', 'nav__img nav__img_load', { 'aria-label': 'Save icon' });
     this.saveGameButton = createElementWithProperties('button', 'btn nav__button nav__button_save', { type: 'button' });
     this.loadGameButton = createElementWithProperties('button', 'btn nav__button nav__button_load', { type: 'button' });
     this.saveGameButton.append(imgSave);
     this.loadGameButton.append(imgLoad);
+    this.renderThemeSwitcher();
     this.nav.append(
       this.resetButton,
       this.solutionButton,
@@ -57,6 +56,16 @@ class Header {
       this.loadGameButton,
       this.scoreButton,
     );
+  }
+
+  renderThemeSwitcher() {
+    const headerSwitcher = createElementWithProperties('div', 'switcher');
+    const switcherLabel = createElementWithProperties('label', 'switcher__label', { for: 'switcher' });
+    this.switcherInput = createElementWithProperties('input', 'switcher__input', { id: 'switcher', type: 'checkbox' });
+    const switcherRound = createElementWithProperties('span', 'switcher__round round');
+    switcherLabel.append(this.switcherInput, switcherRound);
+    headerSwitcher.append(switcherLabel);
+    this.nav.append(headerSwitcher);
   }
 }
 

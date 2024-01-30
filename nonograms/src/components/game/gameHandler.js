@@ -3,14 +3,14 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import Main from '../main/main';
 import { getRandomNumber, launchTimer, convertTimeToSec } from '../../utils/utils';
-import { templatesById } from '../../data';
+import { templatesById, templatesByLevel } from '../../data';
 import ModalWin from '../modalWin/modalWin';
 import ModalLevel from '../modalLevel/modalLevel';
 import Storage from '../../utils/storage';
 import ModalScore from '../modalScore/modalScore';
 
 class GameHandler {
-  constructor(parentEl) {
+  constructor(parentEl, theme) {
     this.parentEl = parentEl;
     this.header = new Header();
     this.footer = new Footer();
@@ -20,7 +20,9 @@ class GameHandler {
     this.storage = new Storage();
     this.modalScore = new ModalScore();
     this.timerIsStarted = false;
-    this.chooseRandomGame();
+    this.themes = ['dark', 'light'];
+    this.theme = theme;
+    this.chooseRandomGame(templatesByLevel.easy.length);
   }
 
   init() {
@@ -55,6 +57,7 @@ class GameHandler {
     this.modalScore.closeButton.addEventListener('click', () => this.modalScore.closeModal());
     this.header.saveGameButton.addEventListener('click', () => this.saveGame());
     this.header.loadGameButton.addEventListener('click', () => this.loadGame());
+    this.header.switcherInput.addEventListener('change', () => this.toggleTheme());
   }
 
   bindGameFieldListeners() {
@@ -115,8 +118,8 @@ class GameHandler {
     this.gameFields.renderSolution();
   }
 
-  chooseRandomGame() {
-    const randomId = getRandomNumber(0, templatesById.length);
+  chooseRandomGame(maxId) {
+    const randomId = getRandomNumber(0, maxId || templatesById.length);
     this.gameImage = templatesById[randomId].matrix;
     this.gameName = templatesById[randomId].name;
     this.size = this.gameImage.length;
@@ -180,6 +183,12 @@ class GameHandler {
     this.gameFields.changeGame(this.gameImage, this.size, matrix);
     this.resetTimer(timer);
     this.bindGameFieldListeners();
+  }
+
+  toggleTheme() {
+    const newTheme = this.themes.filter(el => el !== this.theme)[0];
+    this.theme = newTheme;
+    document.documentElement.setAttribute('theme', this.theme);
   }
 }
 
