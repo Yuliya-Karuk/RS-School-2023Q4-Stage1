@@ -1,5 +1,5 @@
 import { createElementWithProperties, countClues, createArrayOneSize } from '../../utils/utils';
-import './playField.scss';
+import './gameFields.scss';
 
 const GameMood = {
   5: 'easy',

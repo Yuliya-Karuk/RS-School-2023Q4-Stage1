@@ -9,6 +9,7 @@ import ModalLevel from '../modalLevel/modalLevel';
 import Storage from '../../utils/storage';
 import ModalScore from '../modalScore/modalScore';
 import AudioHandler from '../audio/audio';
+import images from '../images';
 
 class GameHandler {
   constructor(parentEl, theme) {
@@ -25,7 +26,6 @@ class GameHandler {
     this.themes = ['dark', 'light'];
     this.theme = theme;
     this.chooseRandomGame(templatesByLevel.easy.length);
-    this.chooseRandomGame();
   }
 
   init() {
@@ -44,6 +44,8 @@ class GameHandler {
     this.bindGameFieldListeners();
     this.bindChooseGameListeners();
     this.bindBurgerHandlers();
+    this.parentEl.style.backgroundImage = `url(${images[this.theme].bg})`;
+    this.gameFields.element.style.backgroundImage = `url(${images[this.theme].main})`;
   }
 
   bindButtonListeners() {
@@ -81,7 +83,7 @@ class GameHandler {
   }
 
   bindGameFieldListeners() {
-    this.gameFields.playField.addEventListener('contextmenu', e => e.preventDefault());
+    this.gameFields.playField.addEventListener('contextmenu', e => this.handleRightClick(e));
     this.gameFields.playField.addEventListener('mouseup', e => this.handleClick(e));
   }
 
@@ -102,12 +104,20 @@ class GameHandler {
     });
   }
 
+  handleRightClick(e) {
+    e.preventDefault();
+    this.handleClick(e);
+  }
+
   handleClick(e) {
     if (!this.timerIsStarted) {
       this.timerId = launchTimer(this.main.timerElement, this.main.timerElement.innerText);
       this.timerIsStarted = true;
     }
-    if (e.target.classList.contains('cell') && e.button === 2) {
+    if (
+      (e.target.classList.contains('cell') && e.button === 2) ||
+      (e.target.classList.contains('cell') && e.button === -1)
+    ) {
       e.target.classList.remove('cell_dark');
       e.target.classList.toggle('cell_crossed');
     }
@@ -156,7 +166,7 @@ class GameHandler {
   }
 
   chooseRandomGame(maxId) {
-    const randomId = getRandomNumber(0, maxId || templatesById.length);
+    const randomId = getRandomNumber(0, maxId || templatesById.length - 1);
     this.gameImage = templatesById[randomId].matrix;
     this.gameName = templatesById[randomId].name;
     this.size = this.gameImage.length;
@@ -226,6 +236,8 @@ class GameHandler {
   toggleTheme() {
     const newTheme = this.themes.filter(el => el !== this.theme)[0];
     this.theme = newTheme;
+    this.parentEl.style.backgroundImage = `url(${images[this.theme].bg})`;
+    this.gameFields.element.style.backgroundImage = `url(${images[this.theme].main})`;
     document.documentElement.setAttribute('theme', this.theme);
   }
 

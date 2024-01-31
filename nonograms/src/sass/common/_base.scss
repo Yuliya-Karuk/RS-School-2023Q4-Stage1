@@ -11,18 +11,25 @@ html {
 }
 
 body {
-  :root[theme='dark'] & {
-    background: center no-repeat url('../images/bg_dark.jpg');
-    background-size: cover;
-  }
-  :root[theme='light'] & {
-    background: center no-repeat url('../images/bg_light.jpg');
-    background-size: cover;
-  }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  // :root[theme='dark'] & {
+  //   background: center no-repeat url('../images/bg_dark.jpg');
+  //   background-size: cover;
+  // }
+  // :root[theme='light'] & {
+  //   background: center no-repeat url('../images/bg_light.jpg');
+  //   background-size: cover;
+  // }
   overflow-x: hidden;
 }
 
 h1 {
   @include font(5rem, 900, 1.05);
   color: var(--color-primary);
+
+  @media screen and (max-width: 768px) {
+    font-size: 4rem;
+  }
 }
