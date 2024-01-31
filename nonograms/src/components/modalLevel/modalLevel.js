@@ -8,9 +8,8 @@ const ModalConst = {
 };
 
 class ModalLevel {
-  constructor(parentEl) {
+  constructor() {
     this.level = 'easy';
-    this.parentEl = parentEl;
     this.element = createElementWithProperties('div', 'modal modal_level');
     this.renderModalContent();
   }

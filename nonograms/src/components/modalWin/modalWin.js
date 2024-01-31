@@ -7,8 +7,7 @@ const ModalConst = {
 };
 
 class ModalWin {
-  constructor(parentEl) {
-    this.parentEl = parentEl;
+  constructor() {
     this.element = createElementWithProperties('div', 'modal modal_win');
     this.renderModalContent();
   }

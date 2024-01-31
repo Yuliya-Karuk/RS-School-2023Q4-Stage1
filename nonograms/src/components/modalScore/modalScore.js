@@ -8,8 +8,7 @@ const ModalConst = {
 };
 
 class ModalScore {
-  constructor(parentEl) {
-    this.parentEl = parentEl;
+  constructor() {
     this.element = createElementWithProperties('div', 'modal modal_score');
     this.renderModalContent();
   }
