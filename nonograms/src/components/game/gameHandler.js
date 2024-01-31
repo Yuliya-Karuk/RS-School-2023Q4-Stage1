@@ -3,12 +3,12 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import Main from '../main/main';
 import { getRandomNumber, launchTimer, convertTimeToSec } from '../../utils/utils';
-// import { templatesById, templatesByLevel } from '../../data';
-import { templatesById } from '../../data';
+import { templatesById, templatesByLevel } from '../../data';
 import ModalWin from '../modalWin/modalWin';
 import ModalLevel from '../modalLevel/modalLevel';
 import Storage from '../../utils/storage';
 import ModalScore from '../modalScore/modalScore';
+import AudioHandler from '../audio/audio';
 
 class GameHandler {
   constructor(parentEl, theme) {
@@ -20,10 +20,11 @@ class GameHandler {
     this.modalLevel = new ModalLevel();
     this.storage = new Storage();
     this.modalScore = new ModalScore();
+    this.audioHandler = new AudioHandler();
     this.timerIsStarted = false;
     this.themes = ['dark', 'light'];
     this.theme = theme;
-    // this.chooseRandomGame(templatesByLevel.easy.length);
+    this.chooseRandomGame(templatesByLevel.easy.length);
     this.chooseRandomGame();
   }
 
@@ -35,6 +36,7 @@ class GameHandler {
       this.modalWin.element,
       this.modalLevel.element,
       this.modalScore.element,
+      this.audioHandler.audioContainer,
     );
     this.gameFields = new GameFields(this.gameImage, this.size);
     this.main.element.append(this.gameFields.element);
@@ -61,6 +63,7 @@ class GameHandler {
     this.header.saveGameButton.addEventListener('click', () => this.saveGame());
     this.header.loadGameButton.addEventListener('click', () => this.loadGame());
     this.header.switcherInput.addEventListener('change', () => this.toggleTheme());
+    this.header.volumeButton.addEventListener('click', () => this.toggleVolume());
   }
 
   bindBurgerHandlers() {
@@ -111,6 +114,13 @@ class GameHandler {
     if (e.target.classList.contains('cell') && e.button === 0) {
       e.target.classList.remove('cell_crossed');
       e.target.classList.toggle('cell_dark');
+    }
+    if (e.target.classList.contains('cell_dark')) {
+      this.audioHandler.playAudio(this.audioHandler.lkmAudio);
+    } else if (e.target.classList.contains('cell_crossed')) {
+      this.audioHandler.playAudio(this.audioHandler.pkmAudio);
+    } else {
+      this.audioHandler.playAudio(this.audioHandler.emptyAudio);
     }
     this.fillStartField(e);
     this.checkEndGame();
@@ -176,6 +186,7 @@ class GameHandler {
     this.gameFields.toggleBlockCells();
     this.modalWin.showModal(time);
     this.resetTimer();
+    this.audioHandler.playAudio(this.audioHandler.winAudio);
   }
 
   chooseLevelGame() {
@@ -220,6 +231,15 @@ class GameHandler {
 
   toggleBurger() {
     this.header.nav.classList.toggle('nav_active');
+  }
+
+  toggleVolume() {
+    if (!this.audioHandler.lkmAudio.muted) {
+      this.audioHandler.toggleMuteAll(true);
+    } else {
+      this.audioHandler.toggleMuteAll(false);
+    }
+    this.header.volumeButton.classList.toggle('nav__button_volume_muted');
   }
 }
 

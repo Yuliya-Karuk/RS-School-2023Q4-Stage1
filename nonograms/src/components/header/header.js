@@ -19,13 +19,20 @@ class Header {
     const title = createElementWithProperties('h1', 'header__title', undefined, [{ innerText: `${this.gameName}` }]);
     this.nav = createElementWithProperties('nav', 'nav');
     this.renderNav();
-    this.settingsButton = createElementWithProperties('button', 'btn nav__button nav__button_load', { type: 'button' });
+    this.settingsButton = createElementWithProperties('button', 'btn nav__button nav__button_settings', {
+      type: 'button',
+    });
     const imgSettings = createElementWithProperties('span', 'nav__img nav__img_settings', {
       'aria-label': 'Settings icon',
     });
+    this.volumeButton = createElementWithProperties('button', 'btn nav__button nav__button_volume', { type: 'button' });
+    const imgVolume = createElementWithProperties('span', 'nav__img nav__img_volume', {
+      'aria-label': 'Volume icon',
+    });
     this.settingsButton.append(imgSettings);
+    this.volumeButton.append(imgVolume);
     headerLogo.append(img, title);
-    this.headerWrapper.append(headerLogo, this.headerSwitcher, this.nav, this.settingsButton);
+    this.headerWrapper.append(headerLogo, this.headerSwitcher, this.volumeButton, this.nav, this.settingsButton);
     this.element.append(this.headerWrapper);
   }
 

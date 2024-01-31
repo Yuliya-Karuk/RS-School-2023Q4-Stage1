@@ -72,14 +72,6 @@
       filter: drop-shadow(2px 3px 3px var(--color-shadow-light));
     }
   }
-
-  &_save {
-    padding: 5px;
-  }
-
-  &_load {
-   padding: 5px;
-  }
 }
 
 .nav__img {
@@ -94,6 +86,21 @@
     }
     :root[theme='light'] & {
       background: center no-repeat url('../../images/settings_light.svg');
+    }
+  }
+
+  &_volume {
+    :root[theme='dark'] & {
+      background: center no-repeat url('../../images/unmuted_dark.svg');
+    }
+    :root[theme='dark'] .nav__button_volume_muted & {
+      background: center no-repeat url('../../images/muted_dark.svg');
+    }
+    :root[theme='light'] & {
+      background: center no-repeat url('../../images/unmuted_light.svg');
+    }
+    :root[theme='light'] .nav__button_volume_muted & {
+      background: center no-repeat url('../../images/muted_light.svg');
     }
   }
 }
