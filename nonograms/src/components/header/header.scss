@@ -3,12 +3,13 @@
 @import '../../sass/common/mixins';
 
 .header {
+  position: relative;
   width: 100%;
   height: 60px;
   backdrop-filter: blur(12.5px);
 
   :root[theme='dark'] & {
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--color-shadow-dark);
   }
   :root[theme='light'] & {
     background: rgba(0, 0, 0, 0.6);
@@ -22,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  @extend %container;
+  gap: 20px;
 }
 
 .header__logo {
@@ -32,8 +33,34 @@
 }
 
 .nav {
+  position: absolute;
+  z-index: 20;
+  top: 100px;
+  right: 0;
+  padding: 20px 10px;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+
+  :root[theme='dark'] & {
+    background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%), rgb(223, 153, 252, 0.5);
+  }
+
+  :root[theme='light'] & {
+    background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%), rgb(243, 251, 210, 0.5);
+  }
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+  animation: burger-close 0.3s ease-in-out;
+
+  &_active {
+    animation: burger-open 0.3s ease-in-out;
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+    visibility: visible;
+  }
 }
 
 .nav__button {
@@ -42,7 +69,7 @@
 
   @include media-hover {
     &:hover {
-      filter: drop-shadow(2px 3px 3px var(--color-shadow-first));
+      filter: drop-shadow(2px 3px 3px var(--color-shadow-light));
     }
   }
 
@@ -60,21 +87,13 @@
   width: 30px;
   height: 30px;
 
-  &_save {
-    :root[theme='dark'] & {
-      background: center no-repeat url('../../images/save_dark.svg');
-    }
-    :root[theme='light'] & {
-      background: center no-repeat url('../../images/save_light.svg');
-    }
-  }
 
-  &_load {
+  &_settings {
     :root[theme='dark'] & {
-      background: center no-repeat url('../../images/load_dark.svg');
+      background: center no-repeat url('../../images/settings_dark.svg');
     }
     :root[theme='light'] & {
-      background: center no-repeat url('../../images/load_light.svg');
+      background: center no-repeat url('../../images/settings_light.svg');
     }
   }
 }
@@ -82,6 +101,7 @@
 .switcher {
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
 .switcher__label {

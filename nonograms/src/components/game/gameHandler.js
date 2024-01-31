@@ -3,7 +3,8 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import Main from '../main/main';
 import { getRandomNumber, launchTimer, convertTimeToSec } from '../../utils/utils';
-import { templatesById, templatesByLevel } from '../../data';
+// import { templatesById, templatesByLevel } from '../../data';
+import { templatesById } from '../../data';
 import ModalWin from '../modalWin/modalWin';
 import ModalLevel from '../modalLevel/modalLevel';
 import Storage from '../../utils/storage';
@@ -22,7 +23,8 @@ class GameHandler {
     this.timerIsStarted = false;
     this.themes = ['dark', 'light'];
     this.theme = theme;
-    this.chooseRandomGame(templatesByLevel.easy.length);
+    // this.chooseRandomGame(templatesByLevel.easy.length);
+    this.chooseRandomGame();
   }
 
   init() {
@@ -39,6 +41,7 @@ class GameHandler {
     this.bindButtonListeners();
     this.bindGameFieldListeners();
     this.bindChooseGameListeners();
+    this.bindBurgerHandlers();
   }
 
   bindButtonListeners() {
@@ -60,16 +63,40 @@ class GameHandler {
     this.header.switcherInput.addEventListener('change', () => this.toggleTheme());
   }
 
+  bindBurgerHandlers() {
+    const context = this;
+
+    this.header.settingsButton.addEventListener('click', () => this.toggleBurger());
+    document.addEventListener('click', e => {
+      if (
+        !e.target.classList.contains('nav') &&
+        context.header.nav.classList.contains('nav_active') &&
+        !context.header.settingsButton.contains(e.target)
+      )
+        context.toggleBurger();
+    });
+  }
+
   bindGameFieldListeners() {
     this.gameFields.playField.addEventListener('contextmenu', e => e.preventDefault());
     this.gameFields.playField.addEventListener('mouseup', e => this.handleClick(e));
   }
 
   bindChooseGameListeners() {
+    const context = this;
     for (let i = 0; i < this.modalLevel.buttonsImgContainer.children.length; i += 1) {
       const btn = this.modalLevel.buttonsImgContainer.children[i];
       btn.addEventListener('click', () => this.renderGame(btn.innerText));
     }
+    document.addEventListener('click', e => {
+      if (context.modalLevel.element.classList.contains('modal_active')) e.stopPropagation();
+      if (
+        !e.target.classList.contains('modal__content') &&
+        context.modalLevel.element.classList.contains('modal_active') &&
+        e.target.classList.contains('modal')
+      )
+        context.modalLevel.closeModal();
+    });
   }
 
   handleClick(e) {
@@ -189,6 +216,10 @@ class GameHandler {
     const newTheme = this.themes.filter(el => el !== this.theme)[0];
     this.theme = newTheme;
     document.documentElement.setAttribute('theme', this.theme);
+  }
+
+  toggleBurger() {
+    this.header.nav.classList.toggle('nav_active');
   }
 }
 

@@ -7,7 +7,7 @@
 
   &:active {
     opacity: 0.7;
-    filter: drop-shadow(2px 3px 3px var(--color-shadow-second));
+    filter: drop-shadow(2px 3px 3px var(--color-shadow-dark));
   }
 
   &:has(img) {

@@ -1,3 +1,8 @@
+:root {
+  --color-shadow-light: rgba(256, 256, 256, 0.4);
+  --color-shadow-dark: rgba(0, 0, 0, 0.4);
+}
+
 :root[theme='dark'] {
   --color-primary: #360e40;
   --color-bg-button: #2e2448;
@@ -8,8 +13,6 @@
   --color-cell-guessed: #ffffff;
   --color-bg-clue: #d26efb;
   --color-main-border: #e9cbe3;
-  --color-shadow-first: rgba(256, 256, 256, 0.4);
-  --color-shadow-second: rgba(0, 0, 0, 0.4);
 }
 
 :root[theme='light'] {
@@ -22,9 +25,27 @@
   --color-cell-guessed: #000000;
   --color-bg-clue: #baa2b5;
   --color-main-border: #745d4d;
-  --color-shadow-first: rgba(256, 256, 256, 0.4);
-    --color-shadow-second: rgba(0, 0, 0, 0.4);
 }
 
 $tablet: 768px;
-$mobile: 480px
+$mobile: 480px;
+
+@keyframes burger-close {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes burger-open {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
