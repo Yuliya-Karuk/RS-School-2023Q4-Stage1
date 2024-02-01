@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import GameFields from '../gameFields/gameFields';
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -9,7 +10,6 @@ import ModalLevel from '../modalLevel/modalLevel';
 import Storage from '../../utils/storage';
 import ModalScore from '../modalScore/modalScore';
 import AudioHandler from '../audio/audio';
-import images from '../images';
 
 class GameHandler {
   constructor(parentEl, theme) {
@@ -25,7 +25,7 @@ class GameHandler {
     this.timerIsStarted = false;
     this.themes = ['dark', 'light'];
     this.theme = theme;
-    this.chooseRandomGame(templatesByLevel.easy.length);
+    this.chooseRandomGame(templatesByLevel.easy.length - 1);
   }
 
   init() {
@@ -44,8 +44,6 @@ class GameHandler {
     this.bindGameFieldListeners();
     this.bindChooseGameListeners();
     this.bindBurgerHandlers();
-    this.parentEl.style.backgroundImage = `url(${images[this.theme].bg})`;
-    this.gameFields.element.style.backgroundImage = `url(${images[this.theme].main})`;
   }
 
   bindButtonListeners() {
@@ -83,8 +81,20 @@ class GameHandler {
   }
 
   bindGameFieldListeners() {
-    this.gameFields.playField.addEventListener('contextmenu', e => this.handleRightClick(e));
-    this.gameFields.playField.addEventListener('mouseup', e => this.handleClick(e));
+    // this.gameFields.playField.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    // this.gameFields.playField.addEventListener('mouseup', e => this.handleClick(e));
+    // this.gameFields.playField.addEventListener('touchend', e => this.handleMobileTouch(e));
+    // this.gameFields.playField.addEventListener('touchstart', e => this.handleMobileTouch(e));
+    this.gameFields.playField.addEventListener('selectstart', e => this.stopSelection(e, this.gameFields.playField));
+    this.gameFields.playField.addEventListener('pointerdown', e => this.handleClick(e));
+    this.gameFields.playField.addEventListener('pointerup', e => this.handleClick(e));
+  }
+
+  stopSelection(e, element) {
+    e.preventDefault();
+    e.stopPropagation();
+    element.blur();
   }
 
   bindChooseGameListeners() {
@@ -101,30 +111,59 @@ class GameHandler {
         e.target.classList.contains('modal')
       )
         context.modalLevel.closeModal();
+      if (
+        !e.target.classList.contains('modal__content') &&
+        context.modalScore.element.classList.contains('modal_active') &&
+        e.target.classList.contains('modal')
+      )
+        context.modalScore.closeModal();
     });
   }
 
-  handleRightClick(e) {
-    e.preventDefault();
-    this.handleClick(e);
-  }
-
   handleClick(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
     if (!this.timerIsStarted) {
       this.timerId = launchTimer(this.main.timerElement, this.main.timerElement.innerText);
       this.timerIsStarted = true;
     }
-    if (
-      (e.target.classList.contains('cell') && e.button === 2) ||
-      (e.target.classList.contains('cell') && e.button === -1)
-    ) {
-      e.target.classList.remove('cell_dark');
-      e.target.classList.toggle('cell_crossed');
+    if (e.pointerType === 'mouse' && e.type === 'pointerup') this.handleMouseClick(e);
+    if (e.pointerType === 'touch') this.handleTouchClick(e);
+    this.fillStartField(e);
+    this.checkEndGame();
+  }
+
+  handleMouseClick(e) {
+    if (e.target.classList.contains('cell') && e.button === 2) this.toggleCrossedCell(e);
+    if (e.target.classList.contains('cell') && e.button === 0) this.toggleDarkCell(e);
+    this.handleCellSound(e);
+  }
+
+  handleTouchClick(e) {
+    let time;
+    if (e.type === 'pointerdown') {
+      this.timeStart = e.timeStamp;
     }
-    if (e.target.classList.contains('cell') && e.button === 0) {
-      e.target.classList.remove('cell_crossed');
-      e.target.classList.toggle('cell_dark');
+    if (e.type === 'pointerup') {
+      this.timeEnd = e.timeStamp;
+      time = this.timeEnd - this.timeStart;
+      if (time < 500) this.toggleDarkCell(e);
+      if (time >= 500) this.toggleCrossedCell(e);
+      this.handleCellSound(e);
     }
+  }
+
+  toggleDarkCell(e) {
+    e.target.classList.remove('cell_crossed');
+    e.target.classList.toggle('cell_dark');
+  }
+
+  toggleCrossedCell(e) {
+    e.target.classList.remove('cell_dark');
+    e.target.classList.toggle('cell_crossed');
+  }
+
+  handleCellSound(e) {
     if (e.target.classList.contains('cell_dark')) {
       this.audioHandler.playAudio(this.audioHandler.lkmAudio);
     } else if (e.target.classList.contains('cell_crossed')) {
@@ -132,8 +171,6 @@ class GameHandler {
     } else {
       this.audioHandler.playAudio(this.audioHandler.emptyAudio);
     }
-    this.fillStartField(e);
-    this.checkEndGame();
   }
 
   fillStartField(e) {
@@ -236,8 +273,6 @@ class GameHandler {
   toggleTheme() {
     const newTheme = this.themes.filter(el => el !== this.theme)[0];
     this.theme = newTheme;
-    this.parentEl.style.backgroundImage = `url(${images[this.theme].bg})`;
-    this.gameFields.element.style.backgroundImage = `url(${images[this.theme].main})`;
     document.documentElement.setAttribute('theme', this.theme);
   }
 

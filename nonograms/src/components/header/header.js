@@ -47,13 +47,11 @@ class Header {
       { innerText: 'Random game' },
     ]);
     this.newGameButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
-      { innerText: 'New game' },
+      { innerText: 'Choose game' },
     ]);
     this.scoreButton = createElementWithProperties('button', 'btn nav__button', { type: 'button' }, [
       { innerText: 'Score' },
     ]);
-    // const imgSave = createElementWithProperties('span', 'nav__img nav__img_save', { 'aria-label': 'Save icon' });
-    // const imgLoad = createElementWithProperties('span', 'nav__img nav__img_load', { 'aria-label': 'Save icon' });
     this.saveGameButton = createElementWithProperties(
       'button',
       'btn nav__button nav__button_save',
@@ -66,8 +64,6 @@ class Header {
       { type: 'button' },
       [{ innerText: 'Load game' }],
     );
-    // this.saveGameButton.append(imgSave);
-    // this.loadGameButton.append(imgLoad);
     this.renderThemeSwitcher();
     this.nav.append(
       this.resetButton,

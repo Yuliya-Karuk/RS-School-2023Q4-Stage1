@@ -11,17 +11,14 @@ html {
 }
 
 body {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  // :root[theme='dark'] & {
-  //   background: center no-repeat url('../images/bg_dark.jpg');
-  //   background-size: cover;
-  // }
-  // :root[theme='light'] & {
-  //   background: center no-repeat url('../images/bg_light.jpg');
-  //   background-size: cover;
-  // }
+  :root[theme='dark'] & {
+    background: center no-repeat url('../images/bg_dark.webp');
+    background-size: cover;
+  }
+  :root[theme='light'] & {
+    background: center no-repeat url('../images/bg_light.webp');
+    background-size: cover;
+  }
   overflow-x: hidden;
 }
 
@@ -31,5 +28,9 @@ h1 {
 
   @media screen and (max-width: 768px) {
     font-size: 4rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 2rem;
   }
 }

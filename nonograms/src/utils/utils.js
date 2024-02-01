@@ -55,10 +55,6 @@ export function launchTimer(timerEl, startTime) {
   const timerElement = timerEl;
   let timerMinutes = +startTime.split(':')[0];
   let timerSeconds = +startTime.split(':')[1] + timerMinutes * 60;
-  // if (startTime) {
-  //   timerMinutes = +startTime.split(':')[0];
-  //   timerSeconds = +startTime.split(':')[1] + timerMinutes * 60;
-  // }
 
   return setInterval(() => {
     timerSeconds += 1;
