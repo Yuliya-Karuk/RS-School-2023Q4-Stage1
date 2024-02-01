@@ -11,17 +11,17 @@
   :root[theme='dark'] & {
     background: var(--color-shadow-dark);
   }
+
   :root[theme='light'] & {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgb(0 0 0 / 60%);
   }
 }
 
-
 .header__wrapper {
-  height: 100%;
   display: flex;
-  justify-content: space-between;
+  height: 100%;
   align-items: center;
+  justify-content: space-between;
   padding: 0 20px;
   gap: 20px;
 }
@@ -37,27 +37,31 @@
   z-index: 20;
   top: 100px;
   right: 0;
-  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 10px;
+
+  // transition: 0.3s ease-in-out;
+  animation: burger-close 0.3s ease-in-out;
+  opacity: 0;
   row-gap: 10px;
+  visibility: hidden;
 
   :root[theme='dark'] & {
-    background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%), rgb(223, 153, 252, 0.5);
+    background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%),
+      rgb(223 153 252 / 50%);
   }
 
   :root[theme='light'] & {
-    background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%), rgb(243, 251, 210, 0.5);
+    background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%),
+      rgb(243 251 210 / 50%);
   }
-  opacity: 0;
-  visibility: hidden;
-  // transition: 0.3s ease-in-out;
-  animation: burger-close 0.3s ease-in-out;
 
   &_active {
     animation: burger-open 0.3s ease-in-out;
     opacity: 1;
+
     // transition: 0.3s ease-in-out;
     visibility: visible;
   }
@@ -79,11 +83,11 @@
   width: 30px;
   height: 30px;
 
-
   &_settings {
     :root[theme='dark'] & {
       background: center no-repeat url('../../images/settings_dark.svg');
     }
+
     :root[theme='light'] & {
       background: center no-repeat url('../../images/settings_light.svg');
     }
@@ -93,12 +97,15 @@
     :root[theme='dark'] & {
       background: center no-repeat url('../../images/unmuted_dark.svg');
     }
+
     :root[theme='dark'] .nav__button_volume_muted & {
       background: center no-repeat url('../../images/muted_dark.svg');
     }
+
     :root[theme='light'] & {
       background: center no-repeat url('../../images/unmuted_light.svg');
     }
+
     :root[theme='light'] .nav__button_volume_muted & {
       background: center no-repeat url('../../images/muted_light.svg');
     }
@@ -119,46 +126,43 @@
 }
 
 .switcher__input {
-  opacity: 0;
   width: 0;
   height: 0;
+  opacity: 0;
 }
 
 .switcher__round {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--color-primary);
   border-radius: 34px;
-
+  background-color: var(--color-primary);
   cursor: pointer;
+  inset: 0;
+
   @extend %transition;
 }
 
-.switcher__round:before {
+.switcher__round::before {
   position: absolute;
-  content: "";
-  height: 35px;
-  width: 35px;
-  left: 0px;
   top: 0;
   bottom: 0;
-  margin: auto 0;
-  @extend %transition;
-
+  left: 0;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
+  margin: auto 0;
   background: center no-repeat #df99fc url('../../images/night.png');
+  content: '';
+
+  @extend %transition;
 }
 
 .switcher__input:checked + .switcher__round {
   background-color: #283d14;
 }
 
-.switcher__input:checked + .switcher__round:before {
-  transform: translateX(20px);
+.switcher__input:checked + .switcher__round::before {
   background: center no-repeat #baa2b5 url('../../images/sun.png');
-  background-repeat: no-repeat;
   background-position: center;
+  background-repeat: no-repeat;
+  transform: translateX(20px);
 }

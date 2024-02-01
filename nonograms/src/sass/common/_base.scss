@@ -5,8 +5,8 @@
 }
 
 html {
+  font-family: Overlock, sans-serif;
   font-size: 10px;
-  font-family: 'Overlock', sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -15,22 +15,25 @@ body {
     background: center no-repeat url('../images/bg_dark.webp');
     background-size: cover;
   }
+
   :root[theme='light'] & {
     background: center no-repeat url('../images/bg_light.webp');
     background-size: cover;
   }
+
   overflow-x: hidden;
 }
 
 h1 {
   @include font(5rem, 900, 1.05);
+
   color: var(--color-primary);
 
-  @media screen and (max-width: 768px) {
+  @media screen and (width <= 768px) {
     font-size: 4rem;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (width <= 480px) {
     font-size: 2rem;
   }
 }

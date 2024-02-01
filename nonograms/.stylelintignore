@@ -6,4 +6,7 @@
 *.svg
 *.woff2
 *.png
+*.webp
+*.ico
 /node_modules
+/src/audio

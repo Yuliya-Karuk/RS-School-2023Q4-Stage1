@@ -2,11 +2,10 @@
 @import '../../sass/common/placeholders';
 @import '../../sass/common/mixins';
 
-
 .modal_level {
   .modal__buttons {
-    width: 100%;
     display: flex;
+    width: 100%;
     justify-content: space-between;
   }
 
@@ -16,13 +15,13 @@
     &_active {
       background-color: var(--color-button-active);
       color: var(--color-primary);
-      filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.6));
+      filter: drop-shadow(3px 5px 5px rgb(0 0 0 / 60%));
       pointer-events: none;
     }
 
     @include media-hover {
       &:hover {
-        filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.6));
+        filter: drop-shadow(3px 5px 5px rgb(0 0 0 / 60%));
       }
     }
   }

@@ -1,6 +1,6 @@
 :root {
-  --color-shadow-light: rgba(256, 256, 256, 0.4);
-  --color-shadow-dark: rgba(0, 0, 0, 0.4);
+  --color-shadow-light: rgb(256 256 256 / 40%);
+  --color-shadow-dark: rgb(0 0 0 / 40%);
 }
 
 :root[theme='dark'] {
@@ -8,9 +8,8 @@
   --color-bg-button: #2e2448;
   --color-button-active: #df99fc;
   --color-background-backdrop: rgb(64 63 61 / 80%);
-
   --color-cell-initial: #360e40;
-  --color-cell-guessed: #ffffff;
+  --color-cell-guessed: #fff;
   --color-bg-clue: #d26efb;
   --color-main-border: #e9cbe3;
 }
@@ -20,9 +19,8 @@
   --color-bg-button: #283d14;
   --color-button-active: #f2f3ec;
   --color-background-backdrop: rgb(64 63 61 / 80%);
-
-  --color-cell-initial: #ffffff;
-  --color-cell-guessed: #000000;
+  --color-cell-initial: #fff;
+  --color-cell-guessed: #000;
   --color-bg-clue: #baa2b5;
   --color-main-border: #745d4d;
 }

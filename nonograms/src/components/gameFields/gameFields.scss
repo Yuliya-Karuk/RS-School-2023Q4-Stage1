@@ -2,27 +2,26 @@
 @import '../../sass/common/mixins';
 
 .game-field {
-  height: calc(100vh - 170px);
-  min-height: 440px;
+  display: flex;
   width: 100%;
   max-width: 600px;
+  height: calc(100vh - 170px);
+  min-height: 440px;
   flex-grow: 2;
-  display: flex;
-  justify-content: center;
   align-items: center;
-
-  background-size: contain;
+  justify-content: center;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
+  user-select: none;
 
   :root[theme='dark'] & {
     background: center no-repeat url('../../images/main_dark.webp');
     background-size: contain;
 
-    @media screen and (max-width: 480px) {
-      background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%),
-        rgb(0, 0, 0, 0.5);
+    @media screen and (width <= 480px) {
       border-radius: 50px;
+      background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%), rgb(0 0 0 / 50%);
     }
   }
 
@@ -30,10 +29,9 @@
     background: center no-repeat url('../../images/main_light.webp');
     background-size: contain;
 
-    @media screen and (max-width: 480px) {
-      background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%),
-        rgb(0, 0, 0, 0.5);
+    @media screen and (width <= 480px) {
       border-radius: 50px;
+      background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%), rgb(0 0 0 / 50%);
     }
   }
 
@@ -54,15 +52,12 @@
     width: 18px;
     height: 18px;
   }
-
-  user-select: none;
 }
 
 .frame {
-  width: fit-content;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  width: fit-content;
+  flex-flow: column wrap;
 }
 
 .top-clues {
@@ -94,10 +89,12 @@
     width: calc(5 * 40px);
     grid-template-columns: repeat(5, 1fr);
   }
+
   &_medium {
     width: calc(10 * 28px);
     grid-template-columns: repeat(10, 1fr);
   }
+
   &_hard {
     width: calc(15 * 18px);
     grid-template-columns: repeat(15, 1fr);
@@ -106,20 +103,17 @@
   &_blocked {
     pointer-events: none;
   }
+
   user-select: none;
 }
 
-.cell  {
-  background: var(--color-cell-initial);
+.cell {
   border: 1px solid var(--color-bg-clue);
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  background: var(--color-cell-initial);
   user-select: none;
 
   &_crossed {
-    background: center no-repeat #ffffff url("../../images/cross.svg");
+    background: center no-repeat #fff url('../../images/cross.svg');
   }
 
   &_dark {
@@ -133,6 +127,7 @@
   .play-field_medium &:nth-of-type(10n + 5) {
     border-right: 2px solid var(--color-main-border);
   }
+
   .play-field_medium &:nth-of-type(10n + 6) {
     border-left: 1px solid var(--color-main-border);
   }
@@ -140,6 +135,7 @@
   .play-field_medium &:nth-of-type(n + 51):nth-of-type(-n + 60) {
     border-top: 1px solid var(--color-main-border);
   }
+
   .play-field_medium &:nth-of-type(n + 41):nth-of-type(-n + 50) {
     border-bottom: 2px solid var(--color-main-border);
   }
@@ -147,6 +143,7 @@
   .play-field_hard &:nth-of-type(5n + 5):not(:nth-of-type(15n)) {
     border-right: 2px solid var(--color-main-border);
   }
+
   .play-field_hard &:nth-of-type(5n + 6):not(:nth-of-type(15n + 1)) {
     border-left: 1px solid var(--color-main-border);
   }
@@ -163,8 +160,8 @@
 }
 
 .left-clues {
-  width: fit-content;
   display: flex;
+  width: fit-content;
   flex-direction: column;
 }
 
@@ -174,6 +171,7 @@
   &:nth-of-type(5n + 1):not(:first-of-type) .clue {
     border-top: 1px solid var(--color-cell-initial);
   }
+
   &:nth-of-type(5n):not(:last-of-type) .clue {
     border-bottom: 2px solid var(--color-cell-initial);
   }
@@ -181,12 +179,13 @@
 
 .clue {
   display: flex;
-  justify-content: center;
   align-items: center;
-  @include font(1.8rem, 900, 1.05);
-  color: var(--color-bg-button);
-  background-color: var(--color-bg-clue);
+  justify-content: center;
   border: 1px solid var(--color-main-border);
+  background-color: var(--color-bg-clue);
+  color: var(--color-bg-button);
+
+  @include font(1.8rem, 900, 1.05);
 
   .game-field_hard & {
     @include font(1.3rem, 900, 1.05);

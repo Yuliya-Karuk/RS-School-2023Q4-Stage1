@@ -8,11 +8,12 @@
 }
 
 .timer {
+  display: flex;
   width: 400px;
   height: 60px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  color: var(--color-bg-button);
 
   :root[theme='dark'] & {
     background: center no-repeat url('../../images/timer_dark.png');
@@ -25,9 +26,8 @@
   }
 
   @include font(3rem, 900, 1.05);
-  color: var(--color-bg-button);
 
-  @media screen and (max-width: 480px) {
+  @media screen and (width <= 480px) {
     width: 300px;
   }
 }

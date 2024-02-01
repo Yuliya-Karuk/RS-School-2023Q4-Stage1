@@ -3,9 +3,9 @@
   z-index: 20;
   top: 0;
   left: 0;
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--color-background-backdrop);
@@ -27,8 +27,8 @@
   background-color: var(--color-main-border);
   gap: 40px;
   text-align: center;
-  transition: all 0.5s ease-in-out;
   transform: translateY(-200%);
+  transition: all 0.5s ease-in-out;
 
   .modal_active & {
     transform: translateY(0%);
@@ -38,12 +38,13 @@
     background-color: #d4d8d0;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (width <= 480px) {
     padding: 20px;
   }
 }
 
 .modal__title {
   @include font(4rem, 900, 1.05);
+
   color: var(--color-primary);
 }
