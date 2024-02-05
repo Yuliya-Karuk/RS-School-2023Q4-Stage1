@@ -10,10 +10,10 @@
   flex-grow: 2;
   align-items: center;
   justify-content: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
+  -webkit-touch-callout: none;
 
   :root[theme='dark'] & {
     background: center no-repeat url('../../images/main_dark.webp');
@@ -54,7 +54,7 @@
   }
 }
 
-.frame {
+.game-field__container {
   display: flex;
   width: fit-content;
   flex-flow: column wrap;
@@ -63,6 +63,8 @@
 .top-clues {
   display: flex;
   justify-content: flex-end;
+  border: 3px solid var(--color-main-border);
+  border-bottom: none;
 }
 
 .top-clues__column {
@@ -78,42 +80,55 @@
   }
 }
 
-.game-block {
+.game-field__row {
   display: flex;
+
+  &:first-of-type {
+    justify-content: flex-end;
+  }
 }
 
 .play-field {
   display: grid;
+  border: 3px solid var(--color-main-border);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 
   &_easy {
-    width: calc(5 * 40px);
     grid-template-columns: repeat(5, 1fr);
   }
 
   &_medium {
-    width: calc(10 * 28px);
     grid-template-columns: repeat(10, 1fr);
   }
 
   &_hard {
-    width: calc(15 * 18px);
     grid-template-columns: repeat(15, 1fr);
   }
 
   &_blocked {
     pointer-events: none;
   }
-
-  user-select: none;
 }
 
 .cell {
   border: 1px solid var(--color-bg-clue);
   background: var(--color-cell-initial);
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
+  -webkit-touch-callout: none;
 
   &_crossed {
-    background: center no-repeat #fff url('../../images/cross.svg');
+    :root[theme='dark'] & {
+      background: center no-repeat var(--color-cell-initial) url('../../images/cross_dark.svg');
+    }
+
+    :root[theme='light'] & {
+      background: center no-repeat var(--color-cell-initial) url('../../images/cross_light.svg');
+    }
   }
 
   &_dark {
@@ -163,6 +178,8 @@
   display: flex;
   width: fit-content;
   flex-direction: column;
+  border: 3px solid var(--color-main-border);
+  border-right: none;
 }
 
 .left-clues__row {

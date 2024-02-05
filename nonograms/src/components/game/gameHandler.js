@@ -81,7 +81,7 @@ class GameHandler {
   }
 
   bindGameFieldListeners() {
-    // this.gameFields.playField.addEventListener('contextmenu', e => e.preventDefault());
+    this.gameFields.element.addEventListener('contextmenu', e => e.preventDefault(), false);
     document.addEventListener('contextmenu', e => e.preventDefault());
     // this.gameFields.playField.addEventListener('mouseup', e => this.handleClick(e));
     // this.gameFields.playField.addEventListener('touchend', e => this.handleMobileTouch(e));
@@ -122,7 +122,7 @@ class GameHandler {
 
   handleClick(e) {
     e.preventDefault();
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (!this.timerIsStarted) {
       this.timerId = launchTimer(this.main.timerElement, this.main.timerElement.innerText);
       this.timerIsStarted = true;

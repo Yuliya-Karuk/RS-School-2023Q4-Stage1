@@ -54,7 +54,7 @@ export function createArrayOneSize(arr) {
 export function launchTimer(timerEl, startTime) {
   const timerElement = timerEl;
   let timerMinutes = +startTime.split(':')[0];
-  let timerSeconds = +startTime.split(':')[1] + timerMinutes * 60;
+  let timerSeconds = +startTime.split(':')[1];
 
   return setInterval(() => {
     timerSeconds += 1;

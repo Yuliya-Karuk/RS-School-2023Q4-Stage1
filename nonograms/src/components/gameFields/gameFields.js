@@ -16,17 +16,19 @@ class GameFields {
 
   init(savedGame) {
     this.element.innerHTML = '';
-    const gameRow = createElementWithProperties('div', 'game-block');
+    const gameFieldContainer = createElementWithProperties('div', 'game-field__container');
+    const gameRowFirst = createElementWithProperties('div', 'game-field__row');
+    this.topClues = createElementWithProperties('div', 'top-clues');
+    const gameRowSecond = createElementWithProperties('div', 'game-field__row');
     this.playField = createElementWithProperties('ul', `play-field play-field_${this.mode}`);
     this.leftClues = createElementWithProperties('div', 'left-clues');
-    this.topClues = createElementWithProperties('div', 'top-clues');
-    const frame = createElementWithProperties('div', 'frame');
     if (!savedGame) this.renderPlayField();
     if (savedGame) this.renderSavedField(savedGame);
     this.renderClues();
-    gameRow.append(this.leftClues, this.playField);
-    frame.append(this.topClues, gameRow);
-    this.element.append(frame);
+    gameRowFirst.append(this.topClues);
+    gameRowSecond.append(this.leftClues, this.playField);
+    gameFieldContainer.append(gameRowFirst, gameRowSecond);
+    this.element.append(gameFieldContainer);
   }
 
   renderPlayField() {
@@ -35,9 +37,12 @@ class GameFields {
     for (let i = 0; i < this.winField.length; i += 1) {
       this.winField[i].forEach((el, index) => {
         const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}`, realValue: `${el}` });
+        newCell.addEventListener('contextmenu', e => e.preventDefault(), false);
+        newCell.addEventListener('selectstart', e => e.preventDefault());
         this.playField.append(newCell);
       });
     }
+    console.log('Solution for easier Cross Check', this.winField);
   }
 
   renderClues() {
