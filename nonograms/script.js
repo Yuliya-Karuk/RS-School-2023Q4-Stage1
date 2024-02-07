@@ -350,8 +350,10 @@ class GameHandler {
     }
     if (e.pointerType === 'mouse' && e.type === 'pointerup') this.handleMouseClick(e);
     if (e.pointerType === 'touch') this.handleTouchClick(e);
-    this.fillStartField(e);
-    this.checkEndGame();
+    if (e.type === 'pointerup') {
+      this.fillStartField(e);
+      this.checkEndGame();
+    }
   }
   handleMouseClick(e) {
     if (e.target.classList.contains('cell') && e.button === 2) this.toggleCrossedCell(e);
@@ -390,10 +392,8 @@ class GameHandler {
   }
   fillStartField(e) {
     const indexesArray = e.target.id.split('.').map(el => Number(el));
-    if (e.button === 0) {
-      const num = e.target.classList.contains('cell_dark') ? 1 : 0;
-      this.startField[indexesArray[0]][indexesArray[1]] = num;
-    }
+    const num = e.target.classList.contains('cell_dark') && e.button === 0 ? 1 : 0;
+    this.startField[indexesArray[0]][indexesArray[1]] = num;
   }
   checkEndGame() {
     if (this.startField.toString() === this.gameFields.winField.toString()) this.winGame();
