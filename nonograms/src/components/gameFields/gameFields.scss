@@ -34,24 +34,6 @@
       background: linear-gradient(180deg, var(--color-shadow-dark) 0%, var(--color-shadow-dark) 100%), rgb(0 0 0 / 50%);
     }
   }
-
-  &_easy .cell,
-  &_easy .clue {
-    width: 40px;
-    height: 40px;
-  }
-
-  &_medium .cell,
-  &_medium .clue {
-    width: 28px;
-    height: 28px;
-  }
-
-  &_hard .cell,
-  &_hard .clue {
-    width: 18px;
-    height: 18px;
-  }
 }
 
 .game-field__container {
@@ -113,67 +95,6 @@
   }
 }
 
-.cell {
-  border: 1px solid var(--color-bg-clue);
-  background: var(--color-cell-initial);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-
-  &_crossed {
-    :root[theme='dark'] & {
-      background: center no-repeat var(--color-cell-initial) url('../../images/cross_dark.svg');
-    }
-
-    :root[theme='light'] & {
-      background: center no-repeat var(--color-cell-initial) url('../../images/cross_light.svg');
-    }
-  }
-
-  &_dark {
-    background: var(--color-cell-guessed);
-  }
-
-  &_solved {
-    pointer-events: none;
-  }
-
-  .play-field_medium &:nth-of-type(10n + 5) {
-    border-right: 2px solid var(--color-main-border);
-  }
-
-  .play-field_medium &:nth-of-type(10n + 6) {
-    border-left: 1px solid var(--color-main-border);
-  }
-
-  .play-field_medium &:nth-of-type(n + 51):nth-of-type(-n + 60) {
-    border-top: 1px solid var(--color-main-border);
-  }
-
-  .play-field_medium &:nth-of-type(n + 41):nth-of-type(-n + 50) {
-    border-bottom: 2px solid var(--color-main-border);
-  }
-
-  .play-field_hard &:nth-of-type(5n + 5):not(:nth-of-type(15n)) {
-    border-right: 2px solid var(--color-main-border);
-  }
-
-  .play-field_hard &:nth-of-type(5n + 6):not(:nth-of-type(15n + 1)) {
-    border-left: 1px solid var(--color-main-border);
-  }
-
-  .play-field_hard &:nth-of-type(n + 76):nth-of-type(-n + 90),
-  .play-field_hard &:nth-of-type(n + 151):nth-of-type(-n + 165) {
-    border-top: 1px solid var(--color-main-border);
-  }
-
-  .play-field_hard &:nth-of-type(n + 61):nth-of-type(-n + 75),
-  .play-field_hard &:nth-of-type(n + 136):nth-of-type(-n + 150) {
-    border-bottom: 2px solid var(--color-main-border);
-  }
-}
-
 .left-clues {
   display: flex;
   width: fit-content;
@@ -204,7 +125,19 @@
 
   @include font(1.8rem, 900, 1.05);
 
+  .game-field_easy & {
+    width: 40px;
+    height: 40px;
+  }
+
+  .game-field_medium & {
+    width: 28px;
+    height: 28px;
+  }
+
   .game-field_hard & {
     @include font(1.3rem, 900, 1.05);
+    width: 18px;
+    height: 18px;
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable class-methods-use-this */
 import GameFields from '../gameFields/gameFields';
 import Header from '../header/header';
@@ -44,6 +45,7 @@ class GameHandler {
     this.bindGameFieldListeners();
     this.bindChooseGameListeners();
     this.bindBurgerHandlers();
+    this.bindCellListeners();
   }
 
   bindButtonListeners() {
@@ -87,8 +89,16 @@ class GameHandler {
     // this.gameFields.playField.addEventListener('touchend', e => this.handleMobileTouch(e));
     // this.gameFields.playField.addEventListener('touchstart', e => this.handleMobileTouch(e));
     this.gameFields.playField.addEventListener('selectstart', e => this.stopSelection(e, this.gameFields.playField));
-    this.gameFields.playField.addEventListener('pointerdown', e => this.handleClick(e));
-    this.gameFields.playField.addEventListener('pointerup', e => this.handleClick(e));
+    // this.gameFields.playField.addEventListener('pointerdown', e => this.handleClick(e));
+    // this.gameFields.playField.addEventListener('pointerup', e => this.handleClick(e));
+  }
+
+  bindCellListeners() {
+    for (let i = 0; i < this.gameFields.cellsArray.length; i += 1) {
+      const cell = this.gameFields.cellsArray[i];
+      cell.element.addEventListener('pointerdown', e => this.handleClick(e, cell));
+      cell.element.addEventListener('pointerup', e => this.handleClick(e, cell));
+    }
   }
 
   stopSelection(e, element) {
@@ -117,31 +127,42 @@ class GameHandler {
         e.target.classList.contains('modal')
       )
         context.modalScore.closeModal();
+      if (
+        !e.target.classList.contains('modal__content') &&
+        context.modalWin.element.classList.contains('modal_active') &&
+        e.target.classList.contains('modal')
+      )
+        context.modalWin.closeModal();
     });
   }
 
-  handleClick(e) {
+  handleClick(e, cell) {
     e.preventDefault();
     e.stopPropagation();
     if (!this.timerIsStarted) {
       this.timerId = launchTimer(this.main.timerElement, this.main.timerElement.innerText);
       this.timerIsStarted = true;
     }
-    if (e.pointerType === 'mouse' && e.type === 'pointerup') this.handleMouseClick(e);
-    if (e.pointerType === 'touch') this.handleTouchClick(e);
+    if (e.pointerType === 'mouse' && e.type === 'pointerup') this.handleMouseClick(e, cell);
+    if (e.pointerType === 'touch') this.handleTouchClick(e, cell);
     if (e.type === 'pointerup') {
-      this.fillStartField(e);
+      this.fillStartField(e, cell);
       this.checkEndGame();
     }
   }
 
-  handleMouseClick(e) {
-    if (e.target.classList.contains('cell') && e.button === 2) this.toggleCrossedCell(e);
-    if (e.target.classList.contains('cell') && e.button === 0) this.toggleDarkCell(e);
-    this.handleCellSound(e);
+  handleMouseClick(e, cell) {
+    if (cell.state !== 'dark' && e.button === 0) {
+      cell.changeState('dark');
+    } else if (cell.state !== 'crossed' && e.button === 2) {
+      cell.changeState('crossed');
+    } else {
+      cell.changeState('empty');
+    }
+    this.handleCellSound(cell.state);
   }
 
-  handleTouchClick(e) {
+  handleTouchClick(e, cell) {
     let time;
     if (e.type === 'pointerdown') {
       this.timeStart = e.timeStamp;
@@ -149,40 +170,36 @@ class GameHandler {
     if (e.type === 'pointerup') {
       this.timeEnd = e.timeStamp;
       time = this.timeEnd - this.timeStart;
-      if (time < 500) this.toggleDarkCell(e);
-      if (time >= 500) this.toggleCrossedCell(e);
-      this.handleCellSound(e);
+      if (cell.state !== 'dark' && time < 500) {
+        cell.changeState('dark');
+      } else if (cell.state !== 'crossed' && time >= 500) {
+        cell.changeState('crossed');
+      } else {
+        cell.changeState('empty');
+      }
+      this.handleCellSound(cell.state);
     }
   }
 
-  toggleDarkCell(e) {
-    e.target.classList.remove('cell_crossed');
-    e.target.classList.toggle('cell_dark');
-  }
-
-  toggleCrossedCell(e) {
-    e.target.classList.remove('cell_dark');
-    e.target.classList.toggle('cell_crossed');
-  }
-
-  handleCellSound(e) {
-    if (e.target.classList.contains('cell_dark')) {
+  handleCellSound(cellState) {
+    if (cellState === 'dark') {
       this.audioHandler.playAudio(this.audioHandler.lkmAudio);
-    } else if (e.target.classList.contains('cell_crossed')) {
+    } else if (cellState === 'crossed') {
       this.audioHandler.playAudio(this.audioHandler.pkmAudio);
     } else {
       this.audioHandler.playAudio(this.audioHandler.emptyAudio);
     }
   }
 
-  fillStartField(e) {
-    const indexesArray = e.target.id.split('.').map(el => Number(el));
-    const num = e.target.classList.contains('cell_dark') && e.button === 0 ? 1 : 0;
+  fillStartField(e, cell) {
+    const indexesArray = cell.id.split('.').map(el => Number(el));
+    const num = cell.state === 'dark' ? 1 : cell.state === 'crossed' ? -1 : 0;
     this.startField[indexesArray[0]][indexesArray[1]] = num;
   }
 
   checkEndGame() {
-    if (this.startField.toString() === this.gameFields.winField.toString()) this.winGame();
+    const preparedStartField = this.startField.map(el => el.map(elem => (elem === -1 ? 0 : elem)));
+    if (preparedStartField.toString() === this.gameFields.winField.toString()) this.winGame();
   }
 
   resetTimer(savedTime) {
@@ -193,8 +210,8 @@ class GameHandler {
 
   resetGame() {
     this.resetTimer();
-    this.gameFields.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
-    this.gameFields.renderPlayField();
+    this.startField = Array.from({ length: this.size }, () => Array.from({ length: this.size }, () => 0));
+    this.gameFields.resetCells();
   }
 
   showSolution() {
@@ -225,12 +242,13 @@ class GameHandler {
     this.gameFields.changeGame(this.gameImage, this.size);
     this.resetTimer();
     this.bindGameFieldListeners();
+    this.bindCellListeners();
   }
 
   winGame() {
     const time = this.main.timerElement.innerText;
     this.storage.saveResult(this.gameName, this.modalLevel.level, convertTimeToSec(time));
-    this.gameFields.toggleBlockCells();
+    this.gameFields.blockCells();
     this.modalWin.showModal(time);
     this.resetTimer();
     this.audioHandler.playAudio(this.audioHandler.winAudio);
@@ -268,6 +286,7 @@ class GameHandler {
     this.gameFields.changeGame(this.gameImage, this.size, matrix);
     this.resetTimer(timer);
     this.bindGameFieldListeners();
+    this.bindCellListeners();
   }
 
   toggleTheme() {

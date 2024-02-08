@@ -1,4 +1,5 @@
 import { createElementWithProperties, countClues, createArrayOneSize } from '../../utils/utils';
+import Cell from '../cell/cell';
 import './gameFields.scss';
 
 const GameMood = {
@@ -6,11 +7,18 @@ const GameMood = {
   10: 'medium',
   15: 'hard',
 };
+
+const MatrixState = {
+  0: 'empty',
+  '-1': 'crossed',
+  1: 'dark',
+};
 class GameFields {
   constructor(winImage, mood) {
     this.mode = GameMood[mood];
     this.winField = winImage;
     this.element = createElementWithProperties('div', `game-field game-field_${this.mode}`);
+    this.cellsArray = [];
     this.init();
   }
 
@@ -32,14 +40,17 @@ class GameFields {
   }
 
   renderPlayField() {
+    this.cellsArray = [];
     this.playField.innerHTML = '';
     this.playField.classList.remove('play-field_blocked');
     for (let i = 0; i < this.winField.length; i += 1) {
       this.winField[i].forEach((el, index) => {
-        const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}`, realValue: `${el}` });
-        newCell.addEventListener('contextmenu', e => e.preventDefault(), false);
-        newCell.addEventListener('selectstart', e => e.preventDefault());
-        this.playField.append(newCell);
+        const newCell = new Cell(`${i}.${index}`, `${el}`);
+        // const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}`, realValue: `${el}` });
+        // newCell.addEventListener('contextmenu', e => e.preventDefault(), false);
+        // newCell.addEventListener('selectstart', e => e.preventDefault());
+        this.cellsArray.push(newCell);
+        this.playField.append(newCell.element);
       });
     }
     console.log('Solution for easier Cross Check', this.winField);
@@ -76,19 +87,25 @@ class GameFields {
   }
 
   renderSolution() {
-    const winArray = this.winField.flat();
-    for (let i = 0; i < this.playField.children.length; i += 1) {
-      if (this.playField.children[i].getAttribute('realValue') === '1' || winArray[i] === 1) {
-        this.playField.children[i].classList.add('cell_dark');
+    for (let i = 0; i < this.cellsArray.length; i += 1) {
+      if (this.cellsArray[i].realValue === '1') {
+        this.cellsArray[i].changeState('dark');
       } else {
-        this.playField.children[i].classList = 'cell';
+        this.cellsArray[i].changeState('empty');
       }
     }
-    this.toggleBlockCells();
+    this.blockCells();
   }
 
-  toggleBlockCells() {
+  blockCells() {
     this.playField.classList.add('play-field_blocked');
+  }
+
+  resetCells() {
+    for (let i = 0; i < this.cellsArray.length; i += 1) {
+      this.cellsArray[i].changeState('empty');
+    }
+    this.playField.classList.remove('play-field_blocked');
   }
 
   changeGame(winImage, mood, savedGame) {
@@ -99,13 +116,18 @@ class GameFields {
   }
 
   renderSavedField(savedGame) {
+    this.cellsArray = [];
     this.playField.innerHTML = '';
     this.playField.classList.remove('play-field_blocked');
     for (let i = 0; i < savedGame.length; i += 1) {
       savedGame[i].forEach((el, index) => {
-        const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}` });
-        if (el === 1) newCell.classList.add('cell_dark');
-        this.playField.append(newCell);
+        const newCell = new Cell(`${i}.${index}`, `${el === -1 ? 0 : el}`);
+        // const newCell = createElementWithProperties('li', 'cell', { id: `${i}.${index}`, realValue: `${el}` });
+        // newCell.addEventListener('contextmenu', e => e.preventDefault(), false);
+        // newCell.addEventListener('selectstart', e => e.preventDefault());
+        newCell.changeState(MatrixState[el]);
+        this.cellsArray.push(newCell);
+        this.playField.append(newCell.element);
       });
     }
   }
