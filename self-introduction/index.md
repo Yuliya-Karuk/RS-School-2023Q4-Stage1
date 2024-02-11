@@ -1,4 +1,4 @@
-# __Yulua Karuk__
+# __Yuliya Karuk__
 
 ## __[Video Link](https://youtu.be/_pjSGWeFrJM)__
 
