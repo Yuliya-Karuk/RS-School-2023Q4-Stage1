@@ -1,6 +1,6 @@
 # __Yuliya Karuk__
 
-## __[Video Link](https://youtu.be/_pjSGWeFrJM)__
+## __[Video Link](https://youtu.be/B6JXcpJ8S5k)__
 
 ## Transcript
 
