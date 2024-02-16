@@ -1,6 +1,6 @@
 ## Reflections
 
-1. **Getting Started with TypeScript**.
+### 1. **Getting Started with TypeScript**.
 
   #### 📝 Key Concepts:
    - TypeScript is an open-source language that was developed by Microsoft.
@@ -17,7 +17,7 @@
   #### 👩‍💻 Summary
   From this module, I've learned what is typescript and what advantages does it give when using it. I installed TypeScript and set up a TypeScript project in Visual Studio Code with help of this topic.
 
-2. **Declare Variable Types in TypeScript**.
+### 2. **Declare Variable Types in TypeScript**.
 
   #### 📝 Key Concepts:
    - Types place static constraints on program entities, such as functions, variables, and properties, so that compilers and development tools can offer better verification and assistance during development.
@@ -34,7 +34,7 @@
   #### 👩‍💻 Summary
   I've learned how declare variables using primitive types, object types, about union/intersection/literal types. I understood the importance of using static types, because it provides better documentation, and allows TypeScript to validate that my code is working correctly.
 
-3. **Implement Interfaces in TypeScript**.
+### 3. **Implement Interfaces in TypeScript**.
 
   #### 📝 Key Concepts:
    - Interfaces are used to describe an object, naming and parameterizing the object's types, and to compose existing named object types into new ones.
@@ -50,7 +50,7 @@
   #### 👩‍💻 Summary
   I've got that interfaces are a feature of TypeScript that allows us to define the structure of an object,the properties and methods that an object should have without implementation. I learned how declare, instantiate and extend an interface in TypeScript. I've understood that interfaces improve readability and reusability of code, and it helps to make refactoring easier.
 
-4. **Develop Typed Functions in TypeScript**.
+### 4. **Develop Typed Functions in TypeScript**.
 
   #### 📝 Key Concepts:
    - TypeScript provides several different ways to define functions: function declaration, function expression, arrow functions.
@@ -65,7 +65,7 @@
   #### 👩‍💻 Summary
   From this module, I've caught information about different methods of creating functions with TS, about possibility to define functions with optional, default, rest parameters, deconstructed object parameters. It will enhances my code quality and reduce bugs.
 
-5. **Declare and Instantiate Classes in TypeScript**.
+### 5. **Declare and Instantiate Classes in TypeScript**.
 
   #### 📝 Key Concepts:
    - In TypeScript, classes are yet another way to define the shape of an object, in addition to describing object types with interfaces and functions.
@@ -86,7 +86,7 @@
   #### 👩‍💻 Summary
   I've learned about TypeScript-specific features like type annotations for class members, access modifiers, and the ability to specify required or optional parameters. This module helped me to understand the principles of OOP better and the possibilities of using them with TypeScript
 
-6. **Generics in TypeScript**.
+### 6. **Generics in TypeScript**.
 
   #### 📝 Key Concepts:
    - Generics define one or more type variables to identify the type or types that you will pass to the component, enclosed in angle brackets (< >).
@@ -100,7 +100,7 @@
   #### 👩‍💻 Summary
   From this unit, I've understood that generics are a TypeScript feature that allows us to pass in various types of data and create reusable code to handle different inputs. Generics offer us multiple benefits, such as type safety and error detection, code reusability and flexibility etc.
 
-7. **Work with External Libraries in TypeScript**.
+### 7. **Work with External Libraries in TypeScript**.
 
   #### 📝 Key Concepts:
    - Modules provide a way to organize and categorize your code, enabling you to group related code together. Also module doesn't pollute the global scope.
@@ -116,7 +116,7 @@
   #### 👩‍💻 Summary
   This module introduced me to modules in TypeScript. I've learned that export/import statements makes a component in one module available to other modules. Modules usage helps us to better organize and structure our codebase.
 
-8. **Organize Code with Namespaces in TypeScript**.
+### 8. **Organize Code with Namespaces in TypeScript**.
 
   #### 📝 Key Concepts:
    - Namespaces are a TypeScript-specific way to organize and categorize your code. Namespaces allow you to group variables, functions, interfaces, or classes related in one namespace.
